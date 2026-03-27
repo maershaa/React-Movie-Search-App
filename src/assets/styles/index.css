@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+
+  /* Common Tokens */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-main:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Light Theme */
+  --bg-color: #f5f5f7; /* Apple-style light gray */
+  --surface-color: #ffffff;
+  --card-color: #ffffff;
+  --primary-color: #e95a1e; /* Наш акцентный оранжевый */
+  --accent-color: #ff824d; /* Светлый оттенок для hover */
+  --text-color: #1d1d1f;
+  --text-secondary: #86868b;
+  --border-color: #d2d2d7;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --shadow: 0 4px 20px var(--shadow-color);
+}
+
+[data-theme='dark'] {
+  /* Dark Theme */
+  --bg-color: #0b0b0c; /* Глубокий черный как на макетах */
+  --surface-color: #16171a; /* Фон хедера и панелей */
+  --card-color: #212329; /* Цвет карточки для контраста на фоне */
+  --primary-color: #e95a1e; /* Наш акцентный оранжевый */
+  --accent-color: #f07b4a; /* Оранжевый для hover-эффектов */
+  --text-color: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --border-color: #333438;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --shadow: 0 10px 30px var(--shadow-color);
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Контейнер для центрирования контента */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-color);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  color: var(--text-secondary); /* Основной текст чуть бледнее для мягкости */
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Акцентный текст (например, для логотипа или важных пометок) */
+.logo-accent {
+  color: var(--primary-color);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+/* Базовый стиль для карточек (Card Surface) */
+.card-surface {
+  background-color: var(--card-color);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+/* Мягкое выделение текста */
+::selection {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Кастомный скроллбар (опционально, для Chrome/Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
