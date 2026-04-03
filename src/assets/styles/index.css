@@ -5,6 +5,8 @@
 }
 
 :root {
+  color-scheme: light dark; /* что оно дает?? */
+
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -17,7 +19,9 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --font-main:
     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
+[data-theme='light'] {
   /* Light Theme */
   --bg-color: #f5f5f7; /* Apple-style light gray */
   --surface-color: #ffffff;
@@ -56,12 +60,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Контейнер для центрирования контента */
-.container {
+/* Контейнер для центрирования контента. */
+/* .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
-}
+} */
 
 h1,
 h2,
@@ -91,9 +95,6 @@ p {
 }
 
 /* Акцентный текст (например, для логотипа или важных пометок) */
-.logo-accent {
-  color: var(--primary-color);
-}
 
 a {
   color: var(--primary-color);
@@ -144,4 +145,8 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
+}
+
+.star-icon {
+  color: var(--primary-color);
 }

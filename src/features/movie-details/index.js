@@ -1,2 +1,2 @@
-export { CastList } from './CastList/CastList.jsx';
-export { ReviewList } from './ReviewList/ReviewList.jsx';
+export { default as CastList } from './CastList/CastList.jsx';
+export { default as ReviewList } from './ReviewList/ReviewList.jsx';

@@ -30,4 +30,4 @@ const ReviewList = () => {
   );
 };
 
-export { ReviewList };
+export default ReviewList;

@@ -1,0 +1,1 @@
+export { getTrendingMovies } from './trending';

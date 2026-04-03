@@ -1,27 +1,35 @@
 import { FaStar } from 'react-icons/fa';
+import { MovieItem } from './MovieCard.styled';
+import { No_Poster } from '@/assets/images';
 
-const MovieCard = () => {
+const MovieCard = movie => {
+  console.log('🚀 ~ MovieCard ~ movie:', movie);
+  const { title, poster, rating, release_year } = movie;
+
   return (
-    <li className="movie-card">
+    <MovieItem className="movie-card">
       <div className="movie-card__poster-wrapper">
         <img
-          src="path-to-poster.jpg"
-          alt="Dune: Part Two"
+          src={poster}
+          alt={title}
           className="movie-card__poster"
+          loading="lazy"
+          onError={e => {
+            e.target.src = No_Poster; // Если картинка не загрузится, подставим заглушку
+          }}
         />
-        <div className="movie-card__badge">HD</div>
       </div>
 
       <div className="movie-card__content">
-        <h3 className="movie-card__title">Dune: Part Two</h3>
+        <h4 className="movie-card__title">{title}</h4>
         <div className="movie-card__meta">
-          <span className="movie-card__rating">
-            <FaStar className="star-icon" /> 8.7
-          </span>
-          <span className="movie-card__year">2024</span>
+          <p className="movie-card__rating">
+            <FaStar className="star-icon" /> {rating}
+          </p>
+          <p className="movie-card__year">{release_year}</p>
         </div>
       </div>
-    </li>
+    </MovieItem>
   );
 };
 

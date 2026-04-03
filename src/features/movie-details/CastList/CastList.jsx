@@ -21,4 +21,4 @@ const CastList = () => {
   );
 };
 
-export { CastList };
+export default CastList;

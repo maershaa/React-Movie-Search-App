@@ -1,35 +1,64 @@
-import { FaSearch, FaMoon, FaSun } from 'react-icons/fa';
-
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+import { HeaderWrapper } from './Header.styled.jsx';
+import { Avatar } from '@/assets/images/index.js';
+import { ThemeContext } from '@/context';
+import { useContext } from 'react';
 const Header = () => {
+  const context = useContext(ThemeContext); //Достаем данные из Context (theme, toggleTheme)
+  const { theme, toggleTheme } = context;
+  // ❗ ручная защита от неправильного использования Context. если ты забыл обернуть приложение в <ThemeProvider>, то useContext(ThemeContext) вернёт null
+  if (!context) {
+    throw new Error('ThemeSwitcher must be used within ThemeProvider');
+  }
+  // useEffect(() => {
+  //   first;
+
+  //   return () => {
+  //     second;
+  //   };
+  // }, [third]);
+
   return (
-    <header className="header">
+    <HeaderWrapper>
       <div className="header__logo">
         <span className="logo-accent">Movie</span>Pulse
       </div>
 
       <nav className="header__nav">
         <ul className="nav-list">
-          <li className="nav-item nav-item--active">Home</li>
-          <li className="nav-item">Movies</li>
+          <li className="nav-item ">
+            <NavLink to={'/'}>
+              {({ isActive }) => (
+                <span className={isActive ? 'active' : ''}>Home</span>
+              )}
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to={'/movies'}>
+              {({ isActive }) => (
+                <span className={isActive ? 'active' : ''}>Movies</span>
+              )}
+            </NavLink>
+          </li>
         </ul>
       </nav>
 
       <div className="header__actions">
-        <button className="icon-btn search-trigger">
-          <FaSearch />
-        </button>
-        <button className="icon-btn theme-toggle">
-          <FaMoon />
+        <button className="icon-btn theme-toggle" onClick={toggleTheme}>
+          {theme === 'dark' ? <FaSun /> : <FaMoon />}
         </button>
         <div className="user-profile">
           <img
-            src="/avatar-placeholder.png"
+            src={Avatar}
             alt="Profile"
             className="user-avatar"
+            width="36px"
           />
         </div>
       </div>
-    </header>
+      <hr />
+    </HeaderWrapper>
   );
 };
 
