@@ -3,7 +3,7 @@ import { MovieItem } from './MovieCard.styled';
 import { No_Poster } from '@/assets/images';
 
 const MovieCard = movie => {
-  console.log('🚀 ~ MovieCard ~ movie:', movie);
+  // console.log('🚀 ~ MovieCard ~ movie:', movie);
   const { title, poster, rating, release_year } = movie;
 
   return (

@@ -11,19 +11,12 @@ const Header = () => {
   if (!context) {
     throw new Error('ThemeSwitcher must be used within ThemeProvider');
   }
-  // useEffect(() => {
-  //   first;
-
-  //   return () => {
-  //     second;
-  //   };
-  // }, [third]);
 
   return (
     <HeaderWrapper>
-      <div className="header__logo">
+      <NavLink to="/" className="header__logo" aria-label="Go to homepage">
         <span className="logo-accent">Movie</span>Pulse
-      </div>
+      </NavLink>
 
       <nav className="header__nav">
         <ul className="nav-list">
@@ -45,17 +38,21 @@ const Header = () => {
       </nav>
 
       <div className="header__actions">
-        <button className="icon-btn theme-toggle" onClick={toggleTheme}>
-          {theme === 'dark' ? <FaSun /> : <FaMoon />}
+        <button onClick={toggleTheme}>
+          {theme === 'dark' ? (
+            <FaSun className="light" />
+          ) : (
+            <FaMoon className="dark" />
+          )}
         </button>
-        <div className="user-profile">
-          <img
-            src={Avatar}
-            alt="Profile"
-            className="user-avatar"
-            width="36px"
-          />
-        </div>
+        <a
+          href="https://www.linkedin.com/in/valeriiayefremova/"
+          className="user-profile"
+          target="_blank" /* Открывать в новой вкладке */
+          rel="noopener noreferrer" /* Безопасность при открытии внешних ссылок */
+        >
+          <img src={Avatar} alt="Profile" className="user-avatar" width="36" />
+        </a>
       </div>
       <hr />
     </HeaderWrapper>

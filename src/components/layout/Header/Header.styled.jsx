@@ -5,11 +5,15 @@ const HeaderWrapper = styled.header`
   align-items: center;
   justify-content: space-around;
 
+  padding: 20px;
+  margin-bottom: 20px;
+
   .header__logo {
     margin-right: auto;
 
     font-size: 2rem;
     font-weight: 700;
+    color: var(--text-color);
   }
 
   .logo-accent {
@@ -54,6 +58,19 @@ const HeaderWrapper = styled.header`
 
   .header__actions button {
     background-color: transparent;
+  }
+
+  .header__actions svg {
+    color: var(--theme-icon-color);
+
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .header__actions svg:hover {
+    filter: drop-shadow(0 0 8px var(--theme-icon-color));
+    transform: rotate(45deg);
   }
 `;
 
