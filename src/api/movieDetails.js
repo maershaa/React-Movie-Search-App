@@ -8,9 +8,9 @@ const options = {
   },
 };
 
-const Oooooo = id => {
-  const response = fetch(
-    `${BASE_URL}/find/${id}?api_key=${API_KEY}&external_source=imdb_id&language=en-US`,
+const getMovieDetails = async movie_id => {
+  const response = await fetch(
+    `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}`,
     options
   );
 
@@ -18,7 +18,8 @@ const Oooooo = id => {
     throw new Error(response.statusText);
   }
 
-  return response.json();
+  const data = await response.json();
+  return data;
 };
 
-export { Oooooo };
+export { getMovieDetails };

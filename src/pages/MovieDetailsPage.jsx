@@ -2,84 +2,108 @@
 import { FaStar, FaRegCommentDots } from 'react-icons/fa';
 import { IoMdArrowBack } from 'react-icons/io';
 import { Outlet } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { getMovieDetails } from '@/api';
+import { No_Poster } from '@/assets/images';
+import { BASE_IMG_URL } from '@/api/config';
+import { useEffect, useState } from 'react';
+import { Loader, MovieMeta, MovieStats } from '@/components';
+
+import { MovieGenres } from '../components/movie';
 
 const MovieDetailsPage = () => {
+  const [movie, setMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  // const [isError, setError] = useState(null);
+
+  const { id } = useParams();
+  console.log('🚀 ~ MovieDetailsPage ~ id:', id);
+
+  useEffect(() => {
+    const loadMovie = async () => {
+      try {
+        setIsLoading(true);
+        const data = await getMovieDetails(id);
+        setMovie(data);
+      } catch (err) {
+        console.error(err);
+        // setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadMovie();
+  }, [id]);
+
+  if (!movie) return null;
+
+  const {
+    backdrop_path,
+    poster_path,
+    genres,
+    original_title,
+    overview,
+    vote_count,
+    release_date,
+    vote_average,
+    revenue,
+    runtime,
+    origin_country,
+    tagline,
+  } = movie;
+
+  const bgPoster = `${BASE_IMG_URL}w500/${backdrop_path}`;
   return (
     <>
-      <p>MovieDetailsPage</p>
-
-      {/* <Input /> */}
       <div className="movie-details">
-        {/* 1. Backdrop - большое фоновое изображение с градиентом */}
-        <div className="movie-details__backdrop">
-          <img src="backdrop-url.jpg" alt="Backdrop" />
-          <div className="movie-details__overlay"></div>
+        {isLoading && <Loader />}
+        <div
+          className="movie-details__backdrop"
+          style={{ backgroundImage: `url(${bgPoster})` }}
+        >
+          <img
+            src={poster_path ? `${BASE_IMG_URL}w300/${poster_path}` : No_Poster}
+            alt={original_title}
+          />
+
+          <h1 className="movie-details__title">{original_title}</h1>
         </div>
 
-        <div className="container">
-          {/* 2. Основной контент */}
-          <main className="movie-details__main">
-            {/* Левая колонка: Постер */}
-            <aside className="movie-details__poster-column">
-              <div className="movie-details__poster">
-                <img src="poster-url.jpg" alt="Oppenheimer" />
-              </div>
-            </aside>
+        <section className="movie-details__info">
+          <MovieStats vote_average={vote_average} vote_count={vote_count} />
 
-            {/* Правая колонка: Инфо */}
-            <section className="movie-details__info">
-              <h1 className="movie-details__title">Oppenheimer</h1>
+          <p>{overview}</p>
 
-              <div className="movie-details__stats">
-                <div className="rating-badge">
-                  <FaStar className="star-icon" />
-                  <span>8.8</span>
-                </div>
-                <span className="movie-details__reviews-qty">
-                  <FaRegCommentDots /> 5K+ Reviews
-                </span>
-              </div>
+          <MovieMeta
+            release_date={release_date}
+            runtime={runtime}
+            revenue={revenue}
+            origin_country={origin_country}
+            tagline={tagline}
+          />
 
-              <p className="movie-details__description">
-                J. Robert Oppenheimer, a physicist during WWII, is recruited to
-                work on the Manhattan Project. Witness the internal struggles
-                and historical impact...
-              </p>
+          <MovieGenres genres={genres} />
+          <button type="button" className="btn-back">
+            <IoMdArrowBack /> Back
+          </button>
+          {/* Секция вкладок или переключатель (Tabs) */}
+          <div className="movie-details__tabs">
+            <button className="tab-btn active">Cast</button>
+            <button className="tab-btn">Reviews</button>
+          </div>
+          <div className="tab-content">
+            <ul>
+              <li>{/* <Link to="cast">Cast</Link> */}</li>
 
-              <ul className="movie-details__genres">
-                <li className="genre-tag">Biography</li>
-                <li className="genre-tag">Drama</li>
-                <li className="genre-tag">History</li>
-              </ul>
+              <hr className="divider" />
 
-              <button type="button" className="btn-back">
-                <IoMdArrowBack /> Back
-              </button>
+              <li>{/* <Link to="reviews">Reviews</Link> */}</li>
+            </ul>
 
-              {/* Секция вкладок или переключатель (Tabs) */}
-              <div className="movie-details__tabs">
-                <button className="tab-btn active">Cast</button>
-                <button className="tab-btn">Reviews</button>
-              </div>
-
-              <div className="tab-content">
-                <ul>
-                  <li>
-                    <Link to="cast">Cast</Link>
-                  </li>
-
-                  <hr className="divider" />
-
-                  <li>
-                    <Link to="reviews">Reviews</Link>
-                  </li>
-                </ul>
-
-                <Outlet />
-              </div>
-            </section>
-          </main>
-        </div>
+            <Outlet />
+          </div>
+        </section>
       </div>
     </>
   );
