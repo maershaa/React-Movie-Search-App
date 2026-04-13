@@ -74,7 +74,8 @@ const Container = styled.div`
 
   .modal__year,
   .modal__genre,
-  .modal__age {
+  .modal__age,
+  .modal__mediaType {
     padding: 5px;
     background: var(--accent);
     border-radius: var(--radius-xs);

@@ -2,6 +2,7 @@
 import { FaStar, FaRegCommentDots } from 'react-icons/fa';
 import { IoMdArrowBack } from 'react-icons/io';
 import { Outlet } from 'react-router-dom';
+
 const MovieDetailsPage = () => {
   return (
     <>

@@ -2,20 +2,38 @@ import { Container, CloseBtn } from './MoviePreviewModal.styled';
 import { Link } from 'react-router-dom';
 import { BASE_IMG_URL } from '@/api/config';
 import { IoClose } from 'react-icons/io5';
-
+import { fetchGenres } from '@/api';
+import { useEffect, useMemo, useState } from 'react';
 const MoviePreviewModal = ({ movie, closeModal }) => {
-  if (!movie) return null;
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    fetchGenres()
+      .then(resp => setGenres(resp.genres))
+      .catch(err => console.error(err));
+  }, []);
 
   const {
     original_title,
     adult,
     release_date,
     genre_ids,
+    media_type,
     overview,
     backdrop_path,
   } = movie;
 
+  const genreNames = useMemo(() => {
+    return genres
+      .filter(genre => genre_ids?.includes(genre.id))
+      .map(genre => genre.name);
+  }, [genres, genre_ids]);
+
+  if (!movie) return null;
+
   const bgPoster = `${BASE_IMG_URL}w500/${backdrop_path}`;
+
+  console.log('🚀 ~ MoviePreviewModal ~ genres:', genres);
 
   return (
     <Container>
@@ -40,9 +58,9 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
             <span className="modal__year">{release_date?.substring(0, 4)}</span>
 
             {adult && <span className="modal__age">18+</span>}
-
+            <span className="modal__mediaType">{media_type}</span>
             <ul className="modal__genres">
-              {genre_ids.map(genre => (
+              {genreNames.map(genre => (
                 <li key={genre} className="modal__genre">
                   {genre}
                 </li>
@@ -53,7 +71,7 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
           <p className="modal__overview">{overview}</p>
 
           {/* !потом перепрооверить */}
-          <Link to={`/movie/${movie.id}`} className="modal__info-btn">
+          <Link to={`/movies/${movie.id}`} className="modal__info-btn">
             More Info
           </Link>
         </section>
