@@ -8,9 +8,11 @@ const options = {
   },
 };
 
-const getTrendingMovies = async () => {
+const getTrendingMovies = async (page = 1) => {
+  const QueryParams = `api_key=${API_KEY}&page=${page}`;
+
   const response = await fetch(
-    `${BASE_URL}/trending/movie/week?api_key=${API_KEY}`,
+    `${BASE_URL}/trending/movie/week?${QueryParams}`,
     options
   );
 

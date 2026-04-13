@@ -1,61 +1,90 @@
-import { FilterInput, Pagination, Footer, MovieList } from '@/components';
+import { BaseModal, MoviePreviewModal, Loader, MovieList } from '@/components';
 import { HomePageWrapper } from './HomePage.styled';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getTrendingMovies } from '@/api';
+import { useIntersection } from 'react-use';
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [totalPages, setTotalPages] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
-  const onSearchChange = value => setQuery(value);
+  const openModal = movie => {
+    setSelectedMovie(movie);
+    setIsModalOpen(true);
+  };
 
-  const visibleMovies = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedMovie(null);
+  };
 
-    return trendingMovies.filter(movie => {
-      const title = movie.title.toLowerCase();
-      const originalTitle = movie.original_title.toLowerCase();
-
-      return (
-        title.includes(normalizedQuery) ||
-        originalTitle.includes(normalizedQuery)
-      );
-    });
-  }, [query, trendingMovies]);
+  //! InfiniteScroll React на хуке useIntersection из библиотеки react-use
+  const intersectionRef = useRef(null);
+  const intersection = useIntersection(intersectionRef, {
+    root: null,
+    rootMargin: '200px', //загрузка начнётся заранее, а не когда пользователь упёрся в конец
+    threshold: 0,
+  });
 
   useEffect(() => {
-    getTrendingMovies()
-      .then(resp => {
-        // console.log(resp);
-        // const currentPage = resp.page;
-        // const totalPages = resp.total_pages;
-        // console.log('🚀 ~ HomePage ~ totalPages:', totalPages);
-        const data = resp.results;
-        setTrendingMovies(data);
-      })
-      .catch(err => console.error(err));
-    return () => {
-      // second;
+    if (
+      intersection?.isIntersecting &&
+      !isLoading &&
+      (totalPages === null || page < totalPages)
+    ) {
+      setPage(prev => prev + 1);
+    }
+  }, [intersection, isLoading, page, totalPages]);
+  // ! Конец InfiniteScroll
+
+  // const searchedMovie = useMemo(
+  //   () => trendingMovies.filter(movie => movie.id === selectedMovie),
+  //   [selectedMovie, trendingMovies]
+  // );
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        setIsLoading(true);
+        const resp = await getTrendingMovies(page);
+        setTrendingMovies(prev => [...prev, ...resp.results]);
+        setTotalPages(resp.total_pages);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
-  }, []);
+
+    fetchMovies();
+  }, [page]);
 
   return (
     <HomePageWrapper>
       <div className="hero">
         <h2 className="section-title">Trending Movies</h2>
-
-        <FilterInput
-          onSearchChange={onSearchChange}
-          placeholder={'Filter movies by name'}
-          value={query}
-        />
       </div>
 
       <section className="movies-section">
-        {trendingMovies && <MovieList moviesArr={visibleMovies} />}
-
-        <Pagination />
+        <MovieList moviesArr={trendingMovies} openModal={openModal} />
+        {isLoading && <Loader />}
+        <div ref={intersectionRef}></div>
+        {page >= totalPages && (
+          <div className="end-message">
+            <span>THE END</span>
+          </div>
+        )}
       </section>
+
+      {isModalOpen && (
+        <BaseModal closeModal={closeModal}>
+          <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />
+        </BaseModal>
+      )}
     </HomePageWrapper>
   );
 };

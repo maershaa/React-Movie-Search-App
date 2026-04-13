@@ -1,14 +1,13 @@
-import { Header, Input, Footer, Pagination } from '@/components';
+// import {  Input, } from '@/components';
 import { FaStar, FaRegCommentDots } from 'react-icons/fa';
 import { IoMdArrowBack } from 'react-icons/io';
-import { CastList, ReviewList } from '@/features';
 import { Outlet } from 'react-router-dom';
 const MovieDetailsPage = () => {
   return (
     <>
       <p>MovieDetailsPage</p>
 
-      <Input />
+      {/* <Input /> */}
       <div className="movie-details">
         {/* 1. Backdrop - большое фоновое изображение с градиентом */}
         <div className="movie-details__backdrop">

@@ -1,18 +1,20 @@
 import styled from '@emotion/styled';
 
 const MovieItem = styled.li`
-  width: 130px;
+  width: 300px;
 
   overflow: hidden;
 
+  cursor: pointer;
+
   .movie-card__poster-wrapper {
-    width: 130px;
-    height: 180px;
+    /* width: 130px;
+    height: 180px; */
   }
 
   img {
-    width: 130px;
-    height: 180px;
+    width: 300px;
+    /* height: 180px; */
 
     border-radius: 8px;
   }
