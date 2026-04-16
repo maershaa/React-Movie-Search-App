@@ -1,24 +1,15 @@
-import {
-  MovieReleaseDate,
-  MovieRuntime,
-  MovieRevenue,
-} from '@/components/movie';
+import { MovieRuntime, MovieRevenue, MovieCountries } from '@/components/movie';
+import { MovieMetaWrapper } from './MovieMeta.styled';
 
-const MovieMeta = ({
-  release_date,
-  runtime,
-  revenue,
-  origin_country,
-  tagline,
-}) => {
+const MovieMeta = ({ runtime, revenue, production_countries, tagline }) => {
+  console.log(production_countries);
   return (
-    <div className="movie-details__meta">
-      <MovieReleaseDate date={release_date} />
+    <MovieMetaWrapper>
       <MovieRuntime runtime={runtime} />
       <MovieRevenue revenue={revenue} />
-      <p>{origin_country}</p>
-      <p>{tagline}</p>
-    </div>
+      <MovieCountries countries={production_countries} />
+      <p className="tagline">{tagline}</p>
+    </MovieMetaWrapper>
   );
 };
 

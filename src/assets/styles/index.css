@@ -7,8 +7,8 @@
 :root {
   color-scheme: light dark; /* что оно дает?? */
 
-  max-width: 1280px;
-  margin: 0 auto;
+  /* max-width: 1280px;
+  margin: 0 auto; */
   padding: 2rem;
   text-align: center;
 
@@ -66,13 +66,6 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
-
-/* Контейнер для центрирования контента. */
-/* .container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem;
-} */
 
 h1,
 h2,
@@ -152,8 +145,4 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
-}
-
-.star-icon {
-  color: var(--primary-color);
 }

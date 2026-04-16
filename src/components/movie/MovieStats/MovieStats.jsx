@@ -1,12 +1,21 @@
-import { MovieRating, ReviewsCount } from '@/components/movie';
+import {
+  MovieRating,
+  ReviewsCount,
+  MovieReleaseDate,
+} from '@/components/movie';
+import { MovieStatsWrapper, Divider } from './MovieStats.styled';
 
-const MovieStats = ({ vote_average, vote_count }) => {
+const MovieStats = ({ vote_average, vote_count, release_date }) => {
   return (
-    <div>
+    <MovieStatsWrapper>
       <MovieRating rating={vote_average} />
+      <Divider />
       <ReviewsCount count={vote_count} />
-    </div>
+      <Divider />
+      <MovieReleaseDate date={release_date} />
+    </MovieStatsWrapper>
   );
 };
 
 export { MovieStats };
+//

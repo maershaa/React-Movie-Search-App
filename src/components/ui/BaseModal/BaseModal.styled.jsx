@@ -33,9 +33,9 @@ const Modal = styled.div`
   text-align: center;
 
   background: var(--bg-color);
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-position: top;
-  background-size: cover;
+  background-size: cover; */
 
   .modal-header {
     margin-bottom: 10px;

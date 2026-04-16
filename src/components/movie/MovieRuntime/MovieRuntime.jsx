@@ -6,8 +6,11 @@ const MovieRuntime = ({ runtime }) => {
 
   return (
     <p>
-      {hours > 0 && `${hours}h `}
-      {minutes}m
+      <span className="movie-details__label">Runtime: </span>
+      <span className="movie-details__value">
+        {hours > 0 && `${hours}h `}
+        {minutes}m
+      </span>
     </p>
   );
 };

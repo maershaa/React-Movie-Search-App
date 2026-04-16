@@ -1,5 +1,5 @@
-export { Header, Footer, SharedLayout, Loader } from './layout';
-export { Pagination, Button, BaseModal } from './ui';
+export { Header, Footer, SharedLayout, Loader, Container } from './layout';
+export { Pagination, BaseModal, BackButtonComponent } from './ui';
 export { MovieList } from './MovieList/MovieList.jsx';
 export { MovieCard } from './MovieCard/MovieCard.jsx';
 export { FilterInput } from './FilterInput/FilterInput.jsx';

@@ -19,9 +19,6 @@ const MovieItem = styled.li`
     border-radius: 8px;
   }
 
-  .movie-card__content {
-  }
-
   h4 {
     white-space: nowrap;
     overflow: hidden; /* Скрыть текст, который не помещается */
@@ -34,10 +31,15 @@ const MovieItem = styled.li`
 
     padding: 10px;
   }
-  .movie-card__rating,
+  /* .movie-card__rating,
   .movie-card__year {
     color: var(--text-color);
-  }
+  } */
+
+  /* span {
+    color: var(--text-color);
+    font-size: 1rem;
+  } */
 `;
 
 export { MovieItem };

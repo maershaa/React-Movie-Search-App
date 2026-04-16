@@ -1,8 +1,9 @@
+import { MovieYear } from './MovieReleaseDate.styled';
 const MovieReleaseDate = ({ date }) => {
   if (!date) return null;
 
   const release_year = date.substring(0, 4);
-  return <p>{release_year}</p>;
+  return <MovieYear>{release_year}</MovieYear>;
 };
 
 export { MovieReleaseDate };

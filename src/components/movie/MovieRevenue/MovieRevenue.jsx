@@ -3,7 +3,12 @@ const MovieRevenue = ({ revenue }) => {
 
   const formatted = revenue.toLocaleString('ru-RU');
 
-  return <p className="movie-meta__item">${formatted}</p>;
+  return (
+    <p>
+      <span className="movie-details__label">Revenue: </span>
+      <span className="movie-details__value">${formatted}</span>
+    </p>
+  );
 };
 
 export { MovieRevenue };

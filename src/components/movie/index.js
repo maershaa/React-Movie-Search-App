@@ -7,3 +7,4 @@ export { MovieRevenue } from './MovieRevenue/MovieRevenue';
 
 export { MovieMeta } from './MovieMeta/MovieMeta.jsx';
 export { MovieStats } from './MovieStats/MovieStats.jsx';
+export { MovieCountries } from './MovieCountries/MovieCountries.jsx';

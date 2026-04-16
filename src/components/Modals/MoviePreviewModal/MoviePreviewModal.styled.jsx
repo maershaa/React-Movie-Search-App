@@ -66,14 +66,7 @@ const Container = styled.div`
     gap: 10px;
   }
 
-  .modal__genres {
-    display: flex;
-    gap: 8px;
-    list-style: none;
-  }
-
   .modal__year,
-  .modal__genre,
   .modal__age,
   .modal__mediaType {
     padding: 5px;

@@ -1,4 +1,4 @@
-import { FaStar } from 'react-icons/fa';
+import { MovieRating } from '@/components/movie';
 import { MovieItem } from './MovieCard.styled';
 import { No_Poster } from '@/assets/images';
 import { BASE_IMG_URL } from '@/api/config';
@@ -23,9 +23,8 @@ const MovieCard = ({ movie, openModal }) => {
       <div className="movie-card__content">
         <h4 className="movie-card__title">{title}</h4>
         <div className="movie-card__meta">
-          <p className="movie-card__rating">
-            <FaStar className="star-icon" /> {vote_average.toFixed(1)}
-          </p>
+          <MovieRating rating={vote_average} />
+
           <p className="movie-card__year">{release_date.substring(0, 4)}</p>
         </div>
       </div>

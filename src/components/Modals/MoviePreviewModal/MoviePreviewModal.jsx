@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { BASE_IMG_URL } from '@/api/config';
 import { IoClose } from 'react-icons/io5';
 import { fetchGenres } from '@/api';
+import { MovieGenres } from '@/components/movie';
+
 import { useEffect, useMemo, useState } from 'react';
 const MoviePreviewModal = ({ movie, closeModal }) => {
   const [genres, setGenres] = useState([]);
@@ -24,9 +26,7 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
   } = movie;
 
   const genreNames = useMemo(() => {
-    return genres
-      .filter(genre => genre_ids?.includes(genre.id))
-      .map(genre => genre.name);
+    return genres.filter(genre => genre_ids?.includes(genre.id));
   }, [genres, genre_ids]);
 
   if (!movie) return null;
@@ -59,13 +59,8 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
 
             {adult && <span className="modal__age">18+</span>}
             <span className="modal__mediaType">{media_type}</span>
-            <ul className="modal__genres">
-              {genreNames.map(genre => (
-                <li key={genre} className="modal__genre">
-                  {genre}
-                </li>
-              ))}
-            </ul>
+
+            <MovieGenres genres={genreNames} />
           </div>
 
           <p className="modal__overview">{overview}</p>
