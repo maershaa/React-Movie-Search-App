@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-const BaseInputWrapper = styled.div`
-  margin-left: 10%;
+const SearchInputWrapper = styled.div`
+  margin: 25px auto;
+  max-width: 50vw;
+
   position: relative;
-  width: 320px;
 
   &:focus-within {
     //focus-within - способ "поднять" состояние фокуса с input на родителя
@@ -50,7 +51,7 @@ const BaseInputWrapper = styled.div`
     justify-content: center;
 
     background-color: var(--primary-color);
-    color: white;
+    color: var(--white);
 
     border-radius: 50%;
     cursor: pointer;
@@ -64,4 +65,4 @@ const BaseInputWrapper = styled.div`
   }
 `;
 
-export { BaseInputWrapper };
+export { SearchInputWrapper };

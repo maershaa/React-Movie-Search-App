@@ -6,12 +6,17 @@ const MovieStatsWrapper = styled.div`
   align-items: center;
 
   gap: 1.8rem;
+
+  span,
+  p {
+    color: var(--white);
+  }
 `;
 
 const Divider = styled.div`
   width: 1px;
   height: 20px;
-  background: var(--border-color);
+  background: var(--accent-color);
 `;
 
 export { MovieStatsWrapper, Divider };

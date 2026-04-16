@@ -58,14 +58,20 @@ const MovieDetailsContent = styled.div`
 
   text-align: left;
 
+  span,
+  p {
+    color: var(--white);
+  }
   .movie__title {
     margin-bottom: 20px;
+    color: var(--white);
   }
 
   .movie__overview {
     color: var(--text-color);
     margin: 16px 0;
     opacity: 0.85;
+    color: var(--white);
   }
 `;
 

@@ -6,9 +6,11 @@ const GenresList = styled.ul`
   list-style: none;
 
   li {
-    padding: 5px;
+    padding: 4px 8px;
     background: var(--accent);
+    border: 1px solid var(--border-color);
     border-radius: var(--radius-xs);
+    color: var(--text-secondary);
   }
 `;
 

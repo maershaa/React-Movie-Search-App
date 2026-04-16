@@ -35,6 +35,8 @@ const Container = styled.div`
 
     font-size: 2rem;
     font-weight: 700;
+
+    color: #fff;
   }
 
   .modal__header::after {
@@ -69,9 +71,11 @@ const Container = styled.div`
   .modal__year,
   .modal__age,
   .modal__mediaType {
-    padding: 5px;
+    padding: 4px 8px;
     background: var(--accent);
+    border: 1px solid var(--border-color);
     border-radius: var(--radius-xs);
+    color: var(--text-secondary);
   }
 
   .modal__overview {
@@ -82,25 +86,21 @@ const Container = styled.div`
   .modal__info-btn {
     background: var(--accent);
     color: var(--primary-color);
-    padding: 10px;
 
-    border: none;
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
+
+    font-weight: 600;
 
     cursor: pointer;
 
-    transition:
-      transform 0.2s ease,
-      color 0.2s ease;
+    transition: var(--transition);
 
     &:hover {
-      transform: scale(1.05);
-      color: var(--accent-color);
-    }
-
-    &:active {
-      color: var(--accent-color);
-      transform: scale(1.05);
+      background: var(--primary-color);
+      color: var(--white);
+      border: 1px solid var(--primary-color);
     }
   }
 `;

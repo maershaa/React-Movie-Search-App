@@ -7,6 +7,7 @@ const HomePageWrapper = styled.div`
     justify-content: left;
 
     margin-bottom: 50px;
+    margin-left: 20px;
   }
 
   .end-message {

@@ -51,7 +51,7 @@ const Header = () => {
           target="_blank" /* Открывать в новой вкладке */
           rel="noopener noreferrer" /* Безопасность при открытии внешних ссылок */
         >
-          <img src={Avatar} alt="Profile" className="user-avatar" width="36" />
+          <img src={Avatar} alt="Profile" className="user-avatar" />
         </a>
       </div>
       <hr />

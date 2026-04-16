@@ -36,7 +36,12 @@ const MovieInfo = ({ movie }) => {
       >
         <Container>
           <div className="movie-content">
-            <img src={poster} alt={original_title} className="movie-poster" />
+            <img
+              src={poster}
+              alt={original_title}
+              className="movie-poster"
+              loading="lazy"
+            />
 
             <MovieDetailsContent>
               <h1 className="movie__title">{original_title}</h1>

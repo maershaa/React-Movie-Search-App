@@ -1,5 +1,5 @@
 import { GoSearch } from 'react-icons/go';
-import { BaseInputWrapper } from '@/assets/styles/BaseInput.styled';
+import { SearchInputWrapper } from './SearchInput.styled';
 import { useState } from 'react';
 
 const SearchInput = ({ placeholder = '', updateQueryString }) => {
@@ -24,7 +24,7 @@ const SearchInput = ({ placeholder = '', updateQueryString }) => {
   };
 
   return (
-    <BaseInputWrapper>
+    <SearchInputWrapper>
       <input
         type="text"
         className="search-input"
@@ -37,7 +37,7 @@ const SearchInput = ({ placeholder = '', updateQueryString }) => {
       <button type="button" onClick={() => onSearchButtonClick(searchValue)}>
         <GoSearch className="search-icon" />
       </button>
-    </BaseInputWrapper>
+    </SearchInputWrapper>
   );
 };
 

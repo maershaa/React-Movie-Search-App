@@ -77,7 +77,8 @@
 
 //   /* заголовок */
 //   .movie-hero__title {
-//     color: white;
+//       color: var(--white);
+
 //   }
 // `;
 

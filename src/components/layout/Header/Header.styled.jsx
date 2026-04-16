@@ -51,9 +51,17 @@ const HeaderWrapper = styled.header`
     align-items: center;
     justify-content: center;
 
-    gap: 10px;
+    gap: 20px;
 
     margin-left: 5%;
+  }
+
+  .header__actions button,
+  .user-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
   }
 
   .header__actions button {
@@ -62,10 +70,19 @@ const HeaderWrapper = styled.header`
 
   .header__actions svg {
     color: var(--theme-icon-color);
+    width: 24px;
+    height: 24px;
 
     transition:
       transform 0.3s ease,
       color 0.3s ease;
+  }
+
+  .header__actions .user-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   .header__actions svg:hover {

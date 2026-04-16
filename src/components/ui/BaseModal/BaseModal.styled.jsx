@@ -26,16 +26,13 @@ const Modal = styled.div`
   max-height: 90vh;
   overflow-y: auto;
   scroll-behavior: smooth;
-  /* padding: 40px; */
 
   border-radius: var(--radius-sm);
 
   text-align: center;
 
   background: var(--bg-color);
-  /* background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover; */
+  box-shadow: var(--glow);
 
   .modal-header {
     margin-bottom: 10px;

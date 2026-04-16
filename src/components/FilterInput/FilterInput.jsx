@@ -1,7 +1,7 @@
-import { BaseInputWrapper } from '@/assets/styles/BaseInput.styled';
+import { FilterInputWrapper } from './FilterInput.styled';
 const FilterInput = ({ placeholder = '', value, onSearchChange }) => {
   return (
-    <BaseInputWrapper>
+    <FilterInputWrapper>
       <input
         type="text"
         className="filter-input"
@@ -9,7 +9,7 @@ const FilterInput = ({ placeholder = '', value, onSearchChange }) => {
         onChange={e => onSearchChange(e.target.value)}
         placeholder={placeholder}
       />
-    </BaseInputWrapper>
+    </FilterInputWrapper>
   );
 };
 export { FilterInput };

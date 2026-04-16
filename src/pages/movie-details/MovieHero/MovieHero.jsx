@@ -17,6 +17,8 @@ const MovieHero = () => {
     //       src={poster_path ? `${BASE_IMG_URL}w300/${poster_path}` : No_Poster}
     //       alt={original_title}
     //       className="movie-hero__poster"
+    //          loading="lazy"
+
     //     />
 
     //     <div className="movie-hero__info">

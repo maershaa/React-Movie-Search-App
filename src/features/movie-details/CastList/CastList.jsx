@@ -8,6 +8,7 @@ const CastList = () => {
               src="actor-photo.jpg"
               alt="Cillian Murphy"
               className="cast__avatar"
+              loading="lazy"
             />
           </div>
           <div className="cast__info">

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-
 const MovieMetaWrapper = styled.div`
   display: flex;
   align-items: start;
