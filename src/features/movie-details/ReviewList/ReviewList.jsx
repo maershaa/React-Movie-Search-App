@@ -1,32 +1,43 @@
-import { FaStar } from 'react-icons/fa';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getMovieReviews } from '@/api';
+import { ReviewListItem } from '@/features';
+import { Title, ReviewListWrapper } from './ReviewList.styled';
 
 const ReviewList = () => {
-  return (
-    <ul className="reviews__list">
-      <li className="review__card">
-        <div className="review__header">
-          <div className="review__user-avatar">
-            <span className="avatar-letter">A</span>
-          </div>
-          <div className="review__user-info">
-            <p className="review__user-name">Alice Greenwood</p>
-            <p className="review__date">3 days ago</p>
-          </div>
-          <div className="review__rating">
-            <FaStar className="star-icon" />
-            <span>5.0</span>
-          </div>
-        </div>
+  const { id } = useParams();
+  const [reviews, setReviews] = useState([]);
 
-        <div className="review__body">
-          <p className="review__text">
-            Oppenheimer is a cinematic masterpiece. Nolan's direction is superb,
-            and Cillian Murphy gives a defining performance...
-          </p>
-        </div>
-      </li>
-      {/* Другие отзывы... */}
-    </ul>
+  useEffect(() => {
+    const loadCastList = async () => {
+      try {
+        const response = await getMovieReviews(id);
+
+        console.log('🚀 ~ loadCastList ~ response:', response);
+        setReviews(response.results);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    loadCastList();
+
+    // return () => {
+    // }
+  }, [id]);
+
+  return (
+    <>
+      <Title>
+        User Reviews <span className="reviews__qty">({reviews.length})</span>
+      </Title>
+
+      <ReviewListWrapper>
+        {reviews.map(review => (
+          <ReviewListItem key={review.id} review={review} />
+        ))}
+      </ReviewListWrapper>
+    </>
   );
 };
 

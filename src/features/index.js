@@ -1,1 +1,1 @@
-export { CastList, ReviewList } from './movie-details';
+export { CastList, ReviewList, ReviewListItem } from './movie-details';

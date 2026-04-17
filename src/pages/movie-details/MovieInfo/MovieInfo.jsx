@@ -26,8 +26,8 @@ const MovieInfo = ({ movie }) => {
     genres,
   } = movie;
 
-  const bgPoster = `${BASE_IMG_URL}w500/${backdrop_path}`;
-  const poster = poster_path ? `${BASE_IMG_URL}w300/${poster_path}` : No_Poster;
+  const bgPoster = `${BASE_IMG_URL}w1280${backdrop_path}`;
+  const poster = poster_path ? `${BASE_IMG_URL}w500${poster_path}` : No_Poster;
   return (
     <MovieInfoSection>
       <MovieHero

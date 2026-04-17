@@ -17,7 +17,7 @@ const Oooooo = id => {
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-
+  console.log('response.json()', response.json());
   return response.json();
 };
 

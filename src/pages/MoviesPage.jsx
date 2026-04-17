@@ -30,9 +30,8 @@ const MoviesPage = () => {
       setLoading(true);
       setError(null);
       try {
-        console.log('🚀 ~ fetchMovies ~ query:', query);
         const data = await fetchMoviesByQuery(query);
-        console.log('🚀 ~ fetchMovies ~ data:', data.results);
+        console.log('🚀 ~ fetchMovies ~ data:', data);
         setMovies(data.results);
       } catch (e) {
         console.log(`Request failed: ${e}`);

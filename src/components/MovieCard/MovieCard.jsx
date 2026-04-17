@@ -10,7 +10,7 @@ const MovieCard = ({ movie, openModal }) => {
     <MovieItem className="movie-card" onClick={() => openModal(movie)}>
       <div className="movie-card__poster-wrapper">
         <img
-          src={poster_path ? `${BASE_IMG_URL}w300/${poster_path}` : No_Poster}
+          src={poster_path ? `${BASE_IMG_URL}w500${poster_path}` : No_Poster}
           alt={title}
           className="movie-card__poster"
           loading="lazy"

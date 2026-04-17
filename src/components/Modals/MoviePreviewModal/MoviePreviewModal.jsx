@@ -31,9 +31,7 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
 
   if (!movie) return null;
 
-  const bgPoster = `${BASE_IMG_URL}w500/${backdrop_path}`;
-
-  console.log('🚀 ~ MoviePreviewModal ~ genres:', genres);
+  const bgPoster = `${BASE_IMG_URL}w1280/${backdrop_path}`;
 
   return (
     <Container>
