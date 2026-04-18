@@ -1,4 +1,8 @@
-import { BaseModal, MoviePreviewModal, Loader, MovieList } from '@/components';
+import { MovieList } from '@/features';
+import { MoviePreviewModal } from '@/components';
+
+import { BaseModal, Loader } from '@/shared';
+
 import { HomePageWrapper } from './HomePage.styled';
 import { useEffect, useState, useRef } from 'react';
 import { getTrendingMovies } from '@/api';

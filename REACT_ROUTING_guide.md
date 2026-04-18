@@ -440,21 +440,74 @@ function App() {
 
 ---
 
-# 📌 17. Итог (очень кратко)
+# 📌 17. Структура проекта
 
-| Что             | Роль                    |
-| --------------- | ----------------------- |
-| BrowserRouter   | включает роутинг        |
-| Routes          | выбирает маршрут        |
-| Route           | путь → компонент        |
-| Outlet          | место вложенных страниц |
-| Link            | переход без reload      |
-| useNavigate     | переход из кода         |
-| useParams       | параметры URL           |
-| useSearchParams | query строка            |
-
----
-
+```bash
+src/
+│
+├── app/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── routes.jsx
+│
+├── api/
+│   ├── client.js
+│   ├── movies.api.js
+│   └── config.js
+│
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   └── styles/
+│
+├── shared/
+│   ├── ui/
+│   │   ├── Button/
+│   │   ├── Modal/
+│   │   ├── Loader/
+│   │   ├── Pagination/
+│   │   └── Input/
+│   │
+│   ├── layout/
+│   │   ├── Header/
+│   │   ├── Footer/
+│   │   ├── Container/
+│   │   └── SharedLayout/
+│   │
+│   ├── helpers/
+│   ├── hooks/
+│   └── constants/
+│
+├── features/
+│   ├── movies/
+│   │   ├── components/
+│   │   │   ├── MovieCard/
+│   │   │   ├── MovieList/
+│   │   │   └── SearchInput/
+│   │   ├── hooks/
+│   │   └── utils/
+│   │
+│   ├── movie-details/
+│   │   ├── components/
+│   │   │   ├── MovieHero/
+│   │   │   ├── MovieMeta/
+│   │   │   ├── MovieGenres/
+│   │   │   ├── MovieCountries/
+│   │   │   ├── CastList/
+│   │   │   ├── ReviewList/
+│   │   │   └── MovieStats/
+│   │   └── hooks/
+│   │
+│   └── reviews/
+│       └── components/
+│
+├── pages/
+│   ├── HomePage/
+│   ├── MoviesPage/
+│   ├── MovieDetailsPage/
+│   └── NotFoundPage/
+│
+└── store/
 # 🚀 Главное, что тебе нужно запомнить
 
 1. React сам не умеет маршрутизацию
@@ -467,3 +520,4 @@ function App() {
 
 Если хочешь — следующий шаг логичный: 👉 собрать **твой реальный проект (Movie
 App)** с правильной архитектурой роутинга (как делают на работе)
+```

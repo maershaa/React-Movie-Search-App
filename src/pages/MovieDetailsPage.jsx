@@ -1,17 +1,13 @@
-import { Outlet } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { getMovieDetails } from '@/api';
-
 import { useEffect, useState } from 'react';
-import { Loader } from '@/components';
+import { Outlet, useParams, Link } from 'react-router-dom';
+import { getMovieDetails } from '@/api';
+import { Loader } from '@/shared';
+import { MovieInfo } from '@/features';
 
-import { MovieInfo } from '@/pages/movie-details';
-import { Link } from 'react-router-dom';
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   // const [isError, setError] = useState(null);
-
   const { id } = useParams();
 
   useEffect(() => {

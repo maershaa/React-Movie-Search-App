@@ -1,9 +1,10 @@
-import { Container, CloseBtn } from './MoviePreviewModal.styled';
+import { Container } from './MoviePreviewModal.styled';
 import { Link } from 'react-router-dom';
 import { BASE_IMG_URL } from '@/api/config';
 import { IoClose } from 'react-icons/io5';
 import { fetchGenres } from '@/api';
-import { MovieGenres } from '@/components/movie';
+import { MovieGenres } from '@/features';
+import { ModalCloseButton } from '@/shared';
 
 import { useEffect, useMemo, useState } from 'react';
 const MoviePreviewModal = ({ movie, closeModal }) => {
@@ -40,13 +41,11 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
           className="modal__header"
           style={{ backgroundImage: `url(${bgPoster})` }}
         >
-          <CloseBtn
-            className="modal__close"
+          <ModalCloseButton closeModal={closeModal} />
+          {/* <CloseBtn
             onClick={closeModal}
-            aria-label="Close"
           >
-            <IoClose size={32} />
-          </CloseBtn>
+          </CloseBtn> */}
 
           <h2 className="modal__title">{original_title}</h2>
         </header>

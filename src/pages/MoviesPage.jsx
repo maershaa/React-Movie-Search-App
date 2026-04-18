@@ -1,8 +1,10 @@
-import { SearchInput, Pagination, MovieList } from '@/components';
+import { SearchInput, MovieList } from '@/features';
+import { Pagination } from '@/shared';
+
 import { fetchMoviesByQuery } from '@/api';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Loader, ErrorMessage } from '@/components/layout';
+import { Loader, ErrorMessage } from '@/shared';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
