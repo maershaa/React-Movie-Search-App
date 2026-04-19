@@ -1,11 +1,11 @@
-import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as a}from"./iconBase-55VGzWiC.js";import{a as o,c as s,i as c,l,o as u,s as d,t as f}from"./index-BIiXHxal.js";import"./CastList-CtQwRqhY.js";var p=`/React-Movie-Search-App/assets/no-poster-DPZEAbfg.png`,m=`eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjNhNWQ4MjcyNjE3ZjZmNzAyMWJhNGM0OTg0NjRmZiIsIm5iZiI6MTY5OTM1ODgxNi4xMjcsInN1YiI6IjY1NGEyODYwNTMyYWNiMDExYjEwYzI5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JaMiiyblV0gutYXA0_BostrvfuMitxlET6G1ohNUjp4`,h=`https://api.themoviedb.org/3`,g=`https://image.tmdb.org/t/p/`,_=`c23a5d8272617f6f7021ba4c498464ff`,v={method:`GET`,headers:{accept:`application/json`,Authorization:m}},y=async()=>{let e=await fetch(`${h}/genre/movie/list?api_key=${_}`,v);if(!e.ok)throw Error(e.statusText);return e.json()},b={method:`GET`,headers:{accept:`application/json`,Authorization:m}},ee=async e=>{let t=await fetch(`${h}/movie/${e}?api_key=${_}`,b);if(!t.ok)throw Error(t.statusText);return t.json()},x=async e=>{let t=await fetch(`${h}/movie/${e}/reviews?api_key=${_}`,b);if(!t.ok)throw Error(t.statusText);return t.json()},S=l.ul`
+import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{a as n,c as r,d as i,r as a,t as o}from"./iconBase-55VGzWiC.js";import{a as s,c,i as l,l as u,o as d,s as f,t as p}from"./index-CvX7DY-G.js";import"./CastList-CtQwRqhY.js";var m=`/React-Movie-Search-App/assets/no-poster-DPZEAbfg.png`,h=`eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjNhNWQ4MjcyNjE3ZjZmNzAyMWJhNGM0OTg0NjRmZiIsIm5iZiI6MTY5OTM1ODgxNi4xMjcsInN1YiI6IjY1NGEyODYwNTMyYWNiMDExYjEwYzI5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JaMiiyblV0gutYXA0_BostrvfuMitxlET6G1ohNUjp4`,g=`https://api.themoviedb.org/3`,_=`https://image.tmdb.org/t/p/`,v=`c23a5d8272617f6f7021ba4c498464ff`,y={method:`GET`,headers:{accept:`application/json`,Authorization:h}},b=async()=>{let e=await fetch(`${g}/genre/movie/list?api_key=${v}`,y);if(!e.ok)throw Error(e.statusText);return e.json()},x={method:`GET`,headers:{accept:`application/json`,Authorization:h}},S=async e=>{let t=await fetch(`${g}/movie/${e}?api_key=${v}`,x);if(!t.ok)throw Error(t.statusText);return t.json()},C=async e=>{let t=await fetch(`${g}/movie/${e}/reviews?api_key=${v}`,x);if(!t.ok)throw Error(t.statusText);return t.json()},w=u.ul`
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
 
   gap: 20px;
-`,C=t(),w=({moviesArr:e,openModal:t})=>(0,C.jsx)(S,{children:e.map(e=>(0,C.jsx)(ne,{movie:e,openModal:t},e.id))}),te=l.li`
+`,T=t(),ee=({moviesArr:e,openModal:t})=>(0,T.jsx)(w,{children:e.map(e=>(0,T.jsx)(E,{movie:e,openModal:t},e.id))}),te=u.li`
   width: 300px;
 
   padding: 10px;
@@ -56,7 +56,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     align-items: center;
     justify-content: space-between;
   }
-`,ne=({movie:e,openModal:t})=>{let{title:n,poster_path:r,vote_average:i,release_date:a}=e;return(0,C.jsxs)(te,{className:`movie-card`,onClick:()=>t(e),children:[(0,C.jsx)(`div`,{className:`movie-card__poster-wrapper`,children:(0,C.jsx)(`img`,{src:r?`${g}w500${r}`:p,alt:n,className:`movie-card__poster`,loading:`lazy`,onError:e=>{e.target.src=p}})}),(0,C.jsxs)(`div`,{className:`movie-card__content`,children:[(0,C.jsx)(`h4`,{className:`movie-card__title`,children:n}),(0,C.jsxs)(`div`,{className:`movie-card__meta`,children:[(0,C.jsx)(Y,{rating:i}),(0,C.jsx)(`p`,{className:`movie-card__year`,children:a.substring(0,4)})]})]})]})};function T(e){return a({tag:`svg`,attr:{viewBox:`0 0 24 24`},child:[{tag:`path`,attr:{d:`M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2ZM3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0Z`},child:[]}]})(e)}var E=l.div`
+`,E=({movie:e,openModal:t})=>{let{title:n,poster_path:r,vote_average:i,release_date:a}=e;return(0,T.jsxs)(te,{className:`movie-card`,onClick:()=>t(e),children:[(0,T.jsx)(`div`,{className:`movie-card__poster-wrapper`,children:(0,T.jsx)(`img`,{src:r?`${_}w500${r}`:m,alt:n,className:`movie-card__poster`,loading:`lazy`,onError:e=>{e.target.src=m}})}),(0,T.jsxs)(`div`,{className:`movie-card__content`,children:[(0,T.jsx)(`h4`,{className:`movie-card__title`,children:n}),(0,T.jsxs)(`div`,{className:`movie-card__meta`,children:[(0,T.jsx)(X,{rating:i}),(0,T.jsx)(`p`,{className:`movie-card__year`,children:a.substring(0,4)})]})]})]})};function D(e){return o({tag:`svg`,attr:{viewBox:`0 0 24 24`},child:[{tag:`path`,attr:{d:`M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2ZM3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0Z`},child:[]}]})(e)}var O=u.div`
   margin: 25px auto;
   max-width: 50vw;
 
@@ -120,7 +120,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     background-color: var(--accent-color);
     transform: translateY(-50%) scale(1.05);
   }
-`,D=e(r(),1),O=({placeholder:e=``,updateQueryString:t})=>{let[n,r]=(0,D.useState)(``),i=e=>{e.key===`Enter`&&o(n)},a=()=>{r(``)},o=e=>{e&&(console.log(`Клик по SearchButton`),t(e),a())};return(0,C.jsxs)(E,{children:[(0,C.jsx)(`input`,{type:`text`,className:`search-input`,value:n,onChange:e=>r(e.target.value),placeholder:e,onKeyDown:i}),(0,C.jsx)(`button`,{type:`button`,onClick:()=>o(n),children:(0,C.jsx)(T,{className:`search-icon`})})]})};l.div`
+`,k=e(i(),1),A=({placeholder:e=``,updateQueryString:t})=>{let[n,r]=(0,k.useState)(``),i=e=>{e.key===`Enter`&&o(n)},a=()=>{r(``)},o=e=>{e&&(console.log(`Клик по SearchButton`),t(e),a())};return(0,T.jsxs)(O,{children:[(0,T.jsx)(`input`,{type:`text`,className:`search-input`,value:n,onChange:e=>r(e.target.value),placeholder:e,onKeyDown:i}),(0,T.jsx)(`button`,{type:`button`,onClick:()=>o(n),children:(0,T.jsx)(D,{className:`search-icon`})})]})};u.div`
   margin: 25px auto;
   max-width: 50vw;
 
@@ -156,7 +156,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     border-color: var(--primary-color);
     box-shadow: var(--focus-ring);
   }
-`;var k=l.div`
+`;var j=u.div`
   max-width: 1000px;
   margin: 0 auto;
 
@@ -260,7 +260,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
       border: 1px solid var(--primary-color);
     }
   }
-`,A=({movie:e,closeModal:t})=>{let[n,r]=(0,D.useState)([]);(0,D.useEffect)(()=>{y().then(e=>r(e.genres)).catch(e=>console.error(e))},[]);let{original_title:a,adult:o,release_date:s,genre_ids:c,media_type:l,overview:u,backdrop_path:f}=e,p=(0,D.useMemo)(()=>n.filter(e=>c?.includes(e.id)),[n,c]);return e?(0,C.jsx)(k,{children:(0,C.jsxs)(`article`,{children:[(0,C.jsxs)(`header`,{className:`modal__header`,style:{backgroundImage:`url(${`${g}w1280/${f}`})`},children:[(0,C.jsx)(d,{closeModal:t}),(0,C.jsx)(`h2`,{className:`modal__title`,children:a})]}),(0,C.jsxs)(`section`,{className:`modal__content`,children:[(0,C.jsxs)(`div`,{className:`modal__info`,children:[(0,C.jsx)(`span`,{className:`modal__year`,children:s?.substring(0,4)}),o&&(0,C.jsx)(`span`,{className:`modal__age`,children:`18+`}),(0,C.jsx)(`span`,{className:`modal__mediaType`,children:l}),(0,C.jsx)(G,{genres:p})]}),(0,C.jsx)(`p`,{className:`modal__overview`,children:u}),(0,C.jsx)(i,{to:`/movies/${e.id}`,className:`modal__info-btn`,children:`More Info`})]})]})}):null},j=l.div`
+`,M=({movie:e,closeModal:t})=>{let[n,r]=(0,k.useState)([]);(0,k.useEffect)(()=>{b().then(e=>r(e.genres)).catch(e=>console.error(e))},[]);let{original_title:i,adult:o,release_date:s,genre_ids:c,media_type:l,overview:u,backdrop_path:d}=e,p=(0,k.useMemo)(()=>n.filter(e=>c?.includes(e.id)),[n,c]);return e?(0,T.jsx)(j,{children:(0,T.jsxs)(`article`,{children:[(0,T.jsxs)(`header`,{className:`modal__header`,style:{backgroundImage:`url(${`${_}w1280/${d}`})`},children:[(0,T.jsx)(f,{closeModal:t}),(0,T.jsx)(`h2`,{className:`modal__title`,children:i})]}),(0,T.jsxs)(`section`,{className:`modal__content`,children:[(0,T.jsxs)(`div`,{className:`modal__info`,children:[(0,T.jsx)(`span`,{className:`modal__year`,children:s?.substring(0,4)}),o&&(0,T.jsx)(`span`,{className:`modal__age`,children:`18+`}),(0,T.jsx)(`span`,{className:`modal__mediaType`,children:l}),(0,T.jsx)(K,{genres:p})]}),(0,T.jsx)(`p`,{className:`modal__overview`,children:u}),(0,T.jsx)(a,{to:`/movies/${e.id}`,className:`modal__info-btn`,children:`More Info`})]})]})}):null},N=u.div`
   position: relative;
   z-index: 3;
 
@@ -270,7 +270,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
   align-items: baseline;
 
   padding: 20px;
-`,M=l.div`
+`,P=u.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -282,7 +282,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
   gap: 20px;
 
   margin-top: 20px;
-`,N=l.div`
+`,F=u.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -291,7 +291,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
   gap: 140px;
   width: 100%;
 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   .review__user-name {
     color: var(--text-color);
@@ -302,15 +302,14 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     color: var(--text-secondary);
     font-size: 0.85rem;
   }
-`,P=l.div`
+`,I=u.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: baseline;
 
-  & > :first-of-type {
-    margin-left: 20px;
-    /* чтобы RatingStars был ровно */
+  .review__ratingStars_wrapper {
+    padding: 0 20px;
   }
 
   p {
@@ -323,7 +322,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
 
     font-style: italic;
   }
-`,F=({review:e,reviewDateText:t,closeModal:n})=>{let{author_details:{username:r,avatar_path:i,rating:a},content:s,created_at:c}=e;return(0,C.jsxs)(j,{children:[(0,C.jsx)(d,{closeModal:n}),(0,C.jsxs)(M,{children:[(0,C.jsx)(o,{src:i?`${g}w185${i}`:null,name:r,variant:`circle`}),(0,C.jsxs)(N,{children:[(0,C.jsxs)(`p`,{className:`review__user-name`,children:[`@`,r]}),(0,C.jsx)(`p`,{className:`review__date`,children:t})]})]}),(0,C.jsxs)(P,{children:[(0,C.jsx)(L,{rating:a,created_at:c}),(0,C.jsx)(`p`,{className:`review__text`,children:s})]})]})},I=l.div`
+`,L=({review:e,reviewDateText:t,closeModal:n})=>{let{author_details:{username:r,avatar_path:i,rating:a},content:o,created_at:c}=e;return(0,T.jsxs)(N,{children:[(0,T.jsx)(f,{closeModal:n}),(0,T.jsxs)(P,{children:[(0,T.jsx)(s,{src:i?`${_}w185${i}`:null,name:r,variant:`circle`}),(0,T.jsxs)(F,{children:[(0,T.jsxs)(`p`,{className:`review__user-name`,children:[`@`,r]}),(0,T.jsx)(`p`,{className:`review__date`,children:t})]})]}),(0,T.jsxs)(I,{children:[(0,T.jsx)(`div`,{className:`review__ratingStars_wrapper`,children:(0,T.jsx)(z,{rating:a,created_at:c})}),(0,T.jsx)(`p`,{className:`review__text`,children:o})]})]})},R=u.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -333,7 +332,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
   .star-icon {
     color: var(--primary-color);
   }
-`,L=({rating:e})=>{let t=Math.round(e/2);return(0,C.jsx)(I,{children:[...Array(t)].map((e,t)=>(0,C.jsx)(c,{className:`star-icon`},t))})},R=l.li`
+`,z=({rating:e})=>{let t=Math.round(e/2);return(0,T.jsx)(R,{children:[...Array(t)].map((e,t)=>(0,T.jsx)(l,{className:`star-icon`},t))})},B=u.li`
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -358,7 +357,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     box-shadow: var(--glow);
     cursor: pointer;
   }
-`,z=l.div`
+`,V=u.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -368,7 +367,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
   width: 100%;
 
   gap: 10px;
-`,B=l.div`
+`,H=u.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -386,7 +385,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     color: var(--text-secondary);
     font-size: 0.85rem;
   }
-`,V=l.div`
+`,U=u.div`
   .review__text {
     padding: 10px;
     text-align: justify;
@@ -404,7 +403,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     line-height: 2;
     word-break: break-word;
   }
-`,H=({review:e})=>{let{author_details:{username:t,avatar_path:n,rating:r},content:i,created_at:a}=e,[s,c]=(0,D.useState)(!1),[l,d]=(0,D.useState)(null),f=new Date-new Date(a),p=Math.floor(f/(1e3*60)),m=Math.floor(f/(1e3*60*60)),h=Math.floor(f/(1e3*60*60*24)),_;_=p<60?`${p} minutes ago`:m<24?`${m} hours ago`:`${h} days ago`;let v=e=>{d(e),c(!0)},y=()=>{console.log(`Closing modal`),c(!1),d(null)};return(0,C.jsxs)(R,{onClick:()=>v(e),children:[(0,C.jsxs)(z,{children:[(0,C.jsx)(o,{src:n?`${g}w185${n}`:null,name:t,variant:`circle`}),(0,C.jsxs)(B,{children:[(0,C.jsxs)(`p`,{className:`review__user-name`,children:[`@`,t]}),(0,C.jsx)(`p`,{className:`review__date`,children:_})]})]}),(0,C.jsx)(L,{rating:r,created_at:a}),(0,C.jsx)(V,{children:(0,C.jsx)(`p`,{className:`review__text`,children:i})}),s&&(0,C.jsx)(u,{closeModal:y,children:(0,C.jsx)(F,{review:l,reviewDateText:_,closeModal:y})})]})},U=({countries:e})=>e?.length?(0,C.jsxs)(`p`,{children:[(0,C.jsx)(`span`,{className:`movie-details__label`,children:`Countries: `}),e.map((t,n)=>(0,C.jsxs)(`span`,{className:`movie-details__value`,children:[t.iso_3166_1,n<e.length-1?`, `:``]},t.iso_3166_1))]}):null,W=l.ul`
+`,W=({review:e})=>{let{author_details:{username:t,avatar_path:n,rating:r},content:i,created_at:a}=e,[o,c]=(0,k.useState)(!1),[l,u]=(0,k.useState)(null),f=new Date-new Date(a),p=Math.floor(f/(1e3*60)),m=Math.floor(f/(1e3*60*60)),h=Math.floor(f/(1e3*60*60*24)),g;g=p<60?`${p} minutes ago`:m<24?`${m} hours ago`:`${h} days ago`;let v=e=>{u(e),c(!0)},y=()=>{console.log(`Closing modal`),c(!1),u(null)};return(0,T.jsxs)(B,{onClick:()=>v(e),children:[(0,T.jsxs)(V,{children:[(0,T.jsx)(s,{src:n?`${_}w185${n}`:null,name:t,variant:`circle`}),(0,T.jsxs)(H,{children:[(0,T.jsxs)(`p`,{className:`review__user-name`,children:[`@`,t]}),(0,T.jsx)(`p`,{className:`review__date`,children:g})]})]}),(0,T.jsx)(z,{rating:r,created_at:a}),(0,T.jsx)(U,{children:(0,T.jsx)(`p`,{className:`review__text`,children:i})}),o&&(0,T.jsx)(d,{closeModal:y,children:(0,T.jsx)(L,{review:l,reviewDateText:g,closeModal:y})})]})},G=({countries:e})=>e?.length?(0,T.jsxs)(`p`,{children:[(0,T.jsx)(`span`,{className:`movie-details__label`,children:`Countries: `}),e.map((t,n)=>(0,T.jsxs)(`span`,{className:`movie-details__value`,children:[t.iso_3166_1,n<e.length-1?`, `:``]},t.iso_3166_1))]}):null,ne=u.ul`
   display: flex;
   gap: 8px;
   list-style: none;
@@ -416,7 +415,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     border-radius: var(--radius-xs);
     color: var(--text-secondary);
   }
-`,G=({genres:e})=>(0,C.jsx)(W,{children:e.map(e=>(0,C.jsx)(`li`,{className:`genre-tag`,children:(0,C.jsxs)(`span`,{children:[` `,e.name]})},e.id))}),K=l.div`
+`,K=({genres:e})=>(0,T.jsx)(ne,{children:e.map(e=>(0,T.jsx)(`li`,{className:`genre-tag`,children:(0,T.jsxs)(`span`,{children:[` `,e.name]})},e.id))}),q=u.div`
   display: flex;
   align-items: start;
   justify-content: flex-start;
@@ -440,7 +439,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     font-style: italic;
     font-size: 1rem;
   }
-`,q=({runtime:e,revenue:t,production_countries:n,tagline:r})=>(0,C.jsxs)(K,{children:[(0,C.jsx)(ie,{runtime:e}),(0,C.jsx)(re,{revenue:t}),(0,C.jsx)(U,{countries:n}),(0,C.jsx)(`p`,{className:`tagline`,children:r})]}),J=l.div`
+`,J=({runtime:e,revenue:t,production_countries:n,tagline:r})=>(0,T.jsxs)(q,{children:[(0,T.jsx)(ae,{runtime:e}),(0,T.jsx)(ie,{revenue:t}),(0,T.jsx)(G,{countries:n}),(0,T.jsx)(`p`,{className:`tagline`,children:r})]}),Y=u.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -455,11 +454,11 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     font-weight: 700;
     font-size: 1.2rem;
   }
-`,Y=({rating:e})=>(0,C.jsxs)(J,{children:[(0,C.jsx)(c,{className:`star-icon`}),(0,C.jsx)(`span`,{children:e.toFixed(1)})]}),X=l.p`
+`,X=({rating:e})=>(0,T.jsxs)(Y,{children:[(0,T.jsx)(l,{className:`star-icon`}),(0,T.jsx)(`span`,{children:e.toFixed(1)})]}),Z=u.p`
   color: var(--text-color);
   font-weight: 700;
   font-size: 1.2rem;
-`,Z=({date:e})=>e?(0,C.jsx)(X,{children:e.substring(0,4)}):null,re=({revenue:e})=>{if(!e)return null;let t=e.toLocaleString(`ru-RU`);return(0,C.jsxs)(`p`,{children:[(0,C.jsx)(`span`,{className:`movie-details__label`,children:`Revenue: `}),(0,C.jsxs)(`span`,{className:`movie-details__value`,children:[`$`,t]})]})},ie=({runtime:e})=>{if(!e)return null;let t=Math.floor(e/60),n=e%60;return(0,C.jsxs)(`p`,{children:[(0,C.jsx)(`span`,{className:`movie-details__label`,children:`Runtime: `}),(0,C.jsxs)(`span`,{className:`movie-details__value`,children:[t>0&&`${t}h `,n,`m`]})]})},ae=l.div`
+`,re=({date:e})=>e?(0,T.jsx)(Z,{children:e.substring(0,4)}):null,ie=({revenue:e})=>{if(!e)return null;let t=e.toLocaleString(`ru-RU`);return(0,T.jsxs)(`p`,{children:[(0,T.jsx)(`span`,{className:`movie-details__label`,children:`Revenue: `}),(0,T.jsxs)(`span`,{className:`movie-details__value`,children:[`$`,t]})]})},ae=({runtime:e})=>{if(!e)return null;let t=Math.floor(e/60),n=e%60;return(0,T.jsxs)(`p`,{children:[(0,T.jsx)(`span`,{className:`movie-details__label`,children:`Runtime: `}),(0,T.jsxs)(`span`,{className:`movie-details__value`,children:[t>0&&`${t}h `,n,`m`]})]})},oe=u.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -470,14 +469,14 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
   p {
     color: var(--white);
   }
-`,Q=l.div`
+`,Q=u.div`
   width: 1px;
   height: 20px;
   background: var(--accent-color);
-`,oe=({vote_average:e,vote_count:t,release_date:n})=>(0,C.jsxs)(ae,{children:[(0,C.jsx)(Y,{rating:e}),(0,C.jsx)(Q,{}),(0,C.jsx)(se,{count:t}),(0,C.jsx)(Q,{}),(0,C.jsx)(Z,{date:n})]}),$=l.span`
+`,se=({vote_average:e,vote_count:t,release_date:n})=>(0,T.jsxs)(oe,{children:[(0,T.jsx)(X,{rating:e}),(0,T.jsx)(Q,{}),(0,T.jsx)(le,{count:t}),(0,T.jsx)(Q,{}),(0,T.jsx)(re,{date:n})]}),ce=u.span`
   color: var(--text-color);
   font-size: 1rem;
-`,se=({count:e})=>{let t=e??0;return(0,C.jsxs)($,{children:[t>=1e3?`${(t/1e3).toFixed(1).replace(`.0`,``)}K+`:t,` Review`,t===1?``:`s`]})},ce=l.section``,le=l.div`
+`,le=({count:e})=>{let t=e??0;return(0,T.jsxs)(ce,{children:[t>=1e3?`${(t/1e3).toFixed(1).replace(`.0`,``)}K+`:t,` Review`,t===1?``:`s`]})},ue=u.section``,de=u.div`
   position: relative;
   min-height: 520px;
   display: flex;
@@ -525,7 +524,7 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     flex-shrink: 0;
   }
-`,ue=l.div`
+`,fe=u.div`
   max-width: 750px;
 
   text-align: left;
@@ -545,14 +544,44 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
     opacity: 0.85;
     color: var(--white);
   }
-`,de=({movie:e})=>{let{backdrop_path:t,poster_path:n,original_title:r,vote_average:i,vote_count:a,overview:o,release_date:c,runtime:l,revenue:u,production_countries:d,tagline:m,genres:h}=e,_=`${g}w1280${t}`,v=n?`${g}w500${n}`:p;return(0,C.jsx)(ce,{children:(0,C.jsx)(le,{className:`movie-details__backdrop`,style:{backgroundImage:`url(${_})`},children:(0,C.jsx)(f,{children:(0,C.jsxs)(`div`,{className:`movie-content`,children:[(0,C.jsx)(`img`,{src:v,alt:r,className:`movie-poster`,loading:`lazy`}),(0,C.jsxs)(ue,{children:[(0,C.jsx)(`h1`,{className:`movie__title`,children:r}),(0,C.jsx)(oe,{vote_average:i,vote_count:a,release_date:c}),(0,C.jsx)(`p`,{className:`movie__overview`,children:o}),(0,C.jsx)(G,{genres:h}),(0,C.jsx)(q,{runtime:l,revenue:u,production_countries:d,tagline:m}),(0,C.jsx)(s,{})]})]})})})})},fe=l.h4`
+`,pe=({movie:e})=>{let{backdrop_path:t,poster_path:n,original_title:r,vote_average:i,vote_count:a,overview:o,release_date:s,runtime:l,revenue:u,production_countries:d,tagline:f,genres:h}=e,g=`${_}w1280${t}`,v=n?`${_}w500${n}`:m;return(0,T.jsx)(ue,{children:(0,T.jsx)(de,{className:`movie-details__backdrop`,style:{backgroundImage:`url(${g})`},children:(0,T.jsx)(p,{children:(0,T.jsxs)(`div`,{className:`movie-content`,children:[(0,T.jsx)(`img`,{src:v,alt:r,className:`movie-poster`,loading:`lazy`}),(0,T.jsxs)(fe,{children:[(0,T.jsx)(`h1`,{className:`movie__title`,children:r}),(0,T.jsx)(se,{vote_average:i,vote_count:a,release_date:s}),(0,T.jsx)(`p`,{className:`movie__overview`,children:o}),(0,T.jsx)(K,{genres:h}),(0,T.jsx)(J,{runtime:l,revenue:u,production_countries:d,tagline:f}),(0,T.jsx)(c,{})]})]})})})})},$=u.div`
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  li {
+    margin: 0 auto;
+  }
+
+  .divider {
+    /* width: 2px; */
+  }
+`,me=()=>(0,T.jsxs)($,{children:[(0,T.jsxs)(`ul`,{children:[(0,T.jsx)(`li`,{children:(0,T.jsx)(a,{to:`cast`,children:`Cast`})}),(0,T.jsx)(`hr`,{className:`divider`}),(0,T.jsx)(`li`,{children:(0,T.jsx)(a,{to:`reviews`,children:`Reviews`})})]}),(0,T.jsx)(n,{})]}),he=u.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 8px;
+
+  .no-reviews-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+  }
+`,ge=()=>(0,T.jsxs)(he,{children:[(0,T.jsx)(`h2`,{class:`no-reviews__title`,children:`There are no reviews yet`}),(0,T.jsx)(`p`,{class:`no-reviews__text`,children:`Be the first to share your thoughts!`})]}),_e=u.h4`
   font-size: 1.5rem;
 
   span {
     color: var(--text-secondary);
     font-size: 1rem;
   }
-`,pe=l.ul`
+`,ve=u.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -561,4 +590,4 @@ import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{c as n,d as r,r as i,t as
 
   gap: 16px;
   margin: 20px auto 50px auto;
-`,me=()=>{let{id:e}=n(),[t,r]=(0,D.useState)([]);return(0,D.useEffect)(()=>{(async()=>{try{let t=await x(e);console.log(`🚀 ~ loadCastList ~ response:`,t),r(t.results)}catch(e){console.error(e)}})()},[e]),(0,C.jsxs)(C.Fragment,{children:[(0,C.jsxs)(fe,{children:[`User Reviews `,(0,C.jsxs)(`span`,{className:`reviews__qty`,children:[`(`,t.length,`)`]})]}),(0,C.jsx)(pe,{children:t.map(e=>(0,C.jsx)(H,{review:e},e.id))})]})};export{w as a,m as c,O as i,h as l,de as n,ee as o,A as r,_ as s,me as t};
+`,ye=()=>{let{id:e}=r(),[t,n]=(0,k.useState)([]);return(0,k.useEffect)(()=>{(async()=>{try{let t=await C(e);console.log(`🚀 ~ loadCastList ~ response:`,t),n(t.results)}catch(e){console.error(e)}})()},[e]),t.length===0?(0,T.jsx)(ge,{}):(0,T.jsxs)(T.Fragment,{children:[(0,T.jsxs)(_e,{children:[`User Reviews `,(0,T.jsxs)(`span`,{className:`reviews__qty`,children:[`(`,t.length,`)`]})]}),(0,T.jsx)(ve,{children:t.map(e=>(0,T.jsx)(W,{review:e},e.id))})]})};export{A as a,v as c,M as i,h as l,me as n,ee as o,pe as r,S as s,ye as t,g as u};

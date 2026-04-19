@@ -1,0 +1,1 @@
+import{t as e}from"./ReviewList-BuP3_IGK.js";export{e as default};
