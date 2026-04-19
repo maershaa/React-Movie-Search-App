@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 const Backdrop = styled.div`
+  z-index: 30000;
   position: fixed;
 
   background: rgba(0, 0, 0, 0.7);

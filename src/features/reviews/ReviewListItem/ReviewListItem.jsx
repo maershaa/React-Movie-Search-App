@@ -63,6 +63,7 @@ const ReviewListItem = ({ review }) => {
           <p className="review__date">{reviewDateText}</p>
         </UserInfo>
       </ReviewHeader>
+
       <RatingStars rating={rating} created_at={created_at} />
 
       <ReviewBody>

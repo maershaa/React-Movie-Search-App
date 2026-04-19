@@ -33,7 +33,9 @@ const MovieReviewModal = ({ review, reviewDateText, closeModal }) => {
       </ReviewHeader>
 
       <ReviewBody>
-        <RatingStars rating={rating} created_at={created_at} />
+        <div className="review__ratingStars_wrapper">
+          <RatingStars rating={rating} created_at={created_at} />
+        </div>
         <p className="review__text">{content}</p>
       </ReviewBody>
     </ReviewCard>

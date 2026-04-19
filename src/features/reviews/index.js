@@ -9,3 +9,4 @@ export { default as ReviewList } from './ReviewList/ReviewList.jsx';
 // Поэтому lazy не может понять, какой компонент рендерить.
 export { ReviewListItem } from './ReviewListItem/ReviewListItem.jsx';
 export { ReviewsCount } from './ReviewsCount/ReviewsCount.jsx';
+export { NoReviews } from './NoReviews/NoReviews.jsx';

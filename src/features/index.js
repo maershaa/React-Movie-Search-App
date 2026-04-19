@@ -10,6 +10,7 @@ export {
   MovieRuntime,
   MovieStats,
   MovieInfo,
+  DetailsTabs,
 } from './movie-details';
 
 export { ReviewList, ReviewListItem, ReviewsCount } from './reviews';

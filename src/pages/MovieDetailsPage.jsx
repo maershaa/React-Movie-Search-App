@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Outlet, useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '@/api';
 import { Loader } from '@/shared';
-import { MovieInfo } from '@/features';
+import { MovieInfo, DetailsTabs } from '@/features';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -36,21 +36,7 @@ const MovieDetailsPage = () => {
         {isLoading && <Loader />}
 
         <MovieInfo movie={movie} />
-        <div className="tab-content">
-          <ul>
-            <li>
-              <Link to="cast">Cast</Link>
-            </li>
-
-            <hr className="divider" />
-
-            <li>
-              <Link to="reviews">Reviews</Link>
-            </li>
-          </ul>
-
-          <Outlet />
-        </div>
+        <DetailsTabs />
       </div>
     </>
   );

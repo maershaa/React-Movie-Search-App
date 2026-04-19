@@ -9,3 +9,4 @@ export { MovieRuntime } from './MovieRuntime/MovieRuntime.jsx';
 export { MovieStats } from './MovieStats/MovieStats.jsx';
 export { ReviewsCount } from '../reviews/ReviewsCount/ReviewsCount.jsx';
 export { MovieInfo } from './MovieInfo/MovieInfo.jsx';
+export { DetailsTabs } from './DetailsTabs/DetailsTabs.jsx';

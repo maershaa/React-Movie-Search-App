@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { getMovieReviews } from '@/api';
 import { ReviewListItem } from '@/features';
 import { Title, ReviewListWrapper } from './ReviewList.styled';
+import { NoReviews } from '@/features/reviews';
 
 const ReviewList = () => {
   const { id } = useParams();
@@ -25,6 +26,14 @@ const ReviewList = () => {
     // return () => {
     // }
   }, [id]);
+
+  // 1. Если данные еще грузятся — можно вернуть null или спиннер
+  // if (isLoading) return <div>Loading...</div>;
+
+  // 2. Если загрузка завершена и отзывов действительно нет
+  if (reviews.length === 0) {
+    return <NoReviews />;
+  }
 
   return (
     <>

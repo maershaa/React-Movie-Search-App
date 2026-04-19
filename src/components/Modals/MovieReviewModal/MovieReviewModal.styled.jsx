@@ -34,7 +34,7 @@ const UserInfo = styled.div`
   gap: 140px;
   width: 100%;
 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   .review__user-name {
     color: var(--text-color);
@@ -53,9 +53,8 @@ const ReviewBody = styled.div`
   justify-content: start;
   align-items: baseline;
 
-  & > :first-of-type {
-    margin-left: 20px;
-    /* чтобы RatingStars был ровно */
+  .review__ratingStars_wrapper {
+    padding: 0 20px;
   }
 
   p {
