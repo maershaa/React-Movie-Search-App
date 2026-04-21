@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SearchInput, MovieList } from '@/features';
+import { SearchInput, MovieList, MoviePreviewModal } from '@/features';
 import {
   PageTitle,
   Loader,
@@ -10,7 +10,6 @@ import {
 } from '@/shared';
 import { useInfiniteScroll, useMovieModal } from '@/shared/hooks';
 import { searchMovies, getTopRatedMovies } from '@/api';
-import { MoviePreviewModal } from '@/components';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -108,18 +107,6 @@ const MoviesPage = () => {
 
   return (
     <>
-      {loading && <Loader />}
-      {error && (
-        <ErrorMessage
-          message={error}
-          onRetry={() =>
-            searchQuery
-              ? loadMoviesBySearch(searchQuery, currentPage)
-              : loadTopRatedMovies(currentPage)
-          }
-        />
-      )}
-
       <div className="movies_page__hero">
         <PageTitle>
           {searchQuery ? 'Search Results' : 'Top Rated Movies'}
@@ -131,7 +118,20 @@ const MoviesPage = () => {
         />
       </div>
       <section className="movies-section">
+        {loading && <Loader />}
+        {error && (
+          <ErrorMessage
+            message={error}
+            onRetry={() =>
+              searchQuery
+                ? loadMoviesBySearch(searchQuery, currentPage)
+                : loadTopRatedMovies(currentPage)
+            }
+          />
+        )}
+
         <MovieList moviesArr={movies} openModal={openModal} />
+
         <div ref={targetRef} />
 
         {totalPages !== null && currentPage >= totalPages && (

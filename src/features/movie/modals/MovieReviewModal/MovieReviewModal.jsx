@@ -1,7 +1,6 @@
 import { BASE_IMG_URL } from '@/api/config';
 
-import { Avatar, ModalCloseButton } from '@/shared';
-import { RatingStars } from '@/components';
+import { Avatar, ModalCloseButton, RatingStars } from '@/shared';
 // import { useState } from 'react';
 import {
   ReviewCard,

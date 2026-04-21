@@ -1,4 +1,10 @@
-export { MovieList, MovieCard, SearchInput } from './movie';
+export {
+  MovieList,
+  MovieCard,
+  SearchInput,
+  MoviePreviewModal,
+  MovieReviewModal,
+} from './movie';
 
 export {
   MovieCountries,

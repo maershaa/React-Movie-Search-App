@@ -6,6 +6,7 @@ export {
   Avatar,
   PageTitle,
   EndMessage,
+  RatingStars,
 } from './ui';
 export {
   Header,

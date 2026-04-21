@@ -8,13 +8,13 @@ import {
   EndMessage,
 } from '@/shared';
 import { useInfiniteScroll, useMovieModal } from '@/shared/hooks';
-import { MovieList } from '@/features';
-import { MoviePreviewModal } from '@/components';
+import { MovieList, MoviePreviewModal } from '@/features';
 import { getTrendingMovies } from '@/api';
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 

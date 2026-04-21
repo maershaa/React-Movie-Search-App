@@ -443,81 +443,94 @@ function App() {
 # 📌 17. Структура проекта
 
 ```bash
-src/
-│
-├── app/
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── routes.jsx
-│
-├── api/
-│   ├── client.js
-│   ├── movies.api.js
-│   └── config.js
-│
-├── assets/
-│   ├── images/
-│   ├── icons/
-│   └── styles/
-│
-├── shared/
-│   ├── ui/
-│   │   ├── Button/
-│   │   ├── Modal/
-│   │   ├── Loader/
-│   │   ├── Pagination/
-│   │   └── Input/
-│   │
-│   ├── layout/
-│   │   ├── Header/
-│   │   ├── Footer/
-│   │   ├── Container/
-│   │   └── SharedLayout/
-│   │
-│   ├── helpers/
-│   ├── hooks/
-│   └── constants/
-│
-├── features/
-│   ├── movies/
-│   │   ├── components/
+react-movie-search-app/
+├── public/
+├── src/
+│   ├── api/
+│   │   ├── config.js
+│   │   ├── genres.js
+│   │   ├── index.js
+│   │   ├── movies.js
+│   │   └── series.js
+│   ├── app/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── assets/
+│   │   ├── images/
+│   │   └── styles/
+│   ├── components/
+│   │   ├── FilterInput/
+│   │   ├── Modals/
+│   │   │   ├── MoviePreviewModal/
+│   │   │   ├── MovieReviewModal/
+│   │   │   └── index.js
+│   │   ├── RatingStars/
+│   │   └── index.js
+│   ├── context/
+│   ├── features/
+│   │   ├── cast/
+│   │   │   ├── CastList/
+│   │   │   └── index.js
+│   │   ├── movie/
 │   │   │   ├── MovieCard/
 │   │   │   ├── MovieList/
-│   │   │   └── SearchInput/
-│   │   ├── hooks/
-│   │   └── utils/
-│   │
-│   ├── movie-details/
-│   │   ├── components/
-│   │   │   ├── MovieHero/
-│   │   │   ├── MovieMeta/
-│   │   │   ├── MovieGenres/
+│   │   │   ├── SearchInput/
+│   │   │   └── index.js
+│   │   ├── movie-details/
+│   │   │   ├── DetailsTabs/
 │   │   │   ├── MovieCountries/
-│   │   │   ├── CastList/
-│   │   │   ├── ReviewList/
-│   │   │   └── MovieStats/
-│   │   └── hooks/
-│   │
-│   └── reviews/
-│       └── components/
-│
-├── pages/
-│   ├── HomePage/
-│   ├── MoviesPage/
-│   ├── MovieDetailsPage/
-│   └── NotFoundPage/
-│
-└── store/
-# 🚀 Главное, что тебе нужно запомнить
-
-1. React сам не умеет маршрутизацию
-2. React Router = связь URL и UI
-3. Layout + Outlet = основа архитектуры
-4. Nested routes = масштабируемость
-5. Lazy loading = оптимизация
-
----
-
-Если хочешь — следующий шаг логичный: 👉 собрать **твой реальный проект (Movie
-App)** с правильной архитектурой роутинга (как делают на работе)
+│   │   │   ├── MovieGenres/
+│   │   │   ├── MovieHero/
+│   │   │   ├── MovieInfo/
+│   │   │   ├── MovieMeta/
+│   │   │   ├── MovieRating/
+│   │   │   ├── MovieReleaseDate/
+│   │   │   ├── MovieRevenue/
+│   │   │   ├── MovieRuntime/
+│   │   │   ├── MovieStats/
+│   │   │   └── index.js
+│   │   └── reviews/
+│   │       ├── NoReviews/
+│   │       ├── ReviewList/
+│   │       ├── ReviewListItem/
+│   │       ├── ReviewsCount/
+│   │       └── index.js
+│   ├── pages/
+│   │       ├── HomePage.jsx
+│   │       ├── MovieDetailsPage.jsx
+│   │       ├── MoviesPage.jsx
+│   │       ├── MoviesPage.styled.jsx
+│   │       ├── NotFound.jsx
+│   │       ├── SeriesDetailsPage.jsx
+│   │       ├── SeriesPage.jsx
+│   │       └── index.js
+│   └── shared/
+│       ├── helpers/
+│       ├── hooks/
+│       │   ├── index.js
+│       │   ├── useInfiniteScroll.js
+│       │   └── useMovieModal.js
+│       ├── layout/
+│       │   ├── Container/
+│       │   ├── ErrorMessage/
+│       │   ├── Footer/
+│       │   ├── Header/
+│       │   ├── Loader/
+│       │   ├── SharedLayout/
+│       │   └── index.js
+│       └── ui/
+│           ├── Avatar/
+│           ├── BaseModal/
+│           ├── Buttons/
+│           ├── EndMessage/
+│           ├── PageTitle/
+│           ├── Pagination/
+│           └── index.js
+├── .gitignore
+├── jsconfig.json
+├── package-lock.json
+├── package.json
+├── REACT_ROUTING_guide.md
+├── README.md
+└── vite.config.js
 ```

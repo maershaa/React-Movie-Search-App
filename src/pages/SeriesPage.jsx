@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getPopularSeries } from '@/api';
-import { MovieList } from '@/features';
+import { MovieList, MoviePreviewModal } from '@/features';
 import {
   Loader,
   ErrorMessage,
@@ -9,7 +9,6 @@ import {
   EndMessage,
 } from '@/shared';
 import { useInfiniteScroll, useMovieModal } from '@/shared/hooks';
-import { MoviePreviewModal } from '@/components';
 
 const SeriesPage = () => {
   const [series, setSeries] = useState([]);

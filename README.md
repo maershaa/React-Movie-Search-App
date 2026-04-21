@@ -91,17 +91,96 @@ All main routes are loaded asynchronously using `React.lazy()` and wrapped in
 
 ```
 src/
- ├── components/
- ├── pages/
- │    ├── Home.jsx
- │    ├── Movies.jsx
- │    ├── MovieDetails.jsx
- │    ├── Cast.jsx
- │    └── Reviews.jsx
- ├── services/
- │    └── api.js
- ├── App.jsx
- └── main.jsx
+react-movie-search-app/
+├── public/
+├── src/
+│   ├── api/
+│   │   ├── config.js
+│   │   ├── genres.js
+│   │   ├── index.js
+│   │   ├── movies.js
+│   │   └── series.js
+│   ├── app/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── assets/
+│   │   ├── images/
+│   │   └── styles/
+│   ├── components/
+│   │   ├── FilterInput/
+│   │   ├── Modals/
+│   │   │   ├── MoviePreviewModal/
+│   │   │   ├── MovieReviewModal/
+│   │   │   └── index.js
+│   │   ├── RatingStars/
+│   │   └── index.js
+│   ├── context/
+│   ├── features/
+│   │   ├── cast/
+│   │   │   ├── CastList/
+│   │   │   └── index.js
+│   │   ├── movie/
+│   │   │   ├── MovieCard/
+│   │   │   ├── MovieList/
+│   │   │   ├── SearchInput/
+│   │   │   └── index.js
+│   │   ├── movie-details/
+│   │   │   ├── DetailsTabs/
+│   │   │   ├── MovieCountries/
+│   │   │   ├── MovieGenres/
+│   │   │   ├── MovieHero/
+│   │   │   ├── MovieInfo/
+│   │   │   ├── MovieMeta/
+│   │   │   ├── MovieRating/
+│   │   │   ├── MovieReleaseDate/
+│   │   │   ├── MovieRevenue/
+│   │   │   ├── MovieRuntime/
+│   │   │   ├── MovieStats/
+│   │   │   └── index.js
+│   │   └── reviews/
+│   │       ├── NoReviews/
+│   │       ├── ReviewList/
+│   │       ├── ReviewListItem/
+│   │       ├── ReviewsCount/
+│   │       └── index.js
+│   ├── pages/
+│   │       ├── HomePage.jsx
+│   │       ├── MovieDetailsPage.jsx
+│   │       ├── MoviesPage.jsx
+│   │       ├── MoviesPage.styled.jsx
+│   │       ├── NotFound.jsx
+│   │       ├── SeriesDetailsPage.jsx
+│   │       ├── SeriesPage.jsx
+│   │       └── index.js
+│   └── shared/
+│       ├── helpers/
+│       ├── hooks/
+│       │   ├── index.js
+│       │   ├── useInfiniteScroll.js
+│       │   └── useMovieModal.js
+│       ├── layout/
+│       │   ├── Container/
+│       │   ├── ErrorMessage/
+│       │   ├── Footer/
+│       │   ├── Header/
+│       │   ├── Loader/
+│       │   ├── SharedLayout/
+│       │   └── index.js
+│       └── ui/
+│           ├── Avatar/
+│           ├── BaseModal/
+│           ├── Buttons/
+│           ├── EndMessage/
+│           ├── PageTitle/
+│           ├── Pagination/
+│           └── index.js
+├── .gitignore
+├── jsconfig.json
+├── package-lock.json
+├── package.json
+├── REACT_ROUTING_guide.md
+├── README.md
+└── vite.config.js
 ```
 
 ---

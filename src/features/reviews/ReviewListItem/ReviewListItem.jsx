@@ -1,8 +1,6 @@
 import { BASE_IMG_URL } from '@/api/config';
-import { BaseModal } from '@/shared';
-import { RatingStars, MovieReviewModal } from '@/components';
-
-import { Avatar } from '@/shared';
+import { BaseModal, RatingStars, Avatar } from '@/shared';
+import { MovieReviewModal } from '@/features';
 
 import { useState } from 'react';
 import {
