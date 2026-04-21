@@ -10,7 +10,7 @@ const options = {
   },
 };
 
-const getGenres = async () => {
+const getMoviesGenres = async () => {
   //это. жанры фильмов. есть еще сериалов
   const response = await fetch(
     `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`,
@@ -25,7 +25,7 @@ const getGenres = async () => {
   return response.json();
 };
 
-export { getGenres };
+export { getMoviesGenres };
 
 // GENRES
 // Movie List

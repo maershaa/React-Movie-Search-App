@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 const SearchInputWrapper = styled.div`
-  margin: 25px auto;
+  margin: 0 auto 25px auto;
   max-width: 50vw;
 
   position: relative;

@@ -1,35 +1,75 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getPopularSeries } from '@/api';
 import { MovieList } from '@/features';
-import { Pagination } from '@/shared';
+import {
+  Loader,
+  ErrorMessage,
+  PageTitle,
+  BaseModal,
+  EndMessage,
+} from '@/shared';
+import { useInfiniteScroll, useMovieModal } from '@/shared/hooks';
+import { MoviePreviewModal } from '@/components';
 
 const SeriesPage = () => {
   const [series, setSeries] = useState([]);
+  const [totalPages, setTotalPages] = useState(null);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
+  const { currentPage, targetRef } = useInfiniteScroll(loading, totalPages);
+
+  const loadSeries = useCallback(async page => {
+    try {
+      setLoading(true);
+      setError('');
+      const data = await getPopularSeries(page);
+      setSeries(prev => [
+        ...prev,
+        ...data.results.filter(
+          newSeries => !prev.some(series => series.id === newSeries.id)
+        ),
+      ]);
+
+      setTotalPages(data.total_pages);
+    } catch {
+      setError('Failed to fetch series');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    const fetchTvSeries = async () => {
-      try {
-        const response = await getPopularSeries();
-
-        setSeries(response.results);
-      } catch (error) {
-        console.log('🚀 ~ fetchTvSeries ~ error:', error);
-      }
-    };
-
-    fetchTvSeries();
-
-    return () => {};
-  }, []);
+    loadSeries(currentPage);
+  }, [currentPage, loadSeries]);
 
   return (
     <>
-      <div>SeriesPage</div>
-      <section className="movies-section">
-        {series && <MovieList moviesArr={series} />}
+      {loading && <Loader />}
+      {error && (
+        <ErrorMessage message={error} onRetry={() => loadSeries(currentPage)} />
+      )}
 
-        <Pagination />
+      <div className="hero">
+        <PageTitle>{'Popular Series'}</PageTitle>
+      </div>
+
+      <section className="movies-section">
+        <MovieList moviesArr={series} openModal={openModal} />
+
+        <div ref={targetRef}></div>
+        {totalPages !== null && currentPage >= totalPages && (
+          <EndMessage text={'No more series to load'}></EndMessage>
+        )}
       </section>
+
+      {isModalOpen && (
+        <BaseModal closeModal={closeModal}>
+          <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />
+        </BaseModal>
+      )}
     </>
   );
 };

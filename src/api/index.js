@@ -5,5 +5,5 @@ export {
   searchMovies,
   getMovieReviews,
 } from './movies';
-export { getGenres } from './genres';
+export { getMoviesGenres } from './genres';
 export { getPopularSeries } from './series';

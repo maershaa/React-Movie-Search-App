@@ -1,18 +1,24 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SearchInput, MovieList } from '@/features';
-import { PageTitle, Loader, ErrorMessage } from '@/shared';
-import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
+import {
+  PageTitle,
+  Loader,
+  ErrorMessage,
+  BaseModal,
+  EndMessage,
+} from '@/shared';
+import { useInfiniteScroll, useMovieModal } from '@/shared/hooks';
 import { searchMovies, getTopRatedMovies } from '@/api';
+import { MoviePreviewModal } from '@/components';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
+  const [totalPages, setTotalPages] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
-  const [totalPages, setTotalPages] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const searchQuery = searchParams.get('query') ?? '';
 
@@ -84,6 +90,8 @@ const MoviesPage = () => {
     totalPages
   );
 
+  const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
+
   useEffect(() => {
     setMovies([]);
     setTotalPages(null);
@@ -112,7 +120,7 @@ const MoviesPage = () => {
         />
       )}
 
-      <div className="hero">
+      <div className="movies_page__hero">
         <PageTitle>
           {searchQuery ? 'Search Results' : 'Top Rated Movies'}
         </PageTitle>
@@ -123,12 +131,17 @@ const MoviesPage = () => {
         />
       </div>
       <section className="movies-section">
-        <MovieList moviesArr={movies} />
+        <MovieList moviesArr={movies} openModal={openModal} />
         <div ref={targetRef} />
+
         {totalPages !== null && currentPage >= totalPages && (
-          <div className="end-message">
-            <span>No more movies to load.</span>
-          </div>
+          <EndMessage text={'No more movies to load'}></EndMessage>
+        )}
+
+        {isModalOpen && (
+          <BaseModal closeModal={closeModal}>
+            <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />
+          </BaseModal>
         )}
       </section>
     </>

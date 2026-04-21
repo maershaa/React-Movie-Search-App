@@ -1,7 +1,7 @@
 import { Container } from './MoviePreviewModal.styled';
 import { Link } from 'react-router-dom';
 import { BASE_IMG_URL } from '@/api/config';
-import { getGenres } from '@/api';
+import { getMoviesGenres } from '@/api';
 import { MovieGenres } from '@/features';
 import { ModalCloseButton } from '@/shared';
 
@@ -10,7 +10,7 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    getGenres()
+    getMoviesGenres()
       .then(resp => setGenres(resp.genres))
       .catch(err => console.error(err));
   }, []);
@@ -41,10 +41,6 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
           style={{ backgroundImage: `url(${bgPoster})` }}
         >
           <ModalCloseButton closeModal={closeModal} />
-          {/* <CloseBtn
-            onClick={closeModal}
-          >
-          </CloseBtn> */}
 
           <h2 className="modal__title">{original_title}</h2>
         </header>
@@ -61,7 +57,6 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
 
           <p className="modal__overview">{overview}</p>
 
-          {/* !потом перепрооверить */}
           <Link to={`/movies/${movie.id}`} className="modal__info-btn">
             More Info
           </Link>

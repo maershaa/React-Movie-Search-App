@@ -1,13 +1,10 @@
 import styled from '@emotion/styled';
 
 const MoviePageWrapper = styled.div`
-  .hero {
+  .movies_page__hero {
     display: flex;
     align-items: center;
     justify-content: left;
-
-    margin-bottom: 50px;
-    margin-left: 20px;
   }
 
   .end-message {

@@ -1,30 +1,22 @@
 import { MoviePageWrapper } from './MoviesPage.styled';
 import { useEffect, useState } from 'react';
-import { BaseModal, Loader, ErrorMessage, PageTitle } from '@/shared';
-import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
+import {
+  BaseModal,
+  Loader,
+  ErrorMessage,
+  PageTitle,
+  EndMessage,
+} from '@/shared';
+import { useInfiniteScroll, useMovieModal } from '@/shared/hooks';
 import { MovieList } from '@/features';
 import { MoviePreviewModal } from '@/components';
 import { getTrendingMovies } from '@/api';
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-
+  const [totalPages, setTotalPages] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
-  const [totalPages, setTotalPages] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedMovie, setSelectedMovie] = useState(null);
-
-  const openModal = movie => {
-    setSelectedMovie(movie);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedMovie(null);
-  };
 
   const loadTrendingMovies = async page => {
     try {
@@ -48,6 +40,7 @@ const HomePage = () => {
   };
 
   const { currentPage, targetRef } = useInfiniteScroll(loading, totalPages);
+  const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
 
   useEffect(() => {
     loadTrendingMovies(currentPage);
@@ -55,9 +48,7 @@ const HomePage = () => {
 
   return (
     <MoviePageWrapper>
-      <div className="hero">
-        <PageTitle>{'Trending Movies'} </PageTitle>
-      </div>
+      <PageTitle>{'Trending Movies'} </PageTitle>
 
       <section className="movies-section">
         {loading && <Loader />}
@@ -72,9 +63,7 @@ const HomePage = () => {
         {/* показывать его внизу списка, а не вверху */}
         <div ref={targetRef}></div>
         {totalPages !== null && currentPage >= totalPages && (
-          <div className="end-message">
-            <span>No more movies to load.</span>
-          </div>
+          <EndMessage text={'No more movies to load'}></EndMessage>
         )}
       </section>
 

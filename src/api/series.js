@@ -9,14 +9,13 @@ const options = {
 };
 
 // https://api.themoviedb.org/3/tv/popular
-const getPopularSeries = async () => {
+const getPopularSeries = async (page = 1) => {
   const response = await fetch(
-    `${BASE_URL}/tv/popular?api_key=${API_KEY}`,
+    `${BASE_URL}/tv/popular?api_key=${API_KEY}&page=${page}`,
     options
   );
 
   if (!response.ok) {
-    console.error('Failed to fetch popular series');
     throw new Error(response.statusText);
   }
 

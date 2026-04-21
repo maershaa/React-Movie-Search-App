@@ -5,6 +5,7 @@ export {
   BaseModal,
   Avatar,
   PageTitle,
+  EndMessage,
 } from './ui';
 export {
   Header,
