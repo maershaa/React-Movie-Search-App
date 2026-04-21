@@ -1,0 +1,1 @@
+import{t as e}from"./ReviewList-CoRuawnl.js";export{e as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-D-oznMWL.js";var t=e(),n=()=>(0,t.jsx)(`div`,{children:`SeriesDetailsPage`});export{n as default};
