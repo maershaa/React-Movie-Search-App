@@ -17,8 +17,6 @@ const SearchInput = ({ placeholder = '', updateQueryString }) => {
 
   const onSearchButtonClick = value => {
     if (!value) return;
-    console.log('Клик по SearchButton');
-
     updateQueryString(value);
     clearInput();
   };

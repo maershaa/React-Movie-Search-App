@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const HomePageWrapper = styled.div`
+const MoviePageWrapper = styled.div`
   .hero {
     display: flex;
     align-items: center;
@@ -30,4 +30,4 @@ const HomePageWrapper = styled.div`
   }
 `;
 
-export { HomePageWrapper };
+export { MoviePageWrapper };

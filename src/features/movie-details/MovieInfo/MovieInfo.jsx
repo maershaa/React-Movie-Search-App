@@ -8,6 +8,7 @@ import { BASE_IMG_URL } from '@/api/config';
 import { MovieHero } from './MovieInfo.styled';
 
 const MovieInfo = ({ movie }) => {
+  if (!movie) return null;
   const {
     backdrop_path,
     poster_path,

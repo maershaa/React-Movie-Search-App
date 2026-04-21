@@ -14,7 +14,6 @@ const ReviewList = () => {
       try {
         const response = await getMovieReviews(id);
 
-        console.log('🚀 ~ loadCastList ~ response:', response);
         setReviews(response.results);
       } catch (error) {
         console.error(error);

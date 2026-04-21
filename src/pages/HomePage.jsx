@@ -1,17 +1,17 @@
+import { MoviePageWrapper } from './MoviesPage.styled';
+import { useEffect, useState } from 'react';
+import { BaseModal, Loader, ErrorMessage, PageTitle } from '@/shared';
+import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
 import { MovieList } from '@/features';
 import { MoviePreviewModal } from '@/components';
-
-import { BaseModal, Loader } from '@/shared';
-
-import { HomePageWrapper } from './HomePage.styled';
-import { useEffect, useState, useRef } from 'react';
 import { getTrendingMovies } from '@/api';
-import { useIntersection } from 'react-use';
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
   const [totalPages, setTotalPages] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -26,60 +26,54 @@ const HomePage = () => {
     setSelectedMovie(null);
   };
 
-  //! InfiniteScroll React на хуке useIntersection из библиотеки react-use
-  const intersectionRef = useRef(null);
-  const intersection = useIntersection(intersectionRef, {
-    root: null,
-    rootMargin: '200px', //загрузка начнётся заранее, а не когда пользователь упёрся в конец
-    threshold: 0,
-  });
+  const loadTrendingMovies = async page => {
+    try {
+      setLoading(true);
+      setError('');
+      const data = await getTrendingMovies(page);
 
-  useEffect(() => {
-    if (
-      intersection?.isIntersecting &&
-      !isLoading &&
-      (totalPages === null || page < totalPages)
-    ) {
-      setPage(prev => prev + 1);
+      const newMovies = data.results;
+      setTrendingMovies(prevMovies => [
+        ...prevMovies,
+        ...newMovies.filter(
+          newMovie => !prevMovies.some(movie => movie.id === newMovie.id)
+        ),
+      ]);
+      setTotalPages(data.total_pages);
+    } catch {
+      setError('Failed to load trending movies');
+    } finally {
+      setLoading(false);
     }
-  }, [intersection, isLoading, page, totalPages]);
-  // ! Конец InfiniteScroll
+  };
 
-  // const searchedMovie = useMemo(
-  //   () => trendingMovies.filter(movie => movie.id === selectedMovie),
-  //   [selectedMovie, trendingMovies]
-  // );
+  const { currentPage, targetRef } = useInfiniteScroll(loading, totalPages);
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        setIsLoading(true);
-        const resp = await getTrendingMovies(page);
-        setTrendingMovies(prev => [...prev, ...resp.results]);
-        setTotalPages(resp.total_pages);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchMovies();
-  }, [page]);
+    loadTrendingMovies(currentPage);
+  }, [currentPage]);
 
   return (
-    <HomePageWrapper>
+    <MoviePageWrapper>
       <div className="hero">
-        <h2 className="section-title">Trending Movies</h2>
+        <PageTitle>{'Trending Movies'} </PageTitle>
       </div>
 
       <section className="movies-section">
+        {loading && <Loader />}
+        {error && (
+          <ErrorMessage
+            message={error}
+            onRetry={() => loadTrendingMovies(currentPage)}
+          />
+        )}
         <MovieList moviesArr={trendingMovies} openModal={openModal} />
-        {isLoading && <Loader />}
-        <div ref={intersectionRef}></div>
-        {page >= totalPages && (
+        {/* {loading && <Loader />} //loader для бесконечной прокрутки, чтобы */}
+        {/* показывать его внизу списка, а не вверху */}
+        <div ref={targetRef}></div>
+        {totalPages !== null && currentPage >= totalPages && (
           <div className="end-message">
-            <span>THE END</span>
+            <span>No more movies to load.</span>
           </div>
         )}
       </section>
@@ -89,7 +83,7 @@ const HomePage = () => {
           <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />
         </BaseModal>
       )}
-    </HomePageWrapper>
+    </MoviePageWrapper>
   );
 };
 

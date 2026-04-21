@@ -1,8 +1,7 @@
 import { Container } from './MoviePreviewModal.styled';
 import { Link } from 'react-router-dom';
 import { BASE_IMG_URL } from '@/api/config';
-import { IoClose } from 'react-icons/io5';
-import { fetchGenres } from '@/api';
+import { getGenres } from '@/api';
 import { MovieGenres } from '@/features';
 import { ModalCloseButton } from '@/shared';
 
@@ -11,7 +10,7 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    fetchGenres()
+    getGenres()
       .then(resp => setGenres(resp.genres))
       .catch(err => console.error(err));
   }, []);

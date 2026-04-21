@@ -10,17 +10,25 @@ const options = {
   },
 };
 
-const fetchGenres = async () => {
+const getGenres = async () => {
+  //это. жанры фильмов. есть еще сериалов
   const response = await fetch(
     `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`,
     options
   );
 
   if (!response.ok) {
+    console.error('Failed to fetch genres');
     throw new Error(response.statusText);
   }
 
   return response.json();
 };
 
-export { fetchGenres };
+export { getGenres };
+
+// GENRES
+// Movie List
+// get
+// TV List
+// get

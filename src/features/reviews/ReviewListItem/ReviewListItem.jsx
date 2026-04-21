@@ -45,7 +45,6 @@ const ReviewListItem = ({ review }) => {
   };
 
   const closeModal = () => {
-    console.log('Closing modal');
     setIsModalOpen(false);
     setSelectedReview(null);
   };

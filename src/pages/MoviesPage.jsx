@@ -1,49 +1,102 @@
-import { SearchInput, MovieList } from '@/features';
-import { Pagination } from '@/shared';
-
-import { fetchMoviesByQuery } from '@/api';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Loader, ErrorMessage } from '@/shared';
+import { SearchInput, MovieList } from '@/features';
+import { PageTitle, Loader, ErrorMessage } from '@/shared';
+import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
+import { searchMovies, getTopRatedMovies } from '@/api';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
+
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
+
+  const [totalPages, setTotalPages] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchQuery = searchParams.get('query') ?? '';
 
-  const updateQueryString = newQuery => {
-    if (newQuery.trim() === '') {
+  const handleSearch = value => {
+    const query = value.trim();
+
+    setMovies([]);
+    setTotalPages(null);
+    setCurrentPage(1);
+
+    if (!query) {
       setSearchParams({});
       return;
     }
-    setSearchParams({ query: newQuery.trim() });
+
+    setSearchParams({ query });
   };
 
-  useEffect(() => {
-    if (!searchQuery.trim()) {
-      setMovies([]);
-      return;
-    }
-
-    const fetchMovies = async query => {
+  const loadTopRatedMovies = useCallback(async page => {
+    try {
       setLoading(true);
-      setError(null);
-      try {
-        const data = await fetchMoviesByQuery(query);
-        console.log('🚀 ~ fetchMovies ~ data:', data);
-        setMovies(data.results);
-      } catch (e) {
-        console.log(`Request failed: ${e}`);
-      } finally {
-        setLoading(false);
-      }
-    };
+      setError('');
+      const data = await getTopRatedMovies(page);
+      setMovies(prevMovies => [
+        ...prevMovies,
+        ...data.results.filter(
+          newMovie => !prevMovies.some(movie => movie.id === newMovie.id)
+        ),
+      ]);
 
-    fetchMovies(searchQuery);
-  }, [searchQuery]);
+      setTotalPages(data.total_pages);
+    } catch {
+      setError('Failed to load top rated movies');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const loadMoviesBySearch = useCallback(async (query, page) => {
+    try {
+      setLoading(true);
+      setError('');
+
+      const data = await searchMovies(query, page);
+      console.log('🚀 ~ MoviesPage ~ page:', page);
+
+      setMovies(prevMovies => {
+        if (page === 1) {
+          return data.results; // новый поиск полностью заменяет список
+        }
+        return [
+          ...prevMovies,
+          ...data.results.filter(
+            newMovie => !prevMovies.some(movie => movie.id === newMovie.id)
+          ),
+        ];
+      });
+
+      setTotalPages(data.total_pages);
+    } catch {
+      setError('Failed to search movies');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const { currentPage, setCurrentPage, targetRef } = useInfiniteScroll(
+    loading,
+    totalPages
+  );
+
+  useEffect(() => {
+    setMovies([]);
+    setTotalPages(null);
+    setCurrentPage(1);
+  }, [searchQuery, setCurrentPage]);
+
+  useEffect(() => {
+    if (searchQuery) {
+      loadMoviesBySearch(searchQuery, currentPage);
+    } else {
+      loadTopRatedMovies(currentPage);
+    }
+  }, [currentPage, loadMoviesBySearch, loadTopRatedMovies, searchQuery]);
 
   return (
     <>
@@ -51,22 +104,32 @@ const MoviesPage = () => {
       {error && (
         <ErrorMessage
           message={error}
-          onRetry={() => updateQueryString(searchQuery)}
+          onRetry={() =>
+            searchQuery
+              ? loadMoviesBySearch(searchQuery, currentPage)
+              : loadTopRatedMovies(currentPage)
+          }
         />
       )}
 
       <div className="hero">
-        <h2 className="section-title">MoviesPage </h2>
+        <PageTitle>
+          {searchQuery ? 'Search Results' : 'Top Rated Movies'}
+        </PageTitle>
 
         <SearchInput
-          updateQueryString={updateQueryString}
-          placeholder={'Search movies ...'}
+          updateQueryString={handleSearch}
+          placeholder="Search movies ..."
         />
       </div>
       <section className="movies-section">
-        {movies && <MovieList moviesArr={movies} />}
-
-        <Pagination />
+        <MovieList moviesArr={movies} />
+        <div ref={targetRef} />
+        {totalPages !== null && currentPage >= totalPages && (
+          <div className="end-message">
+            <span>No more movies to load.</span>
+          </div>
+        )}
       </section>
     </>
   );

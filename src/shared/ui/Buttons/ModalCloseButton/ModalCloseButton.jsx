@@ -2,8 +2,6 @@ import { CloseBtn } from './ModalCloseButton.styled';
 import { IoClose } from 'react-icons/io5';
 
 const ModalCloseButton = ({ closeModal }) => {
-  console.log(closeModal);
-
   return (
     <CloseBtn
       className="modal__close"

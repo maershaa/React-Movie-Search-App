@@ -1,44 +1,45 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '@/api';
-import { Loader } from '@/shared';
+import { Loader, ErrorMessage } from '@/shared';
 import { MovieInfo, DetailsTabs } from '@/features';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  // const [isError, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const { id } = useParams();
 
-  useEffect(() => {
-    const loadMovie = async () => {
-      try {
-        setIsLoading(true);
-        const data = await getMovieDetails(id);
-        console.log('🚀 ~ loadMovie ~ data:', data);
-        setMovie(data);
-      } catch (err) {
-        console.error(err);
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const loadMovieDetails = async movieId => {
+    try {
+      setLoading(true);
+      setError('');
+      setMovie(null);
+      const data = await getMovieDetails(movieId);
+      setMovie(data);
+    } catch {
+      setError('Failed to load movie details');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    loadMovie();
+  useEffect(() => {
+    if (!id) return;
+
+    loadMovieDetails(id);
   }, [id]);
 
-  if (!movie) return null;
-
   return (
-    <>
-      <div className="movie-details">
-        {isLoading && <Loader />}
+    <div className="movie-details">
+      {loading && <Loader />}
+      {error && (
+        <ErrorMessage message={error} onRetry={() => loadMovieDetails(id)} />
+      )}
 
-        <MovieInfo movie={movie} />
-        <DetailsTabs />
-      </div>
-    </>
+      <MovieInfo movie={movie} />
+      <DetailsTabs />
+    </div>
   );
 };
 export default MovieDetailsPage;

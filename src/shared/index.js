@@ -4,6 +4,7 @@ export {
   ModalCloseButton,
   BaseModal,
   Avatar,
+  PageTitle,
 } from './ui';
 export {
   Header,

@@ -34,6 +34,14 @@ const Header = () => {
               )}
             </NavLink>
           </li>
+
+          <li className="nav-item">
+            <NavLink to={'/series'}>
+              {({ isActive }) => (
+                <span className={isActive ? 'active' : ''}>Series</span>
+              )}
+            </NavLink>
+          </li>
         </ul>
       </nav>
 

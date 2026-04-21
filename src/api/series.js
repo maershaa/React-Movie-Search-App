@@ -8,17 +8,19 @@ const options = {
   },
 };
 
-const Oooooo = id => {
-  const response = fetch(
-    `${BASE_URL}/find/${id}?api_key=${API_KEY}&external_source=imdb_id&language=en-US`,
+// https://api.themoviedb.org/3/tv/popular
+const getPopularSeries = async () => {
+  const response = await fetch(
+    `${BASE_URL}/tv/popular?api_key=${API_KEY}`,
     options
   );
 
   if (!response.ok) {
+    console.error('Failed to fetch popular series');
     throw new Error(response.statusText);
   }
-  console.log('response.json()', response.json());
+
   return response.json();
 };
 
-export { Oooooo };
+export { getPopularSeries };

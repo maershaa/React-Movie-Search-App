@@ -1,10 +1,11 @@
-import { MovieRating } from '@/features';
+import { MovieRating, MovieReleaseDate } from '@/features';
 import { MovieItem } from './MovieCard.styled';
 import { No_Poster } from '@/assets/images';
 import { BASE_IMG_URL } from '@/api/config';
 
 const MovieCard = ({ movie, openModal }) => {
-  const { title, poster_path, vote_average, release_date } = movie;
+  const { title, poster_path, vote_average, release_date, first_air_date } =
+    movie;
 
   return (
     <MovieItem className="movie-card" onClick={() => openModal(movie)}>
@@ -25,7 +26,9 @@ const MovieCard = ({ movie, openModal }) => {
         <div className="movie-card__meta">
           <MovieRating rating={vote_average} />
 
-          <p className="movie-card__year">{release_date.substring(0, 4)}</p>
+          <MovieReleaseDate
+            date={release_date ? release_date : first_air_date}
+          />
         </div>
       </div>
     </MovieItem>

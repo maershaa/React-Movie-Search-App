@@ -1,5 +1,9 @@
-export { getTrendingMovies } from './trending';
-export { fetchMoviesByQuery } from './movies';
-export { Oooooo } from './findMovie';
-export { fetchGenres } from './genres';
-export { getMovieDetails, getMovieReviews } from './movieDetails';
+export {
+  getTrendingMovies,
+  getMovieDetails,
+  getTopRatedMovies,
+  searchMovies,
+  getMovieReviews,
+} from './movies';
+export { getGenres } from './genres';
+export { getPopularSeries } from './series';
