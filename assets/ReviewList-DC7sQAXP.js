@@ -1,0 +1,1 @@
+import{t as e}from"./ReviewList-Cg8pmPYf.js";export{e as default};
