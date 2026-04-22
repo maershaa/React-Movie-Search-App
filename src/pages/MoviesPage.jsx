@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SearchInput, MovieList, MoviePreviewModal } from '@/features';
+import { SearchInput, MediaList, MoviePreviewModal } from '@/features';
 import {
   PageTitle,
   Loader,
@@ -130,7 +130,7 @@ const MoviesPage = () => {
           />
         )}
 
-        <MovieList moviesArr={movies} openModal={openModal} />
+        <MediaList mediaArray={movies} openModal={openModal} />
 
         <div ref={targetRef} />
 
