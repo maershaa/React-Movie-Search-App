@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-const MovieListContainer = styled.ul`
+const MediaListContainer = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -7,4 +7,4 @@ const MovieListContainer = styled.ul`
 
   gap: 20px;
 `;
-export { MovieListContainer };
+export { MediaListContainer };

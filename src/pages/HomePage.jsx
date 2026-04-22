@@ -8,7 +8,7 @@ import {
   EndMessage,
 } from '@/shared';
 import { useInfiniteScroll, useMovieModal } from '@/shared/hooks';
-import { MovieList, MoviePreviewModal } from '@/features';
+import { MediaList, MoviePreviewModal } from '@/features';
 import { getTrendingMovies } from '@/api';
 
 const HomePage = () => {
@@ -58,7 +58,7 @@ const HomePage = () => {
             onRetry={() => loadTrendingMovies(currentPage)}
           />
         )}
-        <MovieList moviesArr={trendingMovies} openModal={openModal} />
+        <MediaList mediaArray={trendingMovies} openModal={openModal} />
         {/* {loading && <Loader />} //loader для бесконечной прокрутки, чтобы */}
         {/* показывать его внизу списка, а не вверху */}
         <div ref={targetRef}></div>

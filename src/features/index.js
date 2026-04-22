@@ -1,10 +1,6 @@
-export {
-  MovieList,
-  MovieCard,
-  SearchInput,
-  MoviePreviewModal,
-  MovieReviewModal,
-} from './movie';
+export { MediaList, MediaCard } from './media';
+
+export { SearchInput, MoviePreviewModal, MovieReviewModal } from './movie';
 
 export {
   MovieCountries,
@@ -22,3 +18,5 @@ export {
 export { ReviewList, ReviewListItem, ReviewsCount } from './reviews';
 
 export { CastList } from './cast';
+
+export { SeriesCard } from './series/';

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getPopularSeries } from '@/api';
-import { MovieList, MoviePreviewModal } from '@/features';
+import { MediaList, MoviePreviewModal } from '@/features';
 import {
   Loader,
   ErrorMessage,
@@ -56,7 +56,7 @@ const SeriesPage = () => {
       </div>
 
       <section className="movies-section">
-        <MovieList moviesArr={series} openModal={openModal} />
+        <MediaList mediaArray={series} openModal={openModal} />
 
         <div ref={targetRef}></div>
         {totalPages !== null && currentPage >= totalPages && (
