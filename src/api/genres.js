@@ -1,20 +1,9 @@
+import { API_KEY, BASE_URL } from './config.js';
+
 // https://api.themoviedb.org/3/genre/movie/list
-
-import { AUTH_TOKEN, API_KEY, BASE_URL } from './config.js';
-
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: AUTH_TOKEN,
-  },
-};
-
 const getMoviesGenres = async () => {
-  //это. жанры фильмов. есть еще сериалов
   const response = await fetch(
-    `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`,
-    options
+    `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`
   );
 
   if (!response.ok) {
@@ -25,10 +14,15 @@ const getMoviesGenres = async () => {
   return response.json();
 };
 
-export { getMoviesGenres };
+// https://api.themoviedb.org/3/genre/tv/list
+const getSeriesGenres = async () => {
+  const response = await fetch(`${BASE_URL}/genre/tv/list?api_key=${API_KEY}`);
 
-// GENRES
-// Movie List
-// get
-// TV List
-// get
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return response.json();
+};
+
+export { getMoviesGenres, getSeriesGenres };

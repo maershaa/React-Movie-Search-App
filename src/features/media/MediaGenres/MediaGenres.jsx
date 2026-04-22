@@ -1,6 +1,6 @@
-import { GenresList } from './MovieGenres.styled';
+import { GenresList } from './MediaGenres.styled';
 
-const MovieGenres = ({ genres }) => {
+const MediaGenres = ({ genres }) => {
   return (
     <GenresList>
       {genres.map(genre => (
@@ -12,4 +12,4 @@ const MovieGenres = ({ genres }) => {
   );
 };
 
-export { MovieGenres };
+export { MediaGenres };

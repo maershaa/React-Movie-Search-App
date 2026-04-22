@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getPopularSeries } from '@/api';
-import { MediaList, MoviePreviewModal } from '@/features';
+import { MediaList, SeriesPreviewModal } from '@/features';
 import {
   Loader,
   ErrorMessage,
@@ -66,7 +66,10 @@ const SeriesPage = () => {
 
       {isModalOpen && (
         <BaseModal closeModal={closeModal}>
-          <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />
+          <SeriesPreviewModal
+            seriesItem={selectedMovie}
+            closeModal={closeModal}
+          />
         </BaseModal>
       )}
     </>

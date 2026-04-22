@@ -1,5 +1,5 @@
 import { MovieInfoSection, MovieDetailsContent } from './MovieInfo.styled';
-import { MovieMeta, MovieStats, MovieGenres } from '@/features';
+import { MovieMeta, MovieStats, MediaGenres } from '@/features';
 
 import { Container, BackButtonComponent } from '@/shared';
 
@@ -49,7 +49,7 @@ const MovieInfo = ({ movie }) => {
                 release_date={release_date}
               />
               <p className="movie__overview">{overview}</p>
-              <MovieGenres genres={genres} />
+              <MediaGenres genres={genres} />
 
               <MovieMeta
                 runtime={runtime}

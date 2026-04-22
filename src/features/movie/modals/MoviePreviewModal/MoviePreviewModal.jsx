@@ -1,9 +1,9 @@
-import { Container } from './MoviePreviewModal.styled';
 import { Link } from 'react-router-dom';
-import { BASE_IMG_URL } from '@/api/config';
+import { Container } from './MoviePreviewModal.styled';
 import { getMoviesGenres } from '@/api';
-import { MovieGenres } from '@/features';
+import { MediaGenres } from '@/features';
 import { ModalCloseButton } from '@/shared';
+import { BASE_IMG_URL } from '@/api/config';
 
 import { useEffect, useMemo, useState } from 'react';
 const MoviePreviewModal = ({ movie, closeModal }) => {
@@ -20,7 +20,7 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
     adult,
     release_date,
     genre_ids,
-    media_type,
+    media_type = 'movie',
     overview,
     backdrop_path,
   } = movie;
@@ -52,7 +52,7 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
             {adult && <span className="modal__age">18+</span>}
             <span className="modal__mediaType">{media_type}</span>
 
-            <MovieGenres genres={genreNames} />
+            <MediaGenres genres={genreNames} />
           </div>
 
           <p className="modal__overview">{overview}</p>
