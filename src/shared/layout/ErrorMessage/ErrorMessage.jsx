@@ -1,15 +1,29 @@
-import { ErrorContainer } from './ErrorMessage.styled';
-const ErrorMessage = ({ message, onRetry }) => {
+import {
+  ErrorContainer,
+  IconWrapper,
+  MessageText,
+  Divider,
+  RetryButton,
+  Title,
+} from './ErrorMessage.styled';
+import { BackButtonComponent } from '@/shared';
+import { FaClapperboard } from 'react-icons/fa6';
+
+const ErrorMessage = ({ message = 'Please try again later', onRetry }) => {
   return (
     <ErrorContainer>
-      <h3>Something went wrong</h3>
-      <p>{message || 'Please try again later'}</p>
-
+      <IconWrapper>
+        <FaClapperboard size={32} />
+      </IconWrapper>
+      <Title>Something went wrong</Title>
+      <MessageText>{message}</MessageText>
       {onRetry && (
-        <button className="retry-button" onClick={onRetry}>
+        <RetryButton type="button" onClick={onRetry}>
           Try again
-        </button>
+        </RetryButton>
       )}
+      <BackButtonComponent />
+      <Divider />
     </ErrorContainer>
   );
 };

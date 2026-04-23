@@ -9,19 +9,23 @@ const MovieMetaWrapper = styled.div`
 
   margin: 16px 0;
 
-  .movie-details__label {
+  .details__label {
     color: var(--primary-color);
     font-weight: 700;
     font-size: 1rem;
   }
 
-  .movie-details__value {
+  .details__value {
     font-size: 1rem;
   }
 
   .tagline {
     font-style: italic;
     font-size: 1rem;
+
+    /* левая граница для цитаты */
+    border-left: 3px solid var(--accent-color);
+    padding-left: 15px;
   }
 `;
 export { MovieMetaWrapper };

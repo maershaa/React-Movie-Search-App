@@ -1,14 +1,14 @@
 // import { useParams } from 'react-router-dom';
 // import { useEffect, useState } from 'react';
 // import { getMovieReviews } from '@/api';
-// import { No_Avatar } from '@/assets/images';
-// import { BASE_IMG_URL } from '@/api/config';
+// import { getAvatar } from '@/shared';
 
 const CastList = () => {
   // const { id } = useParams();
   // const [reviews, setReviews] = useState([]);
 
-  const avatar = '';
+  // const avatar = getAvatar(avatar_path, 250);
+
   //   {
   //   "id": 550,
   //   "page": 1,
@@ -38,12 +38,14 @@ const CastList = () => {
       <ul className="cast__list">
         <li className="cast__item">
           <div className="cast__avatar-wrapper">
-            <img
-              src={avatar}
+            {/* <img
+              src={
+                avatar
+              }
               alt="jgb"
               className="cast__avatar"
               loading="lazy"
-            />
+            /> */}
           </div>
           <div className="cast__info">
             <p className="cast__actor-name">Cillian Murphy</p>

@@ -1,5 +1,4 @@
-import { BASE_IMG_URL } from '@/api/config';
-import { BaseModal, RatingStars, Avatar } from '@/shared';
+import { BaseModal, RatingStars, Avatar, getAvatar } from '@/shared';
 import { MovieReviewModal } from '@/features';
 
 import { useState } from 'react';
@@ -51,7 +50,7 @@ const ReviewListItem = ({ review }) => {
     <ReviewCard onClick={() => openModal(review)}>
       <ReviewHeader>
         <Avatar
-          src={avatar_path ? `${BASE_IMG_URL}w185${avatar_path}` : null}
+          src={getAvatar(avatar_path, 185)}
           name={username}
           variant="circle"
         />

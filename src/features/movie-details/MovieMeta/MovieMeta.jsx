@@ -1,4 +1,4 @@
-import { MovieRuntime, MovieRevenue, MovieCountries } from '@/features';
+import { MovieRuntime, MovieRevenue, MediaCountries } from '@/features';
 import { MovieMetaWrapper } from './MovieMeta.styled';
 
 const MovieMeta = ({ runtime, revenue, production_countries, tagline }) => {
@@ -6,7 +6,7 @@ const MovieMeta = ({ runtime, revenue, production_countries, tagline }) => {
     <MovieMetaWrapper>
       <MovieRuntime runtime={runtime} />
       <MovieRevenue revenue={revenue} />
-      <MovieCountries countries={production_countries} />
+      <MediaCountries countries={production_countries} />
       <p className="tagline">{tagline}</p>
     </MovieMetaWrapper>
   );

@@ -10,7 +10,8 @@ const RatingBadge = styled.div`
   }
 
   span {
-    color: var(--text-color);
+    color: var(--white);
+
     font-weight: 700;
     font-size: 1.2rem;
   }

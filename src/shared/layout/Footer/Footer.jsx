@@ -1,5 +1,7 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { SiThemoviedatabase } from 'react-icons/si';
+
 function Footer() {
   return (
     <footer className="footer">
@@ -41,6 +43,7 @@ function Footer() {
           <p className="footer__copyright">
             © 2026 MoviePulse. Created for portfolio. Data provided by TMDB.
           </p>
+          <SiThemoviedatabase />
         </div>
       </div>
     </footer>

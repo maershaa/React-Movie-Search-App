@@ -1,4 +1,4 @@
-import { BASE_IMG_URL } from '@/api/config';
+import { getAvatar } from '@/shared';
 
 import { Avatar, ModalCloseButton, RatingStars } from '@/shared';
 // import { useState } from 'react';
@@ -15,16 +15,14 @@ const MovieReviewModal = ({ review, reviewDateText, closeModal }) => {
     content,
     created_at,
   } = review;
+  const avatar = getAvatar(avatar_path, 185);
+
   return (
     <ReviewCard>
       <ModalCloseButton closeModal={closeModal} />
 
       <ReviewHeader>
-        <Avatar
-          src={avatar_path ? `${BASE_IMG_URL}w185${avatar_path}` : null}
-          name={username}
-          variant="circle"
-        />
+        <Avatar src={avatar} name={username} variant="circle" />
         <UserInfo>
           <p className="review__user-name">@{username}</p>
           <p className="review__date">{reviewDateText}</p>

@@ -1,7 +1,7 @@
 import { MovieRating, MovieReleaseDate } from '@/features';
 import { MovieItem } from './MediaCard.styled';
 import { No_Poster } from '@/assets/images';
-import { BASE_IMG_URL } from '@/api/config';
+import { getImage } from '@/shared';
 
 const MediaCard = ({ movie, openModal }) => {
   const {
@@ -13,11 +13,13 @@ const MediaCard = ({ movie, openModal }) => {
     first_air_date,
   } = movie;
 
+  const poster = getImage(poster_path, 500);
+
   return (
     <MovieItem className="movie-card" onClick={() => openModal(movie)}>
       <div className="movie-card__poster-wrapper">
         <img
-          src={poster_path ? `${BASE_IMG_URL}w500${poster_path}` : No_Poster}
+          src={poster}
           alt={title || original_name}
           className="movie-card__poster"
           loading="lazy"

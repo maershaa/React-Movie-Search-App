@@ -1,5 +1,4 @@
 export { ReviewListItem } from '../reviews/ReviewListItem/ReviewListItem.jsx';
-export { MovieCountries } from './MovieCountries/MovieCountries.jsx';
 export { MovieMeta } from './MovieMeta/MovieMeta.jsx';
 export { MovieRating } from './MovieRating/MovieRating.jsx';
 export { MovieReleaseDate } from './MovieReleaseDate/MovieReleaseDate.jsx';

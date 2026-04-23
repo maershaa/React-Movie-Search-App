@@ -1,9 +1,8 @@
-export { MediaList, MediaCard, MediaGenres } from './media';
+export { MediaList, MediaCard, MediaGenres, MediaCountries } from './media';
 
 export { SearchInput, MoviePreviewModal, MovieReviewModal } from './movie';
 
 export {
-  MovieCountries,
   MovieMeta,
   MovieRating,
   MovieReleaseDate,
@@ -18,4 +17,4 @@ export { ReviewList, ReviewListItem, ReviewsCount } from './reviews';
 
 export { CastList } from './cast';
 
-export { SeriesPreviewModal } from './series';
+export { SeriesPreviewModal, SeriesInfo, SeriesMeta } from './series';

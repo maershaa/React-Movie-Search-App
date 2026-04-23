@@ -14,8 +14,13 @@ const MovieDetailsPage = () => {
     try {
       setLoading(true);
       setError('');
-      setMovie(null);
       const data = await getMovieDetails(movieId);
+
+      if (!data) {
+        setError('Movie not found');
+        return;
+      }
+
       setMovie(data);
     } catch {
       setError('Failed to load movie details');
@@ -30,13 +35,15 @@ const MovieDetailsPage = () => {
     loadMovieDetails(id);
   }, [id]);
 
-  return (
-    <div className="movie-details">
-      {loading && <Loader />}
-      {error && (
-        <ErrorMessage message={error} onRetry={() => loadMovieDetails(id)} />
-      )}
+  if (loading) return <Loader />;
+  if (error)
+    return (
+      <ErrorMessage message={error} onRetry={() => loadMovieDetails(id)} />
+    );
+  if (!movie) return null;
 
+  return (
+    <div>
       <MovieInfo movie={movie} />
       <DetailsTabs />
     </div>

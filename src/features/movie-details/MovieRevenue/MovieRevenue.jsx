@@ -5,8 +5,8 @@ const MovieRevenue = ({ revenue }) => {
 
   return (
     <p>
-      <span className="movie-details__label">Revenue: </span>
-      <span className="movie-details__value">${formatted}</span>
+      <span className="details__label">Revenue: </span>
+      <span className="details__value">${formatted}</span>
     </p>
   );
 };

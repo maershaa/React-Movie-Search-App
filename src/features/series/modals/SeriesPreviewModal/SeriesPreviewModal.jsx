@@ -3,8 +3,7 @@ import { useEffect, useState, useMemo } from 'react';
 import { Container } from './SeriesPreviewModal.styled';
 import { getSeriesGenres } from '@/api';
 import { MediaGenres } from '@/features';
-import { ModalCloseButton } from '@/shared';
-import { BASE_IMG_URL } from '@/api/config';
+import { ModalCloseButton, getImage } from '@/shared';
 
 const SeriesPreviewModal = ({ seriesItem, closeModal }) => {
   const [genres, setGenres] = useState([]);
@@ -34,7 +33,7 @@ const SeriesPreviewModal = ({ seriesItem, closeModal }) => {
     [genre_ids, genres]
   );
 
-  const bgPoster = `${BASE_IMG_URL}w1280/${backdrop_path}`;
+  const bgPoster = getImage(backdrop_path, 1280);
   return (
     <Container>
       <article>

@@ -22,4 +22,17 @@ const getPopularSeries = async (page = 1) => {
   return response.json();
 };
 
-export { getPopularSeries };
+// https://api.themoviedb.org/3/tv/{series_id}
+const getSeriesDetails = async series_id => {
+  const response = await fetch(
+    `${BASE_URL}/tv/${series_id}?api_key=${API_KEY}`,
+    options
+  );
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return response.json();
+};
+export { getPopularSeries, getSeriesDetails };

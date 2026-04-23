@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import { Container } from './MoviePreviewModal.styled';
 import { getMoviesGenres } from '@/api';
 import { MediaGenres } from '@/features';
-import { ModalCloseButton } from '@/shared';
-import { BASE_IMG_URL } from '@/api/config';
+import { ModalCloseButton, getBgImage } from '@/shared';
 
 import { useEffect, useMemo, useState } from 'react';
 const MoviePreviewModal = ({ movie, closeModal }) => {
@@ -31,7 +30,7 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
 
   if (!movie) return null;
 
-  const bgPoster = `${BASE_IMG_URL}w1280/${backdrop_path}`;
+  const bgPoster = getBgImage(backdrop_path, 1280);
 
   return (
     <Container>

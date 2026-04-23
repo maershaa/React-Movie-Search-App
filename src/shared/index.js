@@ -16,3 +16,5 @@ export {
   ErrorMessage,
   Container,
 } from './layout';
+
+export { getImage, getBgImage, getAvatar } from './helpers';
