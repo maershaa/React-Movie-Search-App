@@ -18,4 +18,4 @@ export {
   Container,
 } from './layout';
 
-export { getImage, getBgImage, getAvatar } from './helpers';
+export { getImage, getBgImage, getAvatar, throttle } from './helpers';

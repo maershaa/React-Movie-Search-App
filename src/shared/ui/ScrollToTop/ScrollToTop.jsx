@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-
 import { ScrollWrapper, ScrollToTopBtn } from './ScrollToTop.styled';
+import { throttle } from '@/shared';
 import { FaArrowUp } from 'react-icons/fa6';
-
+import { useMemo } from 'react';
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -14,17 +14,22 @@ const ScrollToTop = () => {
     });
   };
 
+  // Используем useMemo, чтобы throttle не пересоздавался при ререндерах
+  const throttledScroll = useMemo(
+    () =>
+      throttle(() => {
+        const SCROLL_THRESHOLD = 800; //Сколько пикселей пользователь должен проскролить, чтобы что-то произошло
+        const scrollPosition = window.scrollY; //Где сейчас находимся на странице
+        setIsVisible(scrollPosition > SCROLL_THRESHOLD);
+      }, 300),
+    []
+  );
+
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
+    window.addEventListener('scroll', throttledScroll);
 
-      setIsVisible(scrollPosition > 800);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => window.removeEventListener('scroll', throttledScroll);
+  }, [throttledScroll]);
 
   return (
     <ScrollWrapper>
