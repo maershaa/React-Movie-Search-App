@@ -54,7 +54,6 @@ const SeriesPage = () => {
       <div className="hero">
         <PageTitle>{'Popular Series'}</PageTitle>
       </div>
-
       <section className="movies-section">
         <MediaList mediaArray={series} openModal={openModal} />
 

@@ -1,6 +1,7 @@
 import { Header, Footer, Loader } from '@/shared';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import { ScrollToTop } from '@/shared';
 
 const SharedLayout = () => {
   return (
@@ -12,7 +13,8 @@ const SharedLayout = () => {
           <Outlet />
         </Suspense>
       </main>
-
+      <ScrollToTop />
+      {/* Button for quick return to top  */}
       <Footer />
     </>
   );

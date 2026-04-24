@@ -7,6 +7,7 @@ export {
   PageTitle,
   EndMessage,
   RatingStars,
+  ScrollToTop,
 } from './ui';
 export {
   Header,

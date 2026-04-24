@@ -3,7 +3,16 @@ import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 const NotFound = () => {
   return (
-    <div className="not-found">
+    <div
+      className="not-found"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '20px',
+      }}
+    >
       <div className="not-found__content">
         <HiOutlineExclamationCircle className="not-found__icon" />
 

@@ -49,7 +49,6 @@ const HomePage = () => {
   return (
     <MoviePageWrapper>
       <PageTitle>{'Trending Movies'} </PageTitle>
-
       <section className="movies-section">
         {loading && <Loader />}
         {error && (
@@ -66,7 +65,6 @@ const HomePage = () => {
           <EndMessage text={'No more movies to load'}></EndMessage>
         )}
       </section>
-
       {isModalOpen && (
         <BaseModal closeModal={closeModal}>
           <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />

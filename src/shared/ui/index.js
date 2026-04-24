@@ -5,3 +5,4 @@ export { Avatar } from './Avatar/Avatar.jsx';
 export { PageTitle } from './PageTitle/PageTitle.jsx';
 export { EndMessage } from './EndMessage/EndMessage.jsx';
 export { RatingStars } from './RatingStars/RatingStars.jsx';
+export { ScrollToTop } from './ScrollToTop/ScrollToTop.jsx';
