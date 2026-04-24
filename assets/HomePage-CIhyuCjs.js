@@ -1,4 +1,4 @@
-import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{d as n}from"./iconBase-55VGzWiC.js";import{c as r,d as i,o as a}from"./ReviewList-BjiALXNU.js";import{f as o,l as s,n as c,o as l,r as u,s as d}from"./index-DrDNFi3z.js";import{n as f,t as p}from"./hooks-DYf1kagL.js";var m=o.div`
+import{i as e,t}from"./jsx-runtime-D-oznMWL.js";import{d as n}from"./iconBase-55VGzWiC.js";import{c as r,d as i,o as a}from"./ReviewList-ghmwgpL-.js";import{f as o,l as s,n as c,o as l,r as u,s as d}from"./index-rN1ik1ij.js";import{n as f,t as p}from"./hooks-DYf1kagL.js";var m=o.div`
   .movies_page__hero {
     display: flex;
     align-items: center;
