@@ -1,19 +1,32 @@
-import { Outlet, Link } from 'react-router-dom';
-import { DetailsTabsWrapper } from './DetailsTabs.styled.jsx';
+import { Outlet, NavLink } from 'react-router-dom';
+import {
+  DetailsTabsWrapper,
+  DetailsTabsList,
+  DetailsTabsItem,
+} from './DetailsTabs.styled.jsx';
+
 const DetailsTabs = () => {
   return (
     <DetailsTabsWrapper>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
+      <DetailsTabsList>
+        <DetailsTabsItem>
+          <NavLink
+            to="cast"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
+            Cast
+          </NavLink>
+        </DetailsTabsItem>
 
-        <hr className="divider" />
-
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
+        <DetailsTabsItem>
+          <NavLink
+            to="reviews"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
+            Reviews
+          </NavLink>
+        </DetailsTabsItem>
+      </DetailsTabsList>
 
       <Outlet />
     </DetailsTabsWrapper>

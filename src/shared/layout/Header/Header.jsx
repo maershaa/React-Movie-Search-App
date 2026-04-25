@@ -6,11 +6,11 @@ import { ThemeContext } from '@/context';
 import { useContext } from 'react';
 const Header = () => {
   const context = useContext(ThemeContext); //Достаем данные из Context (theme, toggleTheme)
-  const { theme, toggleTheme } = context;
   // ❗ ручная защита от неправильного использования Context. если ты забыл обернуть приложение в <ThemeProvider>, то useContext(ThemeContext) вернёт null
   if (!context) {
     throw new Error('ThemeSwitcher must be used within ThemeProvider');
   }
+  const { theme, toggleTheme } = context;
 
   return (
     <HeaderWrapper>
