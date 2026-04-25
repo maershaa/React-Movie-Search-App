@@ -1,0 +1,1 @@
+import{t as e}from"./ReviewList-DbuKFPoL.js";export{e as default};
