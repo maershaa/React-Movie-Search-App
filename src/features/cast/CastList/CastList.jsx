@@ -1,59 +1,50 @@
-// import { useParams } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
-// import { getMovieReviews } from '@/api';
-// import { getAvatar } from '@/shared';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState, useCallback } from 'react';
+import { getMovieCast } from '@/api';
+import { Loader, ErrorMessage } from '@/shared';
+import { CastListWrapper } from './CastList.styled';
+import { CastListItem, NoCast } from '@/features';
 
 const CastList = () => {
-  // const { id } = useParams();
-  // const [reviews, setReviews] = useState([]);
+  const { id } = useParams();
+  const [cast, setCast] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // const avatar = getAvatar(avatar_path, 250);
+  const loadCast = useCallback(async movieId => {
+    try {
+      setLoading(true);
+      setError('');
+      const data = await getMovieCast(movieId);
+      setCast(data.cast);
+    } catch {
+      setError('Failed to load movie cast');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-  //   {
-  //   "id": 550,
-  //   "page": 1,
-  //   "results": [
-  //     {
-  //       "author": "Goddard",
-  //       "author_details": {
-  //         "name": "",
-  //         "username": "Goddard",
-  //         "avatar_path": "/https://secure.gravatar.com/avatar/f248ec34f953bc62cafcbdd81fddd6b6.jpg",
-  //         "rating": null
-  //       },
-  //       "content": "Pretty awesome movie.  It shows what one crazy person can convince other crazy people to do.  Everyone needs something to believe in.  I recommend Jesus Christ, but they want Tyler Durden.",
-  //       "created_at": "2018-06-09T17:51:53.359Z",
-  //       "id": "5b1c13b9c3a36848f2026384",
-  //       "updated_at": "2021-06-23T15:58:09.421Z",
-  //       "url": "https://www.themoviedb.org/review/5b1c13b9c3a36848f2026384"
-  //     },
-  //     {
+  useEffect(() => {
+    if (!id) return;
 
-  //   ],
-  //   "total_pages": 1,
-  //   "total_results": 8
-  // }
+    loadCast(id);
+  }, [id, loadCast]);
+
+  if (loading) return <Loader />;
+  if (error)
+    return <ErrorMessage message={error} onRetry={() => loadCast(id)} />;
+
+  if (cast.length === 0) {
+    return <NoCast />;
+  }
+
   return (
     <div className="cast__scroll-wrapper">
-      <ul className="cast__list">
-        <li className="cast__item">
-          <div className="cast__avatar-wrapper">
-            {/* <img
-              src={
-                avatar
-              }
-              alt="jgb"
-              className="cast__avatar"
-              loading="lazy"
-            /> */}
-          </div>
-          <div className="cast__info">
-            <p className="cast__actor-name">Cillian Murphy</p>
-            <p className="cast__character-name">J. Robert Oppenheimer</p>
-          </div>
-        </li>
-        {/* Другие актеры... */}
-      </ul>
+      <CastListWrapper>
+        {cast.map(actor => (
+          <CastListItem key={actor.cast_id} actor={actor}></CastListItem>
+        ))}
+      </CastListWrapper>
     </div>
   );
 };

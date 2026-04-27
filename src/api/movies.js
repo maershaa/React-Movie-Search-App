@@ -38,9 +38,10 @@ const getTopRatedMovies = async (page = 1) => {
   return response.json();
 };
 
-const getMovieDetails = async (movieId, page = 1) => {
+// https://api.themoviedb.org/3/movie/${movieId}?append_to_response=credits&api_key=${API_KEY} -объеденено с запросом на список актеров. я не использую!
+const getMovieDetails = async movieId => {
   const response = await fetch(
-    `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&page=${page}`,
+    `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`,
     options
   );
 
@@ -55,7 +56,7 @@ const getMovieDetails = async (movieId, page = 1) => {
 // https://api.themoviedb.org/3/search/movie
 const searchMovies = async (query, page = 1) => {
   const response = await fetch(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&primary_release_year=2025&include_adult=true&language=en-US`,
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&primary_release_year=2025&language=en-US`,
     options
   );
 
@@ -80,10 +81,21 @@ const getMovieReviews = async movieId => {
   return data;
 };
 
+const getMovieCast = async movieId => {
+  const response = await fetch(
+    `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
+  );
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  return response.json();
+};
 export {
   getTrendingMovies,
   getMovieDetails,
   getTopRatedMovies,
   searchMovies,
   getMovieReviews,
+  getMovieCast,
 };

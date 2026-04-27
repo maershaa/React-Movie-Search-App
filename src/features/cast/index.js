@@ -7,3 +7,6 @@ export { default as CastList } from './CastList/CastList.jsx';
 // { MovieReviewsPage: Component }
 //
 // Поэтому lazy не может понять, какой компонент рендерить.
+
+export { CastListItem } from './CastListItem/CastListItem.jsx';
+export { NoCast } from './NoCast/NoCast.jsx';

@@ -42,6 +42,8 @@ const MovieDetailsPage = () => {
     );
   if (!movie) return null;
 
+  // список актеров  cast={movie.credits.cast}
+
   return (
     <div>
       <MovieInfo movie={movie} />

@@ -15,6 +15,6 @@ export {
 
 export { ReviewList, ReviewListItem, ReviewsCount } from './reviews';
 
-export { CastList } from './cast';
+export { CastList, CastListItem, NoCast } from './cast';
 
 export { SeriesPreviewModal, SeriesInfo, SeriesMeta } from './series';
