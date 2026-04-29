@@ -1,10 +1,7 @@
 export { ReviewListItem } from '../reviews/ReviewListItem/ReviewListItem.jsx';
 export { MovieMeta } from './MovieMeta/MovieMeta.jsx';
-export { MovieRating } from './MovieRating/MovieRating.jsx';
 export { MovieReleaseDate } from './MovieReleaseDate/MovieReleaseDate.jsx';
 export { MovieRevenue } from './MovieRevenue/MovieRevenue.jsx';
 export { MovieRuntime } from './MovieRuntime/MovieRuntime.jsx';
-export { MovieStats } from './MovieStats/MovieStats.jsx';
 export { ReviewsCount } from '../reviews/ReviewsCount/ReviewsCount.jsx';
 export { MovieInfo } from './MovieInfo/MovieInfo.jsx';
-export { DetailsTabs } from './DetailsTabs/DetailsTabs.jsx';

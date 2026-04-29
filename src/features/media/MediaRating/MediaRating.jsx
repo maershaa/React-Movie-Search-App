@@ -1,7 +1,7 @@
-import { RatingBadge } from './MovieRating.styled';
+import { RatingBadge } from './MediaRating.styled';
 import { FaStar } from 'react-icons/fa';
 
-const MovieRating = ({ rating }) => {
+const MediaRating = ({ rating }) => {
   return (
     <RatingBadge>
       <FaStar className="star-icon" />
@@ -9,4 +9,4 @@ const MovieRating = ({ rating }) => {
     </RatingBadge>
   );
 };
-export { MovieRating };
+export { MediaRating };

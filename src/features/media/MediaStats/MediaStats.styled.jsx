@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const MovieStatsWrapper = styled.div`
+const MediaStatsWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -19,4 +19,4 @@ const Divider = styled.div`
   background: var(--accent-color);
 `;
 
-export { MovieStatsWrapper, Divider };
+export { MediaStatsWrapper, Divider };

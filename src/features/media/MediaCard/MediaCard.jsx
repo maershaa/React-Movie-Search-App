@@ -1,4 +1,4 @@
-import { MovieRating, MovieReleaseDate } from '@/features';
+import { MediaRating, MovieReleaseDate } from '@/features';
 import { MovieItem } from './MediaCard.styled';
 import { No_Poster } from '@/assets/images';
 import { getImage } from '@/shared';
@@ -32,7 +32,7 @@ const MediaCard = ({ movie, openModal }) => {
       <div className="movie-card__content">
         <h4 className="movie-card__title">{title || original_name}</h4>
         <div className="movie-card__meta">
-          <MovieRating rating={vote_average} />
+          <MediaRating rating={vote_average} />
 
           <MovieReleaseDate date={release_date || first_air_date} />
         </div>

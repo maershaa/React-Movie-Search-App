@@ -1,5 +1,5 @@
 import { MovieInfoSection, MovieDetailsContent } from './MovieInfo.styled';
-import { MovieMeta, MovieStats, MediaGenres } from '@/features';
+import { MovieMeta, MediaStats, MediaGenres } from '@/features';
 
 import { Container, BackButtonComponent } from '@/shared';
 
@@ -42,7 +42,7 @@ const MovieInfo = ({ movie }) => {
 
             <MovieDetailsContent>
               <h1 className="movie__title">{original_title}</h1>
-              <MovieStats
+              <MediaStats
                 vote_average={vote_average}
                 vote_count={vote_count}
                 release_date={release_date}

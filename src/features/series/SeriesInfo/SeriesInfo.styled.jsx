@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-const MovieInfoSection = styled.section``;
+const InfoSection = styled.section``;
 
-const MovieHero = styled.div`
+const Hero = styled.div`
   position: relative;
   min-height: 520px;
   display: flex;
@@ -32,7 +32,7 @@ const MovieHero = styled.div`
   }
 
   /* КОНТЕНТ */
-  .movie-content {
+  .media-content {
     position: relative;
     z-index: 2;
 
@@ -43,7 +43,7 @@ const MovieHero = styled.div`
   }
 
   /* ЛЕВАЯ ЧАСТЬ */
-  .movie-poster {
+  .media-poster {
     max-width: 450px;
     max-height: 350px;
     border-radius: var(--radius-sm);
@@ -53,7 +53,7 @@ const MovieHero = styled.div`
 `;
 
 /* ПРАВАЯ ЧАСТЬ */
-const MovieDetailsContent = styled.div`
+const DetailsContent = styled.div`
   max-width: 750px;
 
   text-align: left;
@@ -62,12 +62,12 @@ const MovieDetailsContent = styled.div`
   p {
     color: var(--white);
   }
-  .movie__title {
+  .media__title {
     margin-bottom: 20px;
     color: var(--white);
   }
 
-  .movie__overview {
+  .media__overview {
     color: var(--text-color);
     margin: 16px 0;
     opacity: 0.85;
@@ -75,4 +75,4 @@ const MovieDetailsContent = styled.div`
   }
 `;
 
-export { MovieInfoSection, MovieHero, MovieDetailsContent };
+export { InfoSection, Hero, DetailsContent };

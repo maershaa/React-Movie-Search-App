@@ -1,16 +1,21 @@
-export { MediaList, MediaCard, MediaGenres, MediaCountries } from './media';
+export {
+  MediaList,
+  MediaCard,
+  MediaGenres,
+  MediaCountries,
+  DetailsTabs,
+  MediaRating,
+  MediaStats,
+} from './media';
 
 export { SearchInput, MoviePreviewModal, MovieReviewModal } from './movie';
 
 export {
   MovieMeta,
-  MovieRating,
   MovieReleaseDate,
   MovieRevenue,
   MovieRuntime,
-  MovieStats,
   MovieInfo,
-  DetailsTabs,
 } from './movie-details';
 
 export { ReviewList, ReviewListItem, ReviewsCount, NoReviews } from './reviews';

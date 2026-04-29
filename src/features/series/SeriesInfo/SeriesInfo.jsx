@@ -1,9 +1,5 @@
-import {
-  MovieInfoSection,
-  MovieDetailsContent,
-  MovieHero,
-} from './SeriesInfo.styled';
-import { SeriesMeta, MovieStats, MediaGenres } from '@/features';
+import { InfoSection, DetailsContent, Hero } from './SeriesInfo.styled';
+import { SeriesMeta, MediaStats, MediaGenres } from '@/features';
 import { Container, BackButtonComponent, getImage, getBgImage } from '@/shared';
 
 const SeriesInfo = ({ seriesItem }) => {
@@ -26,28 +22,25 @@ const SeriesInfo = ({ seriesItem }) => {
   const poster = getBgImage(poster_path, 500);
 
   return (
-    <MovieInfoSection>
-      <MovieHero
-        className="movie-details__backdrop"
-        style={{ backgroundImage: `url(${bgPoster})` }}
-      >
+    <InfoSection>
+      <Hero style={{ backgroundImage: `url(${bgPoster})` }}>
         <Container>
-          <div className="movie-content">
+          <div className="media-content">
             <img
               src={poster}
               alt={name}
-              className="movie-poster"
+              className="media-poster"
               loading="lazy"
             />
 
-            <MovieDetailsContent>
-              <h1 className="movie__title">{name}</h1>
-              <MovieStats
+            <DetailsContent>
+              <h1 className="media__title">{name}</h1>
+              <MediaStats
                 vote_average={vote_average}
                 vote_count={vote_count}
                 release_date={first_air_date}
               />
-              <p className="movie__overview">{overview}</p>
+              <p className="media__overview">{overview}</p>
               <MediaGenres genres={genres} />
 
               <SeriesMeta
@@ -58,11 +51,11 @@ const SeriesInfo = ({ seriesItem }) => {
               />
 
               <BackButtonComponent />
-            </MovieDetailsContent>
+            </DetailsContent>
           </div>
         </Container>
-      </MovieHero>
-    </MovieInfoSection>
+      </Hero>
+    </InfoSection>
   );
 };
 
