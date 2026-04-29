@@ -21,7 +21,6 @@ const SeriesInfo = ({ seriesItem }) => {
     tagline,
     genres,
   } = seriesItem;
-  console.log('seriesItem в SeriesInfo:', seriesItem);
 
   const bgPoster = getImage(backdrop_path, 1280);
   const poster = getBgImage(poster_path, 500);

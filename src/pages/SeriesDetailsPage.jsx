@@ -10,8 +10,6 @@ const SeriesDetailsPage = () => {
   const [error, setError] = useState('');
   const { id } = useParams();
 
-  console.log('🚀 ~ SeriesDetailsPage ~ id:', id);
-
   const loadSeriesDetails = async seriesId => {
     try {
       setLoading(true);
@@ -24,7 +22,6 @@ const SeriesDetailsPage = () => {
       }
 
       setSeriesItem(data);
-      console.log('🚀 ~ SeriesDetailsPage ~ data:', data);
     } catch {
       setError('Failed to load series details');
     } finally {
@@ -34,7 +31,6 @@ const SeriesDetailsPage = () => {
 
   useEffect(() => {
     if (!id) return;
-    console.log('Делаем запрос в useEffect ');
     loadSeriesDetails(id);
   }, [id]);
 
@@ -47,8 +43,6 @@ const SeriesDetailsPage = () => {
 
   return (
     <div>
-      {console.log('seriesItem', seriesItem)}
-
       <SeriesInfo seriesItem={seriesItem} />
       <DetailsTabs />
     </div>

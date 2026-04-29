@@ -1,3 +1,5 @@
+// Нигде не используется
+
 import { FilterInputWrapper } from './FilterInput.styled';
 const FilterInput = ({ placeholder = '', value, onSearchChange }) => {
   return (
