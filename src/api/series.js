@@ -35,4 +35,29 @@ const getSeriesDetails = async series_id => {
 
   return response.json();
 };
-export { getPopularSeries, getSeriesDetails };
+
+// https://api.themoviedb.org/3/tv/{series_id}/reviews
+const getSeriesReviews = async seriesId => {
+  const response = await fetch(
+    `${BASE_URL}/tv/${seriesId}/reviews?api_key=${API_KEY}`
+  );
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return response.json();
+};
+
+// https://api.themoviedb.org/3/tv/{series_id}/credits
+const getSeriesCast = async seriesId => {
+  const response = await fetch(
+    `${BASE_URL}/tv/${seriesId}/credits?api_key=${API_KEY}`
+  );
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return response.json();
+};
+
+export { getPopularSeries, getSeriesDetails, getSeriesReviews, getSeriesCast };

@@ -13,7 +13,7 @@ export {
   DetailsTabs,
 } from './movie-details';
 
-export { ReviewList, ReviewListItem, ReviewsCount } from './reviews';
+export { ReviewList, ReviewListItem, ReviewsCount, NoReviews } from './reviews';
 
 export { CastList, CastListItem, NoCast } from './cast';
 

@@ -31,8 +31,10 @@ function App() {
         </Route>
 
         <Route path="/series" element={<SeriesPage />} />
-
-        <Route path="/series/:id" element={<SeriesDetailsPage />} />
+        <Route path="/series/:id" element={<SeriesDetailsPage />}>
+          <Route path="cast" element={<CastList />} />
+          <Route path="reviews" element={<ReviewList />} />
+        </Route>
       </Route>
 
       {/* 404 NotFound находится вне SharedLayout. Это грамотно, если ты хочешь, чтобы на странице 404 не было стандартной шапки и футера (чистый экран ошибки).*/}

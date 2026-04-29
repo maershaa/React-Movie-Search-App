@@ -1,36 +1,50 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getMovieReviews } from '@/api';
-import { ReviewListItem } from '@/features';
+import { useParams, useLocation } from 'react-router-dom';
+import { useEffect, useState, useCallback } from 'react';
+import { getMovieReviews, getSeriesReviews } from '@/api';
+import { ReviewListItem, NoReviews } from '@/features';
 import { Title, ReviewListWrapper } from './ReviewList.styled';
-import { NoReviews } from '@/features/reviews';
+import { ErrorMessage, ReviewItemSkeleton } from '@/shared';
 
 const ReviewList = () => {
   const { id } = useParams();
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  let location = useLocation();
+
+  const loadReviewList = useCallback(
+    async mediaId => {
+      try {
+        setLoading(true);
+        setError('');
+        if (location.pathname.includes('movies')) {
+          const response = await getMovieReviews(mediaId);
+          setReviews(response.results);
+        } else if (location.pathname.includes('series')) {
+          const response = await getSeriesReviews(mediaId);
+          setReviews(response.results);
+        }
+      } catch {
+        setError('Failed to load reviews');
+      } finally {
+        setLoading(false);
+      }
+    },
+    [location.pathname]
+  );
 
   useEffect(() => {
-    const loadCastList = async () => {
-      try {
-        const response = await getMovieReviews(id);
+    if (!id) return;
 
-        setReviews(response.results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    loadReviewList(id);
+  }, [id, loadReviewList]);
 
-    loadCastList();
-
-    // return () => {
-    // }
-  }, [id]);
-
-  // 1. Если данные еще грузятся — можно вернуть null или спиннер
-  // if (isLoading) return <div>Loading...</div>;
-
-  // 2. Если загрузка завершена и отзывов действительно нет
+  if (loading) return <ReviewItemSkeleton count={reviews.length} />;
+  if (error)
+    return <ErrorMessage message={error} onRetry={() => loadReviewList(id)} />;
   if (reviews.length === 0) {
+    // Если загрузка завершена и отзывов действительно нет
     return <NoReviews />;
   }
 

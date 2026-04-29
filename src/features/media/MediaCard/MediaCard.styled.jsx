@@ -32,7 +32,7 @@ const MovieItem = styled.li`
     max-width: 280px;
     max-height: 350px;
 
-    border-radius: 8px;
+    border-radius: var(--radius-xs);
   }
 
   .movie-card__content {

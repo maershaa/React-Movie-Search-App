@@ -7,4 +7,9 @@ export {
   getMovieCast,
 } from './movies';
 export { getMoviesGenres, getSeriesGenres } from './genres';
-export { getPopularSeries, getSeriesDetails } from './series';
+export {
+  getPopularSeries,
+  getSeriesDetails,
+  getSeriesReviews,
+  getSeriesCast,
+} from './series';

@@ -3,7 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import { SearchInput, MediaList, MoviePreviewModal } from '@/features';
 import {
   PageTitle,
-  Loader,
+  // Loader,
+  MediaCardSkeleton,
   ErrorMessage,
   BaseModal,
   EndMessage,
@@ -16,10 +17,18 @@ const MoviesPage = () => {
   const [totalPages, setTotalPages] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [loading, setLoading] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState('');
 
   const searchQuery = searchParams.get('query') ?? '';
+
+  const { currentPage, setCurrentPage, targetRef } = useInfiniteScroll(
+    loadingMore,
+    totalPages
+  );
+
+  const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
 
   const handleSearch = value => {
     const query = value.trim();
@@ -38,8 +47,11 @@ const MoviesPage = () => {
 
   const loadTopRatedMovies = useCallback(async page => {
     try {
-      setLoading(true);
+      if (page === 1) setInitialLoading(true);
+      else setLoadingMore(true);
+
       setError('');
+
       const data = await getTopRatedMovies(page);
       setMovies(prevMovies => [
         ...prevMovies,
@@ -52,17 +64,19 @@ const MoviesPage = () => {
     } catch {
       setError('Failed to load top rated movies');
     } finally {
-      setLoading(false);
+      setInitialLoading(false);
+      setLoadingMore(false);
     }
   }, []);
 
   const loadMoviesBySearch = useCallback(async (query, page) => {
     try {
-      setLoading(true);
+      if (page === 1) setInitialLoading(true);
+      else setLoadingMore(true);
+
       setError('');
 
       const data = await searchMovies(query, page);
-      console.log('🚀 ~ MoviesPage ~ page:', page);
 
       setMovies(prevMovies => {
         if (page === 1) {
@@ -80,21 +94,16 @@ const MoviesPage = () => {
     } catch {
       setError('Failed to search movies');
     } finally {
-      setLoading(false);
+      setInitialLoading(false);
+      setLoadingMore(false);
     }
   }, []);
-
-  const { currentPage, setCurrentPage, targetRef } = useInfiniteScroll(
-    loading,
-    totalPages
-  );
-
-  const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
 
   useEffect(() => {
     setMovies([]);
     setTotalPages(null);
     setCurrentPage(1);
+    setInitialLoading(false);
   }, [searchQuery, setCurrentPage]);
 
   useEffect(() => {
@@ -118,7 +127,18 @@ const MoviesPage = () => {
         />
       </div>
       <section className="movies-section">
-        {loading && <Loader />}
+        {/* ---------------- INITIAL LOADING ---------------- */}
+        {movies.length === 0 && initialLoading ? (
+          <MediaCardSkeleton count={24} />
+        ) : (
+          <>
+            <MediaList mediaArray={movies} openModal={openModal} />
+
+            {loadingMore && <MediaCardSkeleton count={4} />}
+          </>
+        )}
+
+        {/* ---------------- ERROR ---------------- */}
         {error && (
           <ErrorMessage
             message={error}
@@ -130,14 +150,15 @@ const MoviesPage = () => {
           />
         )}
 
-        <MediaList mediaArray={movies} openModal={openModal} />
-
+        {/* ---------------- INFINITE SCROLL ---------------- */}
         <div ref={targetRef} />
 
+        {/* ---------------- END MESSAGE ---------------- */}
         {totalPages !== null && currentPage >= totalPages && (
           <EndMessage text={'No more movies to load'}></EndMessage>
         )}
 
+        {/* ---------------- MODAL ---------------- */}
         {isModalOpen && (
           <BaseModal closeModal={closeModal}>
             <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />

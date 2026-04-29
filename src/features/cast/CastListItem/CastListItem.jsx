@@ -1,6 +1,7 @@
 import { getAvatar } from '@/shared';
-import { CastItem, CastImage, CastInfo } from './CastListItem.styled';
+import { CastItem, CastInfo } from './CastListItem.styled';
 import { Avatar } from '@/shared';
+
 const CastListItem = ({ actor }) => {
   const { original_name, character, profile_path } = actor;
   const avatar = getAvatar(profile_path, 185);

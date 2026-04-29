@@ -2,7 +2,7 @@ import { MoviePageWrapper } from './MoviesPage.styled';
 import { useEffect, useState } from 'react';
 import {
   BaseModal,
-  Loader,
+  MediaCardSkeleton,
   ErrorMessage,
   PageTitle,
   EndMessage,
@@ -15,12 +15,18 @@ const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(null);
 
-  const [loading, setLoading] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState('');
+
+  const { currentPage, targetRef } = useInfiniteScroll(loadingMore, totalPages);
+  const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
 
   const loadTrendingMovies = async page => {
     try {
-      setLoading(true);
+      if (page === 1) setInitialLoading(true);
+      else setLoadingMore(true);
+
       setError('');
       const data = await getTrendingMovies(page);
 
@@ -35,12 +41,10 @@ const HomePage = () => {
     } catch {
       setError('Failed to load trending movies');
     } finally {
-      setLoading(false);
+      setInitialLoading(false);
+      setLoadingMore(false);
     }
   };
-
-  const { currentPage, targetRef } = useInfiniteScroll(loading, totalPages);
-  const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
 
   useEffect(() => {
     loadTrendingMovies(currentPage);
@@ -50,21 +54,35 @@ const HomePage = () => {
     <MoviePageWrapper>
       <PageTitle>{'Trending Movies'} </PageTitle>
       <section className="movies-section">
-        {loading && <Loader />}
+        {/* ---------------- INITIAL LOADING ---------------- */}
+        {trendingMovies.length === 0 && initialLoading ? (
+          <MediaCardSkeleton count={24} />
+        ) : (
+          <>
+            <MediaList mediaArray={trendingMovies} openModal={openModal} />
+
+            {loadingMore && <MediaCardSkeleton count={6} />}
+          </>
+        )}
+
+        {/* ---------------- ERROR ---------------- */}
         {error && (
           <ErrorMessage
             message={error}
             onRetry={() => loadTrendingMovies(currentPage)}
           />
         )}
-        <MediaList mediaArray={trendingMovies} openModal={openModal} />
-        {/* {loading && <Loader />} //loader для бесконечной прокрутки, чтобы */}
-        {/* показывать его внизу списка, а не вверху */}
+
+        {/* ---------------- INFINITE SCROLL ---------------- */}
         <div ref={targetRef}></div>
+
+        {/* ---------------- END MESSAGE ---------------- */}
         {totalPages !== null && currentPage >= totalPages && (
           <EndMessage text={'No more movies to load'}></EndMessage>
         )}
       </section>
+
+      {/* ---------------- MODAL ---------------- */}
       {isModalOpen && (
         <BaseModal closeModal={closeModal}>
           <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />

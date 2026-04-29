@@ -31,8 +31,6 @@ const CastItem = styled.li`
   }
 `;
 
-const CastImage = styled.img``;
-
 const CastInfo = styled.div`
   .cast__actor-name {
     font-weight: 700;
@@ -43,10 +41,13 @@ const CastInfo = styled.div`
     font-weight: 500;
     color: var(--text-color);
 
-    /* overflow: hidden;
+    width: 100%;
+    min-width: 0;
+    max-width: 160px;
+    overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; */
+    white-space: nowrap;
   }
 `;
 
-export { CastItem, CastImage, CastInfo };
+export { CastItem, CastInfo };

@@ -6,3 +6,8 @@ export { PageTitle } from './PageTitle/PageTitle.jsx';
 export { EndMessage } from './EndMessage/EndMessage.jsx';
 export { RatingStars } from './RatingStars/RatingStars.jsx';
 export { ScrollToTop } from './ScrollToTop/ScrollToTop.jsx';
+export {
+  CastItemSkeleton,
+  ReviewItemSkeleton,
+  MediaCardSkeleton,
+} from './Skeleton';
