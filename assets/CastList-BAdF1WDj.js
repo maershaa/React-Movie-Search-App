@@ -1,9 +1,9 @@
-import{a as e,g as t,h as n,i as r,l as i,n as a,o,p as s,t as c,u as l}from"./iconBase-02BbQUN6.js";import{a as u,c as d,d as f,f as p,h as m,m as h,n as g,o as _,p as v,s as y,t as b}from"./index-CPTipHlD.js";var x=`/React-Movie-Search-App/assets/no-poster-DPZEAbfg.png`,ee=`/React-Movie-Search-App/assets/no-backdrop-E_I-G8xw.png`,S=`eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjNhNWQ4MjcyNjE3ZjZmNzAyMWJhNGM0OTg0NjRmZiIsIm5iZiI6MTY5OTM1ODgxNi4xMjcsInN1YiI6IjY1NGEyODYwNTMyYWNiMDExYjEwYzI5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JaMiiyblV0gutYXA0_BostrvfuMitxlET6G1ohNUjp4`,C=`https://api.themoviedb.org/3`,w=`https://image.tmdb.org/t/p/`,T=`c23a5d8272617f6f7021ba4c498464ff`,E=(e,t=500)=>e?`${w}w${t}${e}`:x,D=(e,t=1280)=>e?`${w}w${t}${e}`:ee,O=(e,t=185)=>e?`${w}w${t}${e}`:null,k={method:`GET`,headers:{accept:`application/json`,Authorization:S}},A=async(e=1)=>{let t=`api_key=${T}&page=${e}`,n=await fetch(`${C}/trending/movie/week?${t}`,k);if(!n.ok)throw console.error(`Failed to fetch trending movies`),Error(n.statusText);return n.json()},j=async(e=1)=>{let t=await fetch(`${C}/movie/top_rated?api_key=${T}&language=en-US&page=${e}`,k);if(!t.ok)throw console.error(`Failed to fetch top rated movies`),Error(t.statusText);return t.json()},M=async e=>{let t=await fetch(`${C}/movie/${e}?api_key=${T}`,k);if(!t.ok)throw console.error(`Failed to fetch movie details`),Error(t.statusText);return t.json()},te=async(e,t=1)=>{let n=await fetch(`${C}/search/movie?api_key=${T}&query=${e}&page=${t}&primary_release_year=2025&language=en-US`,k);if(!n.ok)throw Error(n.statusText);return n.json()},ne=async e=>{let t=await fetch(`${C}/movie/${e}/reviews?api_key=${T}`,k);if(!t.ok)throw Error(t.statusText);return t.json()},re=async e=>{let t=await fetch(`${C}/movie/${e}/credits?api_key=${T}`);if(!t.ok)throw Error(t.statusText);return t.json()},ie=async()=>{let e=await fetch(`${C}/genre/movie/list?api_key=${T}`);if(!e.ok)throw console.error(`Failed to fetch genres`),Error(e.statusText);return e.json()},ae=async()=>{let e=await fetch(`${C}/genre/tv/list?api_key=${T}`);if(!e.ok)throw Error(e.statusText);return e.json()},N={method:`GET`,headers:{accept:`application/json`,Authorization:S}},oe=async(e=1)=>{let t=await fetch(`${C}/tv/popular?api_key=${T}&page=${e}`,N);if(!t.ok)throw Error(t.statusText);return t.json()},se=async e=>{let t=await fetch(`${C}/tv/${e}?api_key=${T}`,N);if(!t.ok)throw Error(t.statusText);return t.json()},P=async e=>{let t=await fetch(`${C}/tv/${e}/reviews?api_key=${T}`);if(!t.ok)throw Error(t.statusText);return t.json()},F=async e=>{let t=await fetch(`${C}/tv/${e}/credits?api_key=${T}`);if(!t.ok)throw Error(t.statusText);return t.json()},I=m.ul`
+import{a as e,g as t,h as n,i as r,l as i,n as a,o,p as s,t as c,u as l}from"./iconBase-02BbQUN6.js";import{a as u,c as d,d as f,f as p,h as m,m as h,n as g,o as _,p as v,s as y,t as b}from"./index-Du8zC-EL.js";var x=`/React-Movie-Search-App/assets/no-poster-DPZEAbfg.png`,ee=`/React-Movie-Search-App/assets/no-backdrop-E_I-G8xw.png`,S=`eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjNhNWQ4MjcyNjE3ZjZmNzAyMWJhNGM0OTg0NjRmZiIsIm5iZiI6MTY5OTM1ODgxNi4xMjcsInN1YiI6IjY1NGEyODYwNTMyYWNiMDExYjEwYzI5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JaMiiyblV0gutYXA0_BostrvfuMitxlET6G1ohNUjp4`,C=`https://api.themoviedb.org/3`,w=`https://image.tmdb.org/t/p/`,T=`c23a5d8272617f6f7021ba4c498464ff`,E=(e,t=500)=>e?`${w}w${t}${e}`:x,D=(e,t=1280)=>e?`${w}w${t}${e}`:ee,O=(e,t=185)=>e?`${w}w${t}${e}`:null,k={method:`GET`,headers:{accept:`application/json`,Authorization:S}},A=async(e=1)=>{let t=`api_key=${T}&page=${e}`,n=await fetch(`${C}/trending/movie/week?${t}`,k);if(!n.ok)throw console.error(`Failed to fetch trending movies`),Error(n.statusText);return n.json()},j=async(e=1)=>{let t=await fetch(`${C}/movie/top_rated?api_key=${T}&language=en-US&page=${e}`,k);if(!t.ok)throw console.error(`Failed to fetch top rated movies`),Error(t.statusText);return t.json()},M=async e=>{let t=await fetch(`${C}/movie/${e}?api_key=${T}`,k);if(!t.ok)throw console.error(`Failed to fetch movie details`),Error(t.statusText);return t.json()},te=async(e,t=1)=>{let n=await fetch(`${C}/search/movie?api_key=${T}&query=${e}&page=${t}&primary_release_year=2025&language=en-US`,k);if(!n.ok)throw Error(n.statusText);return n.json()},ne=async e=>{let t=await fetch(`${C}/movie/${e}/reviews?api_key=${T}`,k);if(!t.ok)throw Error(t.statusText);return t.json()},re=async e=>{let t=await fetch(`${C}/movie/${e}/credits?api_key=${T}`);if(!t.ok)throw Error(t.statusText);return t.json()},ie=async()=>{let e=await fetch(`${C}/genre/movie/list?api_key=${T}`);if(!e.ok)throw console.error(`Failed to fetch genres`),Error(e.statusText);return e.json()},ae=async()=>{let e=await fetch(`${C}/genre/tv/list?api_key=${T}`);if(!e.ok)throw Error(e.statusText);return e.json()},N={method:`GET`,headers:{accept:`application/json`,Authorization:S}},oe=async(e=1)=>{let t=await fetch(`${C}/tv/popular?api_key=${T}&page=${e}`,N);if(!t.ok)throw Error(t.statusText);return t.json()},se=async e=>{let t=await fetch(`${C}/tv/${e}?api_key=${T}`,N);if(!t.ok)throw Error(t.statusText);return t.json()},P=async e=>{let t=await fetch(`${C}/tv/${e}/reviews?api_key=${T}`);if(!t.ok)throw Error(t.statusText);return t.json()},F=async e=>{let t=await fetch(`${C}/tv/${e}/credits?api_key=${T}`);if(!t.ok)throw Error(t.statusText);return t.json()},I=m.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch; //заставляет всех детей принимать высоту самого высокого соседа
 
   overflow-x: auto;
   overflow-y: hidden;
@@ -404,21 +404,18 @@ import{a as e,g as t,h as n,i as r,l as i,n as a,o,p as s,t as c,u as l}from"./i
 `,be=({review:e,reviewDateText:t,closeModal:n})=>{let{author_details:{username:r,avatar_path:i,rating:a},content:o,created_at:s}=e,c=O(i,185);return(0,R.jsxs)(ge,{children:[(0,R.jsx)(v,{closeModal:n}),(0,R.jsxs)(_e,{children:[(0,R.jsx)(f,{src:c,name:r,variant:`circle`}),(0,R.jsxs)(ve,{children:[(0,R.jsxs)(`p`,{className:`review__user-name`,children:[`@`,r]}),(0,R.jsx)(`p`,{className:`review__date`,children:t})]})]}),(0,R.jsxs)(ye,{children:[(0,R.jsx)(`div`,{className:`review__ratingStars_wrapper`,children:(0,R.jsx)(y,{rating:a,created_at:s})}),(0,R.jsx)(`p`,{className:`review__text`,children:o})]})]})},xe=m.li`
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: baseline;
+  justify-content: flex-start;
+  align-items: stretch;
 
-  border: 1px solid var(--border-color); /* Тонкая рамка для четкости */
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   background-color: var(--card-secondary-color);
   box-shadow: var(--shadow);
 
-  max-width: 500px;
-  max-height: 250px;
+  width: 100%;
+  height: 100%;
 
-  overflow: auto;
-  margin: 0 auto;
   padding: 20px;
-
   transition: var(--transition);
 
   :hover {
@@ -455,22 +452,22 @@ import{a as e,g as t,h as n,i as r,l as i,n as a,o,p as s,t as c,u as l}from"./i
     font-size: 0.85rem;
   }
 `,we=m.div`
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+
   .review__text {
     padding: 10px;
-    text-align: justify;
-
-    color: var(--text-color);
-    opacity: 0.8;
-    line-height: 1.6;
-
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* сколько строк показывать */
+    -webkit-line-clamp: 3;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-break: break-word; //??
 
+    text-align: left;
     line-height: 2;
-    word-break: break-word;
+    opacity: 0.8;
   }
 `,Te=({review:e})=>{let{author_details:{username:t,avatar_path:n,rating:r},content:i,created_at:a}=e,[o,s]=(0,Z.useState)(!1),[c,l]=(0,Z.useState)(null),u=new Date-new Date(a),d=Math.floor(u/(1e3*60)),m=Math.floor(u/(1e3*60*60)),h=Math.floor(u/(1e3*60*60*24)),g;g=d<60?`${d} minutes ago`:m<24?`${m} hours ago`:`${h} days ago`;let _=e=>{l(e),s(!0)},v=()=>{s(!1),l(null)};return(0,R.jsxs)(xe,{onClick:()=>_(e),children:[(0,R.jsxs)(Se,{children:[(0,R.jsx)(f,{src:O(n,185),name:t,variant:`circle`}),(0,R.jsxs)(Ce,{children:[(0,R.jsxs)(`p`,{className:`review__user-name`,children:[`@`,t]}),(0,R.jsx)(`p`,{className:`review__date`,children:g})]})]}),(0,R.jsx)(y,{rating:r,created_at:a}),(0,R.jsx)(we,{children:(0,R.jsx)(`p`,{className:`review__text`,children:i})}),o&&(0,R.jsx)(p,{closeModal:v,children:(0,R.jsx)(be,{review:c,reviewDateText:g,closeModal:v})})]})},Ee=m.div`
   display: flex;
@@ -583,14 +580,16 @@ import{a as e,g as t,h as n,i as r,l as i,n as a,o,p as s,t as c,u as l}from"./i
     font-size: 1rem;
   }
 `,Re=m.ul`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  /*  колонки минимум 300px, максимум — занять все свободное место */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  /* все карточки в сетке будут иметь высоту самой высокой карточки */
+  grid-auto-rows: 1fr;
 
-  gap: 16px;
+  gap: 20px;
   margin: 20px auto 50px auto;
+  padding: 0;
+  list-style: none;
 `,ze=n({default:()=>Be}),Be=()=>{let{id:e}=l(),[t,n]=(0,Z.useState)([]),[r,a]=(0,Z.useState)(!1),[o,s]=(0,Z.useState)(null),c=i(),d=(0,Z.useCallback)(async e=>{try{a(!0),s(``),c.pathname.includes(`movies`)?n((await ne(e)).results):c.pathname.includes(`series`)&&n((await P(e)).results)}catch{s(`Failed to load reviews`)}finally{a(!1)}},[c.pathname]);return(0,Z.useEffect)(()=>{e&&d(e)},[e,d]),r?(0,R.jsx)(u,{count:t.length}):o?(0,R.jsx)(g,{message:o,onRetry:()=>d(e)}):t.length===0?(0,R.jsx)(He,{}):(0,R.jsxs)(R.Fragment,{children:[(0,R.jsxs)(Le,{children:[`User Reviews `,(0,R.jsxs)(`span`,{className:`reviews__qty`,children:[`(`,t.length,`)`]})]}),(0,R.jsx)(Re,{children:t.map(e=>(0,R.jsx)(Te,{review:e},e.id))})]})},Ve=m.div`
   display: flex;
   flex-direction: column;
