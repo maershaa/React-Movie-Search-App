@@ -1,53 +1,59 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import { SiThemoviedatabase } from 'react-icons/si';
+import {
+  FooterWrapper,
+  Main,
+  Logo,
+  Tagline,
+  Socials,
+  SocialLink,
+  Bottom,
+  TMDBIcon,
+} from './Footer.styled';
 
-function Footer() {
+const Footer = () => {
   return (
-    <footer className="footer">
-      <hr />
-      <div className="footer__main">
-        <div className="footer__logo">
-          <span className="logo-accent">Movie</span>Pulse
-        </div>
+    <FooterWrapper>
+      <Main>
+        <Logo>
+          <span>Movie</span>Pulse
+        </Logo>
 
-        <p className="footer__tagline">
-          Your ultimate guide to the world of cinema. Explore, search, and
-          enjoy.
-        </p>
-        <ul className="footer__socials">
+        <Tagline>
+          Discover movies and series with TMDB-powered search and smart browsing
+          experience.
+        </Tagline>
+
+        <Socials>
           <li>
-            <Link
+            <SocialLink
               href="https://github.com/maershaa"
-              aria-label="Github"
-              className="social-link"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
             >
               <FaGithub />
-            </Link>
+            </SocialLink>
           </li>
 
           <li>
-            <Link
+            <SocialLink
               href="https://www.linkedin.com/in/valeriiayefremova/"
+              target="_blank"
+              rel="noreferrer"
               aria-label="LinkedIn"
-              className="social-link"
             >
               <FaLinkedin />
-            </Link>
+            </SocialLink>
           </li>
-        </ul>
-      </div>
+        </Socials>
+      </Main>
 
-      <div className="footer__bottom">
-        <div className="container">
-          <p className="footer__copyright">
-            © 2026 MoviePulse. Created for portfolio. Data provided by TMDB.
-          </p>
-          <SiThemoviedatabase />
-        </div>
-      </div>
-    </footer>
+      <Bottom>
+        © 2026 MoviePulse. Built as a portfolio project. Powered by TMDB API.
+        <TMDBIcon />
+      </Bottom>
+    </FooterWrapper>
   );
-}
+};
 
 export { Footer };

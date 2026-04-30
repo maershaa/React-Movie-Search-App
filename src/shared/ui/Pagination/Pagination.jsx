@@ -1,3 +1,5 @@
+// Нигде не используется
+
 const Pagination = () => {
   return (
     <div className="pagination-container">
