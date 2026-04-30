@@ -4,7 +4,7 @@ const CastListWrapper = styled.ul`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch; //заставляет всех детей принимать высоту самого высокого соседа
 
   overflow-x: auto;
   overflow-y: hidden;

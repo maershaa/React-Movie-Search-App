@@ -10,14 +10,16 @@ const Title = styled.h4`
 `;
 
 const ReviewListWrapper = styled.ul`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  /*  колонки минимум 300px, максимум — занять все свободное место */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  /* все карточки в сетке будут иметь высоту самой высокой карточки */
+  grid-auto-rows: 1fr;
 
-  gap: 16px;
+  gap: 20px;
   margin: 20px auto 50px auto;
+  padding: 0;
+  list-style: none;
 `;
 
 export { ReviewListWrapper, Title };

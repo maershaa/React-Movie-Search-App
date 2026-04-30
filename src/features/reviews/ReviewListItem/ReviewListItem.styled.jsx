@@ -3,21 +3,18 @@ import styled from '@emotion/styled';
 const ReviewCard = styled.li`
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: baseline;
+  justify-content: flex-start;
+  align-items: stretch;
 
-  border: 1px solid var(--border-color); /* Тонкая рамка для четкости */
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   background-color: var(--card-secondary-color);
   box-shadow: var(--shadow);
 
-  max-width: 500px;
-  max-height: 250px;
+  width: 100%;
+  height: 100%;
 
-  overflow: auto;
-  margin: 0 auto;
   padding: 20px;
-
   transition: var(--transition);
 
   :hover {
@@ -60,22 +57,22 @@ const UserInfo = styled.div`
 `;
 
 const ReviewBody = styled.div`
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+
   .review__text {
     padding: 10px;
-    text-align: justify;
-
-    color: var(--text-color);
-    opacity: 0.8;
-    line-height: 1.6;
-
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* сколько строк показывать */
+    -webkit-line-clamp: 3;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-break: break-word; //??
 
+    text-align: left;
     line-height: 2;
-    word-break: break-word;
+    opacity: 0.8;
   }
 `;
 
