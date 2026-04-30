@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@/context/index.js';
 import '@/assets/styles/index.css';
 import '@/assets/styles/reset.css';

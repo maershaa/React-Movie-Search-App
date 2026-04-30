@@ -22,7 +22,7 @@ function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         {/* Индексный маршрут - маршрут по умолчанию внутри родителя, без `path` */}
-        <Route path="/movies" element={<MoviesPage />} />
+        <Route path="movies" element={<MoviesPage />} />
 
         <Route path="movies/:id" element={<MovieDetailsPage />}>
           {/* Вложенный маршрут то есть - путь `cast` = `/movies/:id/cast` */}
@@ -30,8 +30,8 @@ function App() {
           <Route path="reviews" element={<ReviewList />} />
         </Route>
 
-        <Route path="/series" element={<SeriesPage />} />
-        <Route path="/series/:id" element={<SeriesDetailsPage />}>
+        <Route path="series" element={<SeriesPage />} />
+        <Route path="series/:id" element={<SeriesDetailsPage />}>
           <Route path="cast" element={<CastList />} />
           <Route path="reviews" element={<ReviewList />} />
         </Route>

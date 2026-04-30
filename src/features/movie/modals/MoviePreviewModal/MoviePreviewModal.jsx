@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Container } from './MoviePreviewModal.styled';
 import { getMoviesGenres } from '@/api';
 import { MediaGenres } from '@/features';
@@ -7,6 +7,7 @@ import { ModalCloseButton, getBgImage } from '@/shared';
 import { useEffect, useMemo, useState } from 'react';
 const MoviePreviewModal = ({ movie, closeModal }) => {
   const [genres, setGenres] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     getMoviesGenres()
@@ -56,7 +57,13 @@ const MoviePreviewModal = ({ movie, closeModal }) => {
 
           <p className="modal__overview">{overview}</p>
 
-          <Link to={`/movies/${movie.id}`} className="modal__info-btn">
+          <Link
+            to={`/movies/${movie.id}`}
+            state={{
+              from: location.pathname + location.search,
+            }}
+            className="modal__info-btn"
+          >
             More Info
           </Link>
         </section>

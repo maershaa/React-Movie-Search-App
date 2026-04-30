@@ -57,7 +57,7 @@ const MovieInfo = ({ movie }) => {
                 tagline={tagline}
               />
 
-              <BackButtonComponent />
+              <BackButtonComponent fallback={'movies'} />
             </MovieDetailsContent>
           </div>
         </Container>

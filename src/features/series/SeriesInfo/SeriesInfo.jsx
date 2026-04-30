@@ -50,7 +50,7 @@ const SeriesInfo = ({ seriesItem }) => {
                 tagline={tagline}
               />
 
-              <BackButtonComponent />
+              <BackButtonComponent fallback={'series'} />
             </DetailsContent>
           </div>
         </Container>

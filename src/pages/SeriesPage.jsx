@@ -54,7 +54,7 @@ const SeriesPage = () => {
         <PageTitle>{'Popular Series'}</PageTitle>
       </div>
       <section className="movies-section">
-        {series === 0 && initialLoading ? (
+        {series.length === 0 && initialLoading ? (
           <MediaCardSkeleton count={24} />
         ) : (
           <>

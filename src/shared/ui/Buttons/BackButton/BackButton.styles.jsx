@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const BackButton = styled.button`
+const BackButton = styled.a`
   margin-top: 20px;
 
   display: inline-flex;

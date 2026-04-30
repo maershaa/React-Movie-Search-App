@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState, useMemo } from 'react';
 import { Container } from './SeriesPreviewModal.styled';
 import { getSeriesGenres } from '@/api';
@@ -7,6 +7,7 @@ import { ModalCloseButton, getImage } from '@/shared';
 
 const SeriesPreviewModal = ({ seriesItem, closeModal }) => {
   const [genres, setGenres] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     getSeriesGenres()
@@ -23,17 +24,14 @@ const SeriesPreviewModal = ({ seriesItem, closeModal }) => {
     backdrop_path,
   } = seriesItem;
 
-  const genreNames = useMemo(
-    () =>
-      genres.filter(genre => {
-        if (genre_ids.includes(genre.id)) {
-          return genre.name;
-        }
-      }),
-    [genre_ids, genres]
-  );
+  const genreNames = useMemo(() => {
+    return genres.filter(genre => genre_ids?.includes(genre.id));
+  }, [genres, genre_ids]);
+
+  if (!seriesItem) return null;
 
   const bgPoster = getImage(backdrop_path, 1280);
+
   return (
     <Container>
       <article>
@@ -60,7 +58,13 @@ const SeriesPreviewModal = ({ seriesItem, closeModal }) => {
 
           <p className="modal__overview">{overview}</p>
 
-          <Link to={`/series/${seriesItem.id}`} className="modal__info-btn">
+          <Link
+            to={`/series/${seriesItem.id}`}
+            state={{
+              from: location.pathname + location.search,
+            }}
+            className="modal__info-btn"
+          >
             More Info
           </Link>
         </section>

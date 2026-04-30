@@ -3,7 +3,6 @@ import { useSearchParams } from 'react-router-dom';
 import { SearchInput, MediaList, MoviePreviewModal } from '@/features';
 import {
   PageTitle,
-  // Loader,
   MediaCardSkeleton,
   ErrorMessage,
   BaseModal,
