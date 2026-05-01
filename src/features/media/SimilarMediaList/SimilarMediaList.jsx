@@ -1,17 +1,25 @@
-import { SimilarMediaItem } from '@/features';
+import {
+  SimilarMediaItem,
+  MoviePreviewModal,
+  SeriesPreviewModal,
+} from '@/features';
 import { Title, SimilarList } from './SimilarMediaList.styled';
 import { useEffect, useState, useCallback } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { getSimilarMedia } from '@/api';
-import { SimilarMediaItemSkeleton, ErrorMessage } from '@/shared';
+import { BaseModal, SimilarMediaItemSkeleton, ErrorMessage } from '@/shared';
+import { useMovieModal } from '@/shared/hooks';
 
 const SimilarMediaList = () => {
   const { id } = useParams();
   const [similarMedia, setSimilarMedia] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
 
   const location = useLocation();
+  const isMovie = location.pathname.includes('movie');
+  const type = isMovie ? 'movie' : 'tv';
 
   const loadSimilarMedia = useCallback(async (mediaId, type) => {
     try {
@@ -29,25 +37,21 @@ const SimilarMediaList = () => {
   useEffect(() => {
     if (!id) return;
 
-    const type = location.pathname.includes('movie') ? 'movie' : 'tv';
-
     loadSimilarMedia(id, type);
-  }, [id, loadSimilarMedia, location.pathname]);
+  }, [id, loadSimilarMedia, type]);
 
   if (error)
     return (
       <ErrorMessage
         message={error}
-        onRetry={() => {
-          const type = location.pathname.includes('movie') ? 'movie' : 'tv';
-          loadSimilarMedia({ mediaId: id, type });
-        }}
+        onRetry={() => loadSimilarMedia(id, type)}
       />
     );
-  if (!similarMedia.length) return null;
+
+  if (!loading && !similarMedia.length) return null;
 
   return (
-    <div>
+    <section>
       <Title>More Like This</Title>
 
       {loading ? (
@@ -55,11 +59,31 @@ const SimilarMediaList = () => {
       ) : (
         <SimilarList>
           {similarMedia.map((item) => {
-            return <SimilarMediaItem key={item.id} media={item} />;
+            return (
+              <SimilarMediaItem
+                key={item.id}
+                media={item}
+                openModal={openModal}
+              />
+            );
           })}
         </SimilarList>
       )}
-    </div>
+
+      {/* ---------------- MODAL ---------------- */}
+      {isModalOpen && (
+        <BaseModal closeModal={closeModal}>
+          {type === 'movie' ? (
+            <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />
+          ) : (
+            <SeriesPreviewModal
+              seriesItem={selectedMovie}
+              closeModal={closeModal}
+            />
+          )}
+        </BaseModal>
+      )}
+    </section>
   );
 };
 export { SimilarMediaList };

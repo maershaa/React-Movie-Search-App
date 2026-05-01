@@ -14,7 +14,7 @@ const CastList = () => {
   const location = useLocation();
 
   const loadCast = useCallback(
-    async movieId => {
+    async (movieId) => {
       try {
         setLoading(true);
         setError('');
@@ -32,7 +32,7 @@ const CastList = () => {
         setLoading(false);
       }
     },
-    [location.pathname]
+    [location.pathname],
   );
 
   useEffect(() => {
@@ -53,9 +53,9 @@ const CastList = () => {
   return (
     <div className="cast__scroll-wrapper">
       <CastListWrapper>
-        {cast.map(actor => (
-          <CastListItem key={actor.cast_id} actor={actor}></CastListItem>
-        ))}
+        {cast.map((actor) => {
+          return <CastListItem key={actor.id} actor={actor}></CastListItem>;
+        })}
       </CastListWrapper>
     </div>
   );

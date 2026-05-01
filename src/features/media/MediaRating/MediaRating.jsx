@@ -2,6 +2,7 @@ import { RatingBadge } from './MediaRating.styled';
 import { FaStar } from 'react-icons/fa';
 
 const MediaRating = ({ rating }) => {
+  if (!rating) return null;
   return (
     <RatingBadge>
       <FaStar className="star-icon" />
