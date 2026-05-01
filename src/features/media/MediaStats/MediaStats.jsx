@@ -1,4 +1,4 @@
-import { MediaRating, ReviewsCount, MovieReleaseDate } from '@/features';
+import { MediaRating, ReviewsCount, MediaReleaseDate } from '@/features';
 import { MediaStatsWrapper, Divider } from './MediaStats.styled';
 // MovieStats;
 const MediaStats = ({ vote_average, vote_count, release_date }) => {
@@ -8,7 +8,7 @@ const MediaStats = ({ vote_average, vote_count, release_date }) => {
       <Divider />
       <ReviewsCount count={vote_count} />
       <Divider />
-      <MovieReleaseDate date={release_date} />
+      <MediaReleaseDate date={release_date} />
     </MediaStatsWrapper>
   );
 };

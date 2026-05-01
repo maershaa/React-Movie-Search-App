@@ -1,13 +1,11 @@
 import styled from '@emotion/styled';
 
-const CastItem = styled.li`
+const SimilarItem = styled.li`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-
-  min-width: 180px;
 
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
@@ -15,7 +13,7 @@ const CastItem = styled.li`
   box-shadow: var(--shadow);
 
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px 10px 20px 10px;
   transition: var(--transition);
 
   :hover {
@@ -24,29 +22,16 @@ const CastItem = styled.li`
     cursor: pointer;
   }
 
-  .cast__avatar-wrapper {
+  img {
     padding: 10px;
     margin-bottom: 0.9rem;
+    max-width: 250px; //так как poster_path === 200 и если не будет изображения с бекенда то заглушка подставится тоже в размере 200
+    border-radius: var(--radius-lg);
   }
 `;
 
-const CastInfo = styled.div`
-  .cast__actor-name {
-    font-weight: 700;
-    margin-bottom: 0.9rem;
-  }
-
-  .cast__character-name {
-    font-weight: 500;
-    color: var(--text-color);
-
-    width: 100%;
-    min-width: 0;
-    max-width: 160px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+const Title = styled.h4`
+  font-weight: 700;
+  margin-bottom: 1rem;
 `;
-
-export { CastItem, CastInfo };
+export { SimilarItem, Title };

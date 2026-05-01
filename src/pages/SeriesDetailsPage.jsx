@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getSeriesDetails } from '@/api';
 import { Loader, ErrorMessage } from '@/shared';
-import { SeriesInfo, DetailsTabs } from '@/features';
+import { SeriesInfo, DetailsTabs, SimilarMediaList } from '@/features';
 
 const SeriesDetailsPage = () => {
   const [seriesItem, setSeriesItem] = useState(null);
@@ -10,7 +10,7 @@ const SeriesDetailsPage = () => {
   const [error, setError] = useState('');
   const { id } = useParams();
 
-  const loadSeriesDetails = async seriesId => {
+  const loadSeriesDetails = async (seriesId) => {
     try {
       setLoading(true);
       setError('');
@@ -45,6 +45,7 @@ const SeriesDetailsPage = () => {
     <div>
       <SeriesInfo seriesItem={seriesItem} />
       <DetailsTabs />
+      <SimilarMediaList />
     </div>
   );
 };

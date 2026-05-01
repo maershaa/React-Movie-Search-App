@@ -1,4 +1,4 @@
-import { MediaRating, MovieReleaseDate } from '@/features';
+import { MediaRating, MediaReleaseDate } from '@/features';
 import { MovieItem } from './MediaCard.styled';
 import { No_Poster } from '@/assets/images';
 import { getImage } from '@/shared';
@@ -23,7 +23,7 @@ const MediaCard = ({ movie, openModal }) => {
           alt={title || original_name}
           className="movie-card__poster"
           loading="lazy"
-          onError={e => {
+          onError={(e) => {
             e.target.src = No_Poster; // Если картинка не загрузится, подставим заглушку
           }}
         />
@@ -34,7 +34,7 @@ const MediaCard = ({ movie, openModal }) => {
         <div className="movie-card__meta">
           <MediaRating rating={vote_average} />
 
-          <MovieReleaseDate date={release_date || first_air_date} />
+          <MediaReleaseDate date={release_date || first_air_date} />
         </div>
       </div>
     </MovieItem>

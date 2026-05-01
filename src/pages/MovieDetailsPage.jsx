@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '@/api';
 import { Loader, ErrorMessage } from '@/shared';
-import { MovieInfo, DetailsTabs } from '@/features';
+import { MovieInfo, DetailsTabs, SimilarMediaList } from '@/features';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -10,7 +10,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState('');
   const { id } = useParams();
 
-  const loadMovieDetails = async movieId => {
+  const loadMovieDetails = async (movieId) => {
     try {
       setLoading(true);
       setError('');
@@ -46,6 +46,7 @@ const MovieDetailsPage = () => {
     <div>
       <MovieInfo movie={movie} />
       <DetailsTabs />
+      <SimilarMediaList />
     </div>
   );
 };

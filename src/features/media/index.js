@@ -5,3 +5,6 @@ export { MediaCountries } from './MediaCountries/MediaCountries.jsx';
 export { DetailsTabs } from './DetailsTabs/DetailsTabs.jsx';
 export { MediaRating } from './MediaRating/MediaRating.jsx';
 export { MediaStats } from './MediaStats/MediaStats.jsx';
+export { MediaReleaseDate } from './MediaReleaseDate/MediaReleaseDate.jsx';
+export { SimilarMediaList } from './SimilarMediaList/SimilarMediaList.jsx';
+export { SimilarMediaItem } from './SimilarMediaItem/SimilarMediaItem.jsx';

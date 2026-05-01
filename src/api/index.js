@@ -13,3 +13,4 @@ export {
   getSeriesReviews,
   getSeriesCast,
 } from './series';
+export { getSimilarMedia } from './similarMedia';

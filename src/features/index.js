@@ -6,13 +6,15 @@ export {
   DetailsTabs,
   MediaRating,
   MediaStats,
+  MediaReleaseDate,
+  SimilarMediaList,
+  SimilarMediaItem,
 } from './media';
 
 export { SearchInput, MoviePreviewModal, MovieReviewModal } from './movie';
 
 export {
   MovieMeta,
-  MovieReleaseDate,
   MovieRevenue,
   MovieRuntime,
   MovieInfo,
