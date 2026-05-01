@@ -11,6 +11,7 @@ export {
   CastItemSkeleton,
   ReviewItemSkeleton,
   MediaCardSkeleton,
+  SimilarMediaItemSkeleton,
 } from './ui';
 export {
   Header,

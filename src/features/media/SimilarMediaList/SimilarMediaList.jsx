@@ -3,15 +3,14 @@ import { Title, SimilarList } from './SimilarMediaList.styled';
 import { useEffect, useState, useCallback } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { getSimilarMedia } from '@/api';
-import { Loader, ErrorMessage } from '@/shared';
+import { SimilarMediaItemSkeleton, ErrorMessage } from '@/shared';
 
 const SimilarMediaList = () => {
+  const { id } = useParams();
   const [similarMedia, setSimilarMedia] = useState([]);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const { id } = useParams();
   const location = useLocation();
 
   const loadSimilarMedia = useCallback(async (mediaId, type) => {
@@ -35,7 +34,6 @@ const SimilarMediaList = () => {
     loadSimilarMedia(id, type);
   }, [id, loadSimilarMedia, location.pathname]);
 
-  if (loading) return <Loader />;
   if (error)
     return (
       <ErrorMessage
@@ -50,13 +48,17 @@ const SimilarMediaList = () => {
 
   return (
     <div>
-      <Title>Recommended Media</Title>
+      <Title>More Like This</Title>
 
-      <SimilarList>
-        {similarMedia.map((item) => (
-          <SimilarMediaItem key={item.id} media={item} />
-        ))}
-      </SimilarList>
+      {loading ? (
+        <SimilarMediaItemSkeleton count={11} />
+      ) : (
+        <SimilarList>
+          {similarMedia.map((item) => {
+            return <SimilarMediaItem key={item.id} media={item} />;
+          })}
+        </SimilarList>
+      )}
     </div>
   );
 };

@@ -11,10 +11,10 @@ const ReviewList = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  let location = useLocation();
+  const location = useLocation();
 
   const loadReviewList = useCallback(
-    async mediaId => {
+    async (mediaId) => {
       try {
         setLoading(true);
         setError('');
@@ -31,7 +31,7 @@ const ReviewList = () => {
         setLoading(false);
       }
     },
-    [location.pathname]
+    [location.pathname],
   );
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const ReviewList = () => {
       </Title>
 
       <ReviewListWrapper>
-        {reviews.map(review => (
+        {reviews.map((review) => (
           <ReviewListItem key={review.id} review={review} />
         ))}
       </ReviewListWrapper>

@@ -10,4 +10,5 @@ export {
   CastItemSkeleton,
   ReviewItemSkeleton,
   MediaCardSkeleton,
+  SimilarMediaItemSkeleton,
 } from './Skeleton';
