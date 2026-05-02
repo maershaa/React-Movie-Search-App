@@ -1,12 +1,6 @@
 import styled from '@emotion/styled';
 
 const CastItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
-
   min-width: 180px;
 
   border: 1px solid var(--border-color);
@@ -23,6 +17,14 @@ const CastItem = styled.li`
     box-shadow: var(--glow);
     cursor: pointer;
   }
+`;
+
+const LinkWrapper = styled.a`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
 
   .cast__avatar-wrapper {
     padding: 10px;
@@ -49,4 +51,4 @@ const CastInfo = styled.div`
   }
 `;
 
-export { CastItem, CastInfo };
+export { CastItem, CastInfo, LinkWrapper };

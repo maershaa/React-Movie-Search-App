@@ -11,8 +11,10 @@ const SeriesDetailsPage = lazy(() => import('@/pages/SeriesDetailsPage.jsx'));
 
 const CastList = lazy(() => import('@/features/cast/CastList/CastList'));
 const ReviewList = lazy(
-  () => import('@/features/reviews/ReviewList/ReviewList')
+  () => import('@/features/reviews/ReviewList/ReviewList'),
 );
+
+const ActorDetailsPage = lazy(() => import('@/pages/ActorDetailsPage.jsx'));
 
 const NotFound = lazy(() => import('@/pages/NotFound.jsx'));
 
@@ -35,6 +37,8 @@ function App() {
           <Route path="cast" element={<CastList />} />
           <Route path="reviews" element={<ReviewList />} />
         </Route>
+
+        <Route Route path="actor/:id" element={<ActorDetailsPage />} />
       </Route>
 
       {/* 404 NotFound находится вне SharedLayout. Это грамотно, если ты хочешь, чтобы на странице 404 не было стандартной шапки и футера (чистый экран ошибки).*/}

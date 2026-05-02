@@ -25,3 +25,10 @@ export { ReviewList, ReviewListItem, ReviewsCount, NoReviews } from './reviews';
 export { CastList, CastListItem, NoCast } from './cast';
 
 export { SeriesPreviewModal, SeriesInfo, SeriesMeta } from './series';
+
+export {
+  ActorFilmography,
+  ActorInfo,
+  ActorBirthInfo,
+  ActorDeathInfo,
+} from './actor-details';

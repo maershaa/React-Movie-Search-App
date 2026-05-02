@@ -14,3 +14,5 @@ export {
   getSeriesCast,
 } from './series';
 export { getSimilarMedia } from './similarMedia';
+
+export { getActorDetails, getFilmography } from './actor';

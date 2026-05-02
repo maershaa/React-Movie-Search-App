@@ -3,7 +3,7 @@ import { MediaListContainer } from './MediaList.styled';
 const MediaList = ({ mediaArray, openModal }) => {
   return (
     <MediaListContainer>
-      {mediaArray.map(item => (
+      {mediaArray.map((item) => (
         <MediaCard key={item.id} movie={item} openModal={openModal} />
       ))}
     </MediaListContainer>
