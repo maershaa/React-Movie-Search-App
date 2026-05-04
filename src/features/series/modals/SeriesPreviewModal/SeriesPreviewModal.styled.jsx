@@ -36,7 +36,7 @@ const Container = styled.div`
     font-size: 2rem;
     font-weight: 700;
 
-    color: #fff;
+    color: var(--white);
   }
 
   .modal__header::after {

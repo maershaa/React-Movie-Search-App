@@ -21,6 +21,7 @@ const ReviewCard = styled.li`
     border-color: var(--primary-color);
     box-shadow: var(--glow);
     cursor: pointer;
+    transform: scale(1.05);
   }
 `;
 

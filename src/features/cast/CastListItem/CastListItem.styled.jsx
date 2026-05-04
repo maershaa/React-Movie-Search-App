@@ -15,6 +15,8 @@ const CastItem = styled.li`
   :hover {
     border-color: var(--primary-color);
     box-shadow: var(--glow);
+    transform: translateY(-4px);
+
     cursor: pointer;
   }
 `;

@@ -28,6 +28,7 @@ This is a single-page application (SPA) that allows users to:
 - view detailed information about media content
 - explore cast information
 - check ratings and statistics
+- view detailed information about actors (biography, filmography)
 - switch between light and dark themes
 
 The project is built with a strong focus on **modular architecture**, reusable
@@ -41,6 +42,7 @@ components, and clear separation of concerns.
 - 🎞 Dedicated pages for movies and series
 - 👥 Cast information (actors and roles)
 - ⭐ Ratings and media statistics (popularity, revenue, etc.)
+- 👤 Actor Profiles: Detailed actor pages featuring biographies, birth/death dates, and filmographies.
 - 🌙 Light / Dark theme support (ThemeContext)
 - 🧭 Client-side routing with React Router v6+
 - ⚡ Lazy loading for pages and modals
@@ -69,8 +71,8 @@ components, and clear separation of concerns.
 The project follows a **feature-based architecture**:
 
 - `api/` — TMDB API layer (movies, series, genres)
-- `features/` — business logic modules (movies, series, cast, reviews)
-- `pages/` — application pages (Home, Movies, Details)
+- `features/` — business logic modules (movies, series, cast, reviews, actor-details)
+- `pages/` — application pages (Home, Movies, Details,ActorDetails)
 - `shared/` — reusable UI components and layout system
 - `context/` — global state (Theme)
 - `app/` — application entry point and routing
@@ -93,6 +95,7 @@ The application uses **React Router v6+**:
 - `/movies/:id` — Movie details page
 - `/series` — Series list
 - `/series/:id` — Series details page
+- `/actor/:id` — Actor information page
 - `*` — 404 Not Found page
 
 ---
@@ -106,6 +109,18 @@ The application supports:
 
 Implemented via **React Context API**, allowing global theme switching across
 the app.
+
+---
+
+## 🔝 Navigation: "Back to Top" Button
+
+To enhance UX across all pages, a ScrollToTop component is implemented.
+
+Optimization: Uses throttle (300ms) to limit the frequency of scroll event execution.
+
+Visibility Threshold: The button appears after scrolling 800px.
+
+Animation: Smooth scrolling behavior (behavior: 'smooth').
 
 ---
 
@@ -199,117 +214,123 @@ This project is created for learning and portfolio purposes.
 
 ```
 
-```
 
 ## 📁 Project Structure
 
 ```
+
 react-movie-search-app/
 ├── .vscode/
 ├── dist/
 ├── node_modules/
 ├── public/
 ├── src/
-│   ├── api/
-│   │   ├── config.js
-│   │   ├── genres.js
-│   │   ├── index.js
-│   │   ├── movies.js
-│   │   └── series.js
-│   ├── app/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── assets/
-│   │   └── images/
-│   ├── styles/
-│   │   ├── index.css
-│   │   └── reset.css
-│   ├── components/
-│   │   ├── FilterInput/
-│   │   └── index.js
-│   ├── context/
-│   │   ├── ThemeContext/
-│   │   ├── ThemeProvider/
-│   │   └── index.js
-│   ├── features/
-│   │   ├── cast/
-│   │   │   ├── CastList/
-│   │   │   ├── CastListItem/
-│   │   │   ├── NoCast/
-│   │   │   └── index.js
-│   │   ├── media/
-│   │   │   ├── DetailsTabs/
-│   │   │   ├── MediaCard/
-│   │   │   ├── MediaCountries/
-│   │   │   ├── MediaGenres/
-│   │   │   ├── MediaList/
-│   │   │   ├── MediaRating/
-│   │   │   ├── MediaStats/
-│   │   │   └── index.js
-│   │   ├── movie/
-│   │   │   ├── modals/
-│   │   │   │   ├── MoviePreviewModal/
-│   │   │   │   ├── MovieReviewModal/
-│   │   │   │   └── index.js
-│   │   │   ├── SearchInput/
-│   │   │   └── index.js
-│   │   ├── movie-details/
-│   │   │   ├── MovieInfo/
-│   │   │   │   ├── MovieInfo.jsx
-│   │   │   │   └── MovieInfo.styled.jsx
-│   │   │   ├── MovieMeta/
-│   │   │   ├── MovieReleaseDate/
-│   │   │   ├── MovieRevenue/
-│   │   │   ├── MovieRuntime/
-│   │   │   └── index.js
-│   │   ├── reviews/
-│   │   └── series/
-│   │       ├── modals/
-│   │       │   ├── SeriesPreviewModal/
-│   │       │   └── index.js
-│   │       ├── SeriesInfo/
-│   │       ├── SeriesMeta/
-│   │       └── index.js
-│   ├── pages/
-│   │   ├── HomePage.jsx
-│   │   ├── MovieDetailsPage.jsx
-│   │   ├── MoviesPage.jsx
-│   │   ├── MoviesPage.styled.jsx
-│   │   ├── NotFound.jsx
-│   │   ├── SeriesDetailsPage.jsx
-│   │   ├── SeriesPage.jsx
-│   │   └── index.js
-│   └── shared/
-│       ├── helpers/
-│       ├── hooks/
-│       ├── layout/
-│       │   ├── Container/
-│       │   ├── ErrorMessage/
-│       │   ├── Footer/
-│       │   ├── Header/
-│       │   ├── Loader/
-│       │   ├── SharedLayout/
-│       │   └── index.js
-│       └── ui/
-│           ├── Avatar/
-│           ├── BaseModal/
-│           ├── Buttons/
-│           │   ├── BackButton/
-│           │   │   ├── BackButton.jsx
-│           │   │   └── BackButton.styles.jsx
-│           │   ├── ModalCloseButton/
-│           │   └── index.js
-│           ├── EndMessage/
-│           ├── PageTitle/
-│           ├── Pagination/
-│           ├── RatingStars/
-│           ├── ScrollToTop/
-│           ├── Skeleton/
-│           │   ├── CastItemSkeleton/
-│           │   ├── MediaCardsSkeleton/
-│           │   ├── ReviewItemSkeleton/
-│           │   └── index.js
-│           └── index.js
+│ ├── api/
+│ │ ├── config.js
+│ │ ├── genres.js
+│ │ ├── index.js
+│ │ ├── movies.js
+│ │ └── series.js
+│ ├── actor.js
+│ ├── app/
+│ │ ├── App.jsx
+│ │ └── main.jsx
+│ ├── assets/
+│ │ └── images/
+│ ├── styles/
+│ │ ├── index.css
+│ │ └── reset.css
+│ ├── components/
+│ │ ├── FilterInput/
+│ │ └── index.js
+│ ├── context/
+│ │ ├── ThemeContext/
+│ │ ├── ThemeProvider/
+│ │ └── index.js
+│ ├── features/
+│ │ ├── cast/
+│ │ │ ├── CastList/
+│ │ │ ├── CastListItem/
+│ │ │ ├── NoCast/
+│ │ │ └── index.js
+│ │ ├── media/
+│ │ │ ├── DetailsTabs/
+│ │ │ ├── MediaCard/
+│ │ │ ├── MediaCountries/
+│ │ │ ├── MediaGenres/
+│ │ │ ├── MediaList/
+│ │ │ ├── MediaRating/
+│ │ │ ├── MediaStats/
+│ │ │ └── index.js
+│ │ ├── movie/
+│ │ │ ├── modals/
+│ │ │ │ ├── MoviePreviewModal/
+│ │ │ │ ├── MovieReviewModal/
+│ │ │ │ └── index.js
+│ │ │ ├── SearchInput/
+│ │ │ └── index.js
+│ │ ├── movie-details/
+│ │ │ ├── MovieInfo/
+│ │ │ │ ├── MovieInfo.jsx
+│ │ │ │ └── MovieInfo.styled.jsx
+│ │ │ ├── MovieMeta/
+│ │ │ ├── MovieReleaseDate/
+│ │ │ ├── MovieRevenue/
+│ │ │ ├── MovieRuntime/
+│ │ │ └── index.js
+│ │ ├── reviews/
+│ │ └── series/
+│ │ ├── modals/
+│ │ │ ├── SeriesPreviewModal/
+│ │ │ └── index.js
+│ │ ├── SeriesInfo/
+│ │ ├── SeriesMeta/
+│ │ └── index.js
+│ ├── actor-details/
+│ │ ├── ActorInfo/
+│ │ ├── ActorFilmography/
+│ │ └── ...
+│ ├── pages/
+│ │ ├── HomePage.jsx
+│ │ ├── MovieDetailsPage.jsx
+│ │ ├── MoviesPage.jsx
+│ │ ├── MoviesPage.styled.jsx
+│ │ ├── NotFound.jsx
+│ │ ├── SeriesDetailsPage.jsx
+│ │ ├── SeriesPage.jsx
+│ │ ├── ActorDetailsPage.jsx
+│ │ └── index.js
+│ └── shared/
+│ ├── helpers/
+│ ├── hooks/
+│ ├── layout/
+│ │ ├── Container/
+│ │ ├── ErrorMessage/
+│ │ ├── Footer/
+│ │ ├── Header/
+│ │ ├── Loader/
+│ │ ├── SharedLayout/
+│ │ └── index.js
+│ └── ui/
+│ ├── Avatar/
+│ ├── BaseModal/
+│ ├── Buttons/
+│ │ ├── BackButton/
+│ │ │ ├── BackButton.jsx
+│ │ │ └── BackButton.styles.jsx
+│ │ ├── ModalCloseButton/
+│ │ └── index.js
+│ ├── EndMessage/
+│ ├── PageTitle/
+│ ├── Pagination/
+│ ├── RatingStars/
+│ ├── ScrollToTop/
+│ ├── Skeleton/
+│ │ ├── CastItemSkeleton/
+│ │ ├── MediaCardsSkeleton/
+│ │ ├── ReviewItemSkeleton/
+│ │ └── index.js
+│ └── index.js
 ├── .gitignore
 ├── eslint.config.js
 ├── index.html
@@ -319,6 +340,13 @@ react-movie-search-app/
 ├── REACT_ROUTING_guide.md
 ├── README.md
 └── vite.config.js
+
 ```
 
 ---
+
+```
+
+```
+
+```

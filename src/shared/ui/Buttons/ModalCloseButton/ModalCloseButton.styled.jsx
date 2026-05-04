@@ -14,8 +14,7 @@ const CloseBtn = styled.button`
   justify-content: center;
 
   background: transparent;
-  color: #fff;
-  color: var(--text-color);
+  color: var(--white);
   border: none;
   border-radius: 50%;
 

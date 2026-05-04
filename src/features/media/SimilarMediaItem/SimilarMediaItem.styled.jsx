@@ -20,6 +20,7 @@ const SimilarItem = styled.li`
     border-color: var(--primary-color);
     box-shadow: var(--glow);
     cursor: pointer;
+    transform: translateY(-4px);
   }
 
   img {

@@ -13,13 +13,14 @@ const BackButton = styled.a`
   border: none;
 
   background: var(--primary-color);
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
 
   transition: 0.2s ease;
 
   &:hover {
-    background: var(--accent-color);
+    transform: scale(1.2);
+    color: var(--white);
   }
 `;
 
