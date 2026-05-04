@@ -20,8 +20,9 @@ const ActorBirthInfo = ({ birthday, deathday }) => {
     (endDate - birthDate) / (1000 * 60 * 60 * 24 * 365.25),
   );
   return (
-    <p>
-      Born: <span>{formattedBirthDate}</span> <span> ({age} years old)</span>
+    <p className="details__label">
+      Born: <span className="details__value ">{formattedBirthDate}</span>{' '}
+      <span> ({age} years old)</span>
     </p>
   );
 };

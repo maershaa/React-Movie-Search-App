@@ -1,17 +1,19 @@
-import { MediaList } from '@/features';
+import { MediaList, MoviePreviewModal, SeriesPreviewModal } from '@/features';
 import { useMovieModal } from '@/shared/hooks';
 import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFilmography } from '@/api';
-import { Loader, ErrorMessage } from '@/shared';
+import { Loader, ErrorMessage, BaseModal, MediaCardSkeleton } from '@/shared';
+import { Title } from './ActorFilmography.styled';
 
 const ActorFilmography = () => {
   const [mediaArr, setMediaArr] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { openModal } = useMovieModal();
   const { id } = useParams();
+  const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
+  console.log('🚀 ~ ActorFilmography ~ selectedMovie:', selectedMovie);
 
   const loadFilmography = useCallback(async (actorId) => {
     try {
@@ -50,7 +52,31 @@ const ActorFilmography = () => {
   if (mediaArr.length === 0) {
     return null;
   }
-  return <MediaList mediaArray={mediaArr} openModal={openModal}></MediaList>;
+  return (
+    <section>
+      <Title>Filmography</Title>
+
+      {loading ? (
+        <MediaCardSkeleton count={10} />
+      ) : (
+        <MediaList mediaArray={mediaArr} openModal={openModal}></MediaList>
+      )}
+
+      {/* ---------------- MODAL ---------------- */}
+      {isModalOpen && (
+        <BaseModal closeModal={closeModal}>
+          {selectedMovie.media_type === 'movie' ? (
+            <MoviePreviewModal movie={selectedMovie} closeModal={closeModal} />
+          ) : (
+            <SeriesPreviewModal
+              seriesItem={selectedMovie}
+              closeModal={closeModal}
+            />
+          )}
+        </BaseModal>
+      )}
+    </section>
+  );
 };
 
 export { ActorFilmography };

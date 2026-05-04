@@ -18,8 +18,8 @@ const ActorDeathInfo = ({ deathday }) => {
   // и заданного формата из options→ "September 11, 2001"
 
   return (
-    <p>
-      Dead: <span>{formattedDeathDate}</span>
+    <p className="details__label">
+      Dead: <span className="details__value ">{formattedDeathDate}</span>
     </p>
   );
 };
