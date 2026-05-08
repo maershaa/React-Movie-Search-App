@@ -56,7 +56,7 @@ const getMovieDetails = async (movieId) => {
 // https://api.themoviedb.org/3/search/movie
 const searchMovies = async (query, page = 1) => {
   const response = await fetch(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&primary_release_year=2025&language=en-US`,
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&language=en-US`,
     options,
   );
 

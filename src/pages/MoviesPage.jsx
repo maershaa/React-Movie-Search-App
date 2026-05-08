@@ -24,12 +24,12 @@ const MoviesPage = () => {
 
   const { currentPage, setCurrentPage, targetRef } = useInfiniteScroll(
     loadingMore,
-    totalPages
+    totalPages,
   );
 
   const { selectedMovie, isModalOpen, openModal, closeModal } = useMovieModal();
 
-  const handleSearch = value => {
+  const handleSearch = (value) => {
     const query = value.trim();
 
     setMovies([]);
@@ -44,7 +44,7 @@ const MoviesPage = () => {
     setSearchParams({ query });
   };
 
-  const loadTopRatedMovies = useCallback(async page => {
+  const loadTopRatedMovies = useCallback(async (page) => {
     try {
       if (page === 1) setInitialLoading(true);
       else setLoadingMore(true);
@@ -52,10 +52,10 @@ const MoviesPage = () => {
       setError('');
 
       const data = await getTopRatedMovies(page);
-      setMovies(prevMovies => [
+      setMovies((prevMovies) => [
         ...prevMovies,
         ...data.results.filter(
-          newMovie => !prevMovies.some(movie => movie.id === newMovie.id)
+          (newMovie) => !prevMovies.some((movie) => movie.id === newMovie.id),
         ),
       ]);
 
@@ -77,15 +77,19 @@ const MoviesPage = () => {
 
       const data = await searchMovies(query, page);
 
-      setMovies(prevMovies => {
+      setMovies((prevMovies) => {
         if (page === 1) {
-          return data.results; // новый поиск полностью заменяет список
+          return data.results.sort((a, b) => b.popularity - a.popularity);
         }
+
         return [
           ...prevMovies,
-          ...data.results.filter(
-            newMovie => !prevMovies.some(movie => movie.id === newMovie.id)
-          ),
+          ...data.results
+            .filter(
+              (newMovie) =>
+                !prevMovies.some((movie) => movie.id === newMovie.id),
+            )
+            .sort((a, b) => b.popularity - a.popularity),
         ];
       });
 
