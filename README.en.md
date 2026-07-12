@@ -1,140 +1,95 @@
-### 📄 Recommended filename
-
-**`README.en.md`**
-
-(Если хочешь более “профи”-вариант для портфолио — можно: `README.md` оставить
-английским, а русский вынести в `README.ru.md`. Но в твоём случае логично именно
-`README.en.md`.)
-
----
-
-## 📘 English README version
-
-````markdown
 # 🎬 React Movie Search App
 
-A web application for searching movies and TV series, built with **React + React
-Router + Vite**, using the **TMDB API**.
+A single-page application for discovering movies and TV series, built with **React 19**, **React Router v7**, and **Vite**, powered by the **TMDB API**.
+
+🇷🇺 [Читать на русском](./README.ru.md)
+
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://maershaa.github.io/React-Movie-Search-App/)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-7-CA4245?logo=reactrouter&logoColor=white)
 
 🔗 **Live Demo:** https://maershaa.github.io/React-Movie-Search-App/
 
 ---
 
-## 📌 About the Project
+## 📌 About
 
-This is a single-page application (SPA) that allows users to:
+This app lets users:
 
-- search movies and TV series
-- view detailed information about media content
-- explore cast information
-- check ratings and statistics
-- view detailed information about actors (biography, filmography)
+- search movies and TV series in real time
+- view detailed pages with ratings, genres, revenue, and runtime
+- browse the cast of a title and open detailed actor profiles (bio, birth/death dates, filmography)
+- explore similar titles and read user reviews
 - switch between light and dark themes
 
-The project is built with a strong focus on **modular architecture**, reusable
-components, and clear separation of concerns.
-
----
+The project is built around a **feature-based architecture** with a clean separation between the API layer, business logic, and reusable UI components — the goal was to keep it scalable, not just "make it work."
 
 ## 🚀 Features
 
-- 🔎 Search movies and TV series via TMDB API
-- 🎞 Dedicated pages for movies and series
-- 👥 Cast information (actors and roles)
-- ⭐ Ratings and media statistics (popularity, revenue, etc.)
-- 👤 Actor Profiles: Detailed actor pages featuring biographies, birth/death dates, and filmographies.
-- 🌙 Light / Dark theme support (ThemeContext)
-- 🧭 Client-side routing with React Router v6+
-- ⚡ Lazy loading for pages and modals
-- 📄 404 Not Found page handling
-- 💬 Modal windows (preview, reviews)
-- 🎯 Infinite scroll implemented in the project
-
----
+- 🔎 Movie & TV search via the TMDB API
+- 🎞 Dedicated detail pages for movies and series
+- 👥 Cast list with detailed actor profiles (bio, filmography)
+- ⭐ Ratings & stats (popularity, revenue, runtime, etc.)
+- 🎯 Infinite scroll (via `IntersectionObserver`) instead of pagination
+- 🌙 Light / dark theme, managed through Context API
+- ⚡ Lazy-loaded pages and modals for a lighter initial bundle
+- 🔝 Throttled "scroll to top" button
+- 💬 Preview & review modals
+- 📄 Custom 404 page
 
 ## 🧱 Tech Stack
 
-- React 19
-- React Router DOM v7
-- Vite
-- TMDB API
-- Emotion (CSS-in-JS)
-- React Icons
-- React Loader Spinner
-- Context API (Theme management)
-- gh-pages (deployment)
+| Category   | Tools                               |
+| ---------- | ----------------------------------- |
+| Core       | React 19, React Router DOM v7, Vite |
+| Styling    | Emotion (CSS-in-JS)                 |
+| Data       | TMDB API                            |
+| UI helpers | React Icons, React Loader Spinner   |
+| State      | React Context API (theme)           |
+| Tooling    | ESLint, gh-pages                    |
 
----
+## 🗂 Architecture
 
-## 🗂 Project Architecture
+```
+src/
+├── api/          # TMDB API layer (movies, series, actors, genres)
+├── app/          # Entry point & routing
+├── context/      # Global state (theme)
+├── features/     # Business logic, grouped by domain
+│   ├── actor-details/
+│   ├── cast/
+│   ├── media/
+│   ├── movie/
+│   ├── movie-details/
+│   ├── reviews/
+│   └── series/
+├── pages/        # Route-level pages
+└── shared/       # Reusable UI kit, hooks, layout, helpers
+```
 
-The project follows a **feature-based architecture**:
-
-- `api/` — TMDB API layer (movies, series, genres)
-- `features/` — business logic modules (movies, series, cast, reviews, actor-details)
-- `pages/` — application pages (Home, Movies, Details,ActorDetails)
-- `shared/` — reusable UI components and layout system
-- `context/` — global state (Theme)
-- `app/` — application entry point and routing
-- `styles/` — global styles
-
-This structure provides:
-
-- scalability
-- clear separation of concerns
-- reusable UI logic
-
----
+Feature-based structure keeps each domain self-contained (its own components, styles, and logic), which makes the app easier to scale and easier to navigate for new contributors.
 
 ## 🧭 Routing
 
-The application uses **React Router v6+**:
+| Route         | Description    |
+| ------------- | -------------- |
+| `/`           | Home page      |
+| `/movies`     | Movie list     |
+| `/movies/:id` | Movie details  |
+| `/series`     | TV series list |
+| `/series/:id` | Series details |
+| `/actor/:id`  | Actor profile  |
+| `*`           | 404 page       |
 
-- `/` — Home page
-- `/movies` — Movies list
-- `/movies/:id` — Movie details page
-- `/series` — Series list
-- `/series/:id` — Series details page
-- `/actor/:id` — Actor information page
-- `*` — 404 Not Found page
+## ⚙️ Getting Started
 
----
-
-## 🎨 Theming
-
-The application supports:
-
-- 🌞 Light theme
-- 🌙 Dark theme
-
-Implemented via **React Context API**, allowing global theme switching across
-the app.
-
----
-
-## 🔝 Navigation: "Back to Top" Button
-
-To enhance UX across all pages, a ScrollToTop component is implemented.
-
-Optimization: Uses throttle (300ms) to limit the frequency of scroll event execution.
-
-Visibility Threshold: The button appears after scrolling 800px.
-
-Animation: Smooth scrolling behavior (behavior: 'smooth').
-
----
-
-## ⚙️ Installation & Setup
-
-### 1. Clone the repository
+### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/react-movie-search-app.git
-cd react-movie-search-app
+git clone https://github.com/<your-username>/React-Movie-Search-App.git
+cd React-Movie-Search-App
 ```
-````
-
----
 
 ### 2. Install dependencies
 
@@ -142,211 +97,50 @@ cd react-movie-search-app
 npm install
 ```
 
----
+### 3. Set up environment variables
 
-### 3. Run development server
+Get a free API key and a read access token from your [TMDB account settings](https://www.themoviedb.org/settings/api), then:
+
+```bash
+cp .env.example .env
+```
+
+Fill in `.env`:
+
+```
+VITE_TMDB_API_KEY=your_tmdb_api_key_here
+VITE_TMDB_AUTH_TOKEN=your_tmdb_read_access_token_here
+```
+
+> `.env` is git-ignored — your keys never get committed.
+
+### 4. Run the dev server
 
 ```bash
 npm run dev
 ```
 
----
+## 🏗 Available Scripts
 
-## 🏗 Build project
+| Command           | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Start the dev server                 |
+| `npm run build`   | Production build                     |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint`    | Run ESLint                           |
+| `npm run deploy`  | Build & deploy to GitHub Pages       |
 
-```bash
-npm run build
-```
+> Note: `npm run deploy` builds locally and pushes `dist/`, so make sure your `.env` is filled in on your machine before deploying — the TMDB keys get baked into that build.
 
----
+## 📈 Possible Improvements
 
-## 👀 Preview production build
-
-```bash
-npm run preview
-```
-
----
-
-## 🚀 Deploy to GitHub Pages
-
-```bash
-npm run deploy
-```
-
----
-
-## 📌 Available Scripts
-
-| Command           | Description              |
-| ----------------- | ------------------------ |
-| `npm run dev`     | Start development server |
-| `npm run build`   | Build production version |
-| `npm run preview` | Preview production build |
-| `npm run lint`    | Run ESLint checks        |
-| `npm run deploy`  | Deploy to GitHub Pages   |
-
----
-
-## 🔥 Project Highlights
-
-- Feature-based architecture
-- Real-world API integration (TMDB)
-- Lazy loading optimization
-- Infinite scroll implemented in the project
-- Global theme system
-- Clean separation of UI, logic, and API layers
-- Scalable project structure
-- GitHub Pages deployment
-
----
-
-## 🌐 Live Demo
-
-👉
-[https://maershaa.github.io/React-Movie-Search-App/](https://maershaa.github.io/React-Movie-Search-App/)
-
----
+- 🔎 Filtering by genre and release year
+- ❤️ Favorites / watchlist
+- ⚡ React Query for API caching
+- 📱 PWA support
+- 🔐 User authentication
+- ✅ Unit tests for hooks and components
 
 ## 📄 License
 
-This project is created for learning and portfolio purposes.
-
-```
-
-
-## 📁 Project Structure
-
-```
-
-react-movie-search-app/
-├── .vscode/
-├── dist/
-├── node_modules/
-├── public/
-├── src/
-│ ├── api/
-│ │ ├── config.js
-│ │ ├── genres.js
-│ │ ├── index.js
-│ │ ├── movies.js
-│ │ └── series.js
-│ ├── actor.js
-│ ├── app/
-│ │ ├── App.jsx
-│ │ └── main.jsx
-│ ├── assets/
-│ │ └── images/
-│ ├── styles/
-│ │ ├── index.css
-│ │ └── reset.css
-│ ├── components/
-│ │ ├── FilterInput/
-│ │ └── index.js
-│ ├── context/
-│ │ ├── ThemeContext/
-│ │ ├── ThemeProvider/
-│ │ └── index.js
-│ ├── features/
-│ │ ├── cast/
-│ │ │ ├── CastList/
-│ │ │ ├── CastListItem/
-│ │ │ ├── NoCast/
-│ │ │ └── index.js
-│ │ ├── media/
-│ │ │ ├── DetailsTabs/
-│ │ │ ├── MediaCard/
-│ │ │ ├── MediaCountries/
-│ │ │ ├── MediaGenres/
-│ │ │ ├── MediaList/
-│ │ │ ├── MediaRating/
-│ │ │ ├── MediaStats/
-│ │ │ └── index.js
-│ │ ├── movie/
-│ │ │ ├── modals/
-│ │ │ │ ├── MoviePreviewModal/
-│ │ │ │ ├── MovieReviewModal/
-│ │ │ │ └── index.js
-│ │ │ ├── SearchInput/
-│ │ │ └── index.js
-│ │ ├── movie-details/
-│ │ │ ├── MovieInfo/
-│ │ │ │ ├── MovieInfo.jsx
-│ │ │ │ └── MovieInfo.styled.jsx
-│ │ │ ├── MovieMeta/
-│ │ │ ├── MovieReleaseDate/
-│ │ │ ├── MovieRevenue/
-│ │ │ ├── MovieRuntime/
-│ │ │ └── index.js
-│ │ ├── reviews/
-│ │ └── series/
-│ │ ├── modals/
-│ │ │ ├── SeriesPreviewModal/
-│ │ │ └── index.js
-│ │ ├── SeriesInfo/
-│ │ ├── SeriesMeta/
-│ │ └── index.js
-│ ├── actor-details/
-│ │ ├── ActorInfo/
-│ │ ├── ActorFilmography/
-│ │ └── ...
-│ ├── pages/
-│ │ ├── HomePage.jsx
-│ │ ├── MovieDetailsPage.jsx
-│ │ ├── MoviesPage.jsx
-│ │ ├── MoviesPage.styled.jsx
-│ │ ├── NotFound.jsx
-│ │ ├── SeriesDetailsPage.jsx
-│ │ ├── SeriesPage.jsx
-│ │ ├── ActorDetailsPage.jsx
-│ │ └── index.js
-│ └── shared/
-│ ├── helpers/
-│ ├── hooks/
-│ ├── layout/
-│ │ ├── Container/
-│ │ ├── ErrorMessage/
-│ │ ├── Footer/
-│ │ ├── Header/
-│ │ ├── Loader/
-│ │ ├── SharedLayout/
-│ │ └── index.js
-│ └── ui/
-│ ├── Avatar/
-│ ├── BaseModal/
-│ ├── Buttons/
-│ │ ├── BackButton/
-│ │ │ ├── BackButton.jsx
-│ │ │ └── BackButton.styles.jsx
-│ │ ├── ModalCloseButton/
-│ │ └── index.js
-│ ├── EndMessage/
-│ ├── PageTitle/
-│ ├── Pagination/
-│ ├── RatingStars/
-│ ├── ScrollToTop/
-│ ├── Skeleton/
-│ │ ├── CastItemSkeleton/
-│ │ ├── MediaCardsSkeleton/
-│ │ ├── ReviewItemSkeleton/
-│ │ └── index.js
-│ └── index.js
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── jsconfig.json
-├── package-lock.json
-├── package.json
-├── REACT_ROUTING_guide.md
-├── README.md
-└── vite.config.js
-
-```
-
----
-
-```
-
-```
-
-```
+Built for learning and portfolio purposes.

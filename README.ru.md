@@ -1,7 +1,13 @@
 # 🎬 React Movie Search App
 
-Веб-приложение для поиска фильмов и сериалов, построенное на **React + React
-Router + Vite** с использованием API **TMDB**.
+SPA-приложение для поиска фильмов и сериалов, построенное на **React 19**, **React Router v7** и **Vite** с использованием **TMDB API**.
+
+🇬🇧 [Read in English](./README.md)
+
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://maershaa.github.io/React-Movie-Search-App/)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-7-CA4245?logo=reactrouter&logoColor=white)
 
 🔗 **Демо:** https://maershaa.github.io/React-Movie-Search-App/
 
@@ -9,115 +15,81 @@ Router + Vite** с использованием API **TMDB**.
 
 ## 📌 О проекте
 
-Это SPA-приложение позволяет:
+Приложение позволяет:
 
-- искать фильмы и сериалы
-- просматривать подробную информацию
-- изучать актёрский состав
-- изучать детальную информацию об актерах (биография, фильмография)
-- смотреть рейтинги и статистику
+- искать фильмы и сериалы в реальном времени
+- просматривать детальные страницы с рейтингом, жанрами, сборами и хронометражем
+- изучать актёрский состав и открывать подробные страницы актёров (биография, дата рождения/смерти, фильмография)
+- смотреть похожие тайтлы и читать отзывы
 - переключать светлую / тёмную тему
 
-Проект построен с акцентом на **модульную архитектуру**, переиспользуемые
-компоненты и разделение бизнес-логики.
+Проект построен на **feature-based архитектуре** с чётким разделением API-слоя, бизнес-логики и переиспользуемых UI-компонентов — цель была не просто "чтобы работало", а чтобы легко масштабировалось.
 
----
-
-## 🚀 Основной функционал
+## 🚀 Функционал
 
 - 🔎 Поиск фильмов и сериалов через TMDB API
 - 🎞 Отдельные страницы фильмов и сериалов
-- 👥 Актёрский состав (cast)
-- ⭐ Рейтинги и статистика (популярность, доход и т.д.)
-- 👤 Детальная страница актера (биография, дата рождения/смерти, фильмография)
-- 🌙 Тёмная / светлая тема (ThemeContext)
-- 🧭 Навигация через React Router v6+
-- ⚡ Lazy loading компонентов и модалок
-- 🎯 Infinite scroll вместо пагинации
-- 🔝 Кнопка «Вверх» с плавной прокруткой и оптимизацией (throttle)
-- 📄 Обработка 404 страницы
-- 💬 Модальные окна (превью, отзывы)
-
----
+- 👥 Актёрский состав с подробными профилями актёров (биография, фильмография)
+- ⭐ Рейтинги и статистика (популярность, сборы, хронометраж и т.д.)
+- 🎯 Infinite scroll (через `IntersectionObserver`) вместо пагинации
+- 🌙 Светлая / тёмная тема через Context API
+- ⚡ Lazy loading страниц и модалок для более лёгкого начального бандла
+- 🔝 Кнопка "наверх" с throttle-оптимизацией
+- 💬 Модальные окна превью и отзывов
+- 📄 Кастомная страница 404
 
 ## 🧱 Технологический стек
 
-- React 19
-- React Router DOM v7
-- Vite
-- TMDB API
-- Emotion (CSS-in-JS)
-- React Icons
-- React Loader Spinner
-- Context API (Theme management)
-- gh-pages (деплой)
+| Категория  | Инструменты                         |
+| ---------- | ----------------------------------- |
+| Основа     | React 19, React Router DOM v7, Vite |
+| Стили      | Emotion (CSS-in-JS)                 |
+| Данные     | TMDB API                            |
+| UI-хелперы | React Icons, React Loader Spinner   |
+| Состояние  | React Context API (тема)            |
+| Тулинг     | ESLint, gh-pages                    |
 
----
+## 🗂 Архитектура
 
-## 🗂 Архитектура проекта
+```
+src/
+├── api/          # Слой работы с TMDB API (фильмы, сериалы, актёры, жанры)
+├── app/          # Точка входа и роутинг
+├── context/      # Глобальное состояние (тема)
+├── features/     # Бизнес-логика, сгруппированная по доменам
+│   ├── actor-details/
+│   ├── cast/
+│   ├── media/
+│   ├── movie/
+│   ├── movie-details/
+│   ├── reviews/
+│   └── series/
+├── pages/        # Страницы уровня роутов
+└── shared/       # Переиспользуемый UI-кит, хуки, layout, хелперы
+```
 
-Проект построен по feature-based архитектуре:
-
-- `api/` — работа с TMDB API (фильмы, сериалы, жанры, **актеры**)
-- `features/` — бизнес-логика (actor-details, movies, series, cast, reviews)
-- `pages/` — страницы приложения (Home, Movies, ActorDetails, Details)
-- `shared/` — UI-kit, хуки и переиспользуемые компоненты (ScrollToTop)
-- `context/` — глобальные состояния (Theme)
-- `app/` — точка входа и роутинг
-
-Такой подход позволяет:
-
-- легко масштабировать проект
-- изолировать бизнес-логику
-- переиспользовать UI-компоненты
-
----
+Feature-based структура делает каждый домен самодостаточным (свои компоненты, стили, логика), что упрощает масштабирование и навигацию по проекту для новых участников.
 
 ## 🧭 Роутинг
 
-Используется **React Router v6+**:
-
-- `/` — главная страница
-- `/movies` — список фильмов
-- `/movies/:id` — детальная страница фильма
-- `/series` — список сериалов
-- `/series/:id` — детальная страница сериала
-- `/actor/:id` — страница информации об актере
-- `*` — страница 404
-
----
-
-## 🎨 Темизация
-
-Реализована поддержка:
-
-- 🌞 светлой темы
-- 🌙 тёмной темы
-
-Через **React Context API**, переключение доступно глобально во всём приложении.
-
----
-
-## 🔝 Навигация: Кнопка "Вверх"
-
-Для улучшения UX на всех страницах реализован компонент `ScrollToTop`.
-
-- **Оптимизация:** используется `throttle` (300ms) для контроля частоты вызовов при скролле.
-- **Порог видимости:** кнопка появляется после прокрутки 800px.
-- **Анимация:** реализована плавная прокрутка (`behavior: 'smooth'`).
-
----
+| Маршрут       | Описание         |
+| ------------- | ---------------- |
+| `/`           | Главная страница |
+| `/movies`     | Список фильмов   |
+| `/movies/:id` | Детали фильма    |
+| `/series`     | Список сериалов  |
+| `/series/:id` | Детали сериала   |
+| `/actor/:id`  | Страница актёра  |
+| `*`           | Страница 404     |
 
 ## ⚙️ Установка и запуск
 
-### 1. Клонирование проекта
+### 1. Клонирование репозитория
 
 ```bash
-git clone https://github.com/your-username/react-movie-search-app.git
-cd react-movie-search-app
+git clone https://github.com/<your-username>/React-Movie-Search-App.git
+cd React-Movie-Search-App
 ```
-
-````
 
 ### 2. Установка зависимостей
 
@@ -125,219 +97,50 @@ cd react-movie-search-app
 npm install
 ```
 
-### 3. Запуск dev-сервера
+### 3. Настройка переменных окружения
+
+Получи бесплатный API-ключ и read access token в [настройках аккаунта TMDB](https://www.themoviedb.org/settings/api), затем:
+
+```bash
+cp .env.example .env
+```
+
+Заполни `.env`:
+
+```
+VITE_TMDB_API_KEY=твой_tmdb_api_key
+VITE_TMDB_AUTH_TOKEN=твой_tmdb_read_access_token
+```
+
+> `.env` добавлен в `.gitignore` — ключи никогда не попадут в коммит.
+
+### 4. Запуск dev-сервера
 
 ```bash
 npm run dev
 ```
 
----
+## 🏗 Скрипты
 
-## 🏗 Сборка проекта
+| Команда           | Описание                          |
+| ----------------- | --------------------------------- |
+| `npm run dev`     | Запуск dev-сервера                |
+| `npm run build`   | Продакшн-сборка                   |
+| `npm run preview` | Просмотр продакшн-сборки локально |
+| `npm run lint`    | Проверка кода ESLint              |
+| `npm run deploy`  | Сборка и деплой на GitHub Pages   |
 
-```bash
-npm run build
-```
-
----
-
-## 👀 Preview production
-
-```bash
-npm run preview
-```
-
----
-
-## 🚀 Деплой на GitHub Pages
-
-```bash
-npm run deploy
-```
-
----
-
-## 📌 Скрипты
-
-| Команда           | Описание                  |
-| ----------------- | ------------------------- |
-| `npm run dev`     | Запуск dev-сервера        |
-| `npm run build`   | Сборка проекта            |
-| `npm run preview` | Просмотр production build |
-| `npm run lint`    | Проверка кода ESLint      |
-| `npm run deploy`  | Деплой на GitHub Pages    |
-
----
-
-## 🔥 Особенности проекта
-
-- Feature-based архитектура
-- Работа с реальным API (TMDB)
-- Lazy loading страниц и модалок
-- Глобальная тема (Context API)
-- Чистое разделение UI / логики / API слоя
-- Оптимизированная структура проекта
-- Деплой на GitHub Pages
-
----
-
-## 🌐 Демо
-
-👉
-[https://maershaa.github.io/React-Movie-Search-App/](https://maershaa.github.io/React-Movie-Search-App/)
-
----
+> Важно: `npm run deploy` собирает проект локально и пушит `dist/`, поэтому перед деплоем на твоей машине должен быть заполнен `.env` — ключи TMDB "запекаются" в эту сборку.
 
 ## 📈 Возможные улучшения
 
-- 🔎 Фильтрация по жанрам и году
-- ❤️ Избранные фильмы (favorites)
-- ⚡ React Query (кеширование API)
-- 📱 PWA версия
+- 🔎 Фильтрация по жанрам и году выпуска
+- ❤️ Избранное / watchlist
+- ⚡ React Query для кеширования запросов
+- 📱 PWA-версия
 - 🔐 Авторизация пользователей
-
----
+- ✅ Юнит-тесты для хуков и компонентов
 
 ## 📄 Лицензия
 
 Проект создан в учебных и портфолио целях.
-
-```
-
----
-
-Если хочешь, я могу дальше улучшить это до уровня:
-
-- README как у senior frontend dev (с архитектурной схемой)
-- или добавить **диаграмму структуры проекта**
-- или даже оформить как **GitHub portfolio showcase (с badges + GIF + screenshots)**
-```
-
-## 📁 Project Structure
-
-```
-react-movie-search-app/
-├── .vscode/
-├── dist/
-├── node_modules/
-├── public/
-├── src/
-│   ├── api/
-│   │   ├── config.js
-│   │   ├── genres.js
-│   │   ├── index.js
-│   │   ├── movies.js
-│   │   └── series.js
-│   ├── actor.js
-│   ├── app/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── assets/
-│   │   └── images/
-│   ├── styles/
-│   │   ├── index.css
-│   │   └── reset.css
-│   ├── components/
-│   │   ├── FilterInput/
-│   │   └── index.js
-│   ├── context/
-│   │   ├── ThemeContext/
-│   │   ├── ThemeProvider/
-│   │   └── index.js
-│   ├── features/
-│   │   ├── cast/
-│   │   │   ├── CastList/
-│   │   │   ├── CastListItem/
-│   │   │   ├── NoCast/
-│   │   │   └── index.js
-│   │   ├── media/
-│   │   │   ├── DetailsTabs/
-│   │   │   ├── MediaCard/
-│   │   │   ├── MediaCountries/
-│   │   │   ├── MediaGenres/
-│   │   │   ├── MediaList/
-│   │   │   ├── MediaRating/
-│   │   │   ├── MediaStats/
-│   │   │   └── index.js
-│   │   ├── movie/
-│   │   │   ├── modals/
-│   │   │   │   ├── MoviePreviewModal/
-│   │   │   │   ├── MovieReviewModal/
-│   │   │   │   └── index.js
-│   │   │   ├── SearchInput/
-│   │   │   └── index.js
-│   │   ├── movie-details/
-│   │   │   ├── MovieInfo/
-│   │   │   │   ├── MovieInfo.jsx
-│   │   │   │   └── MovieInfo.styled.jsx
-│   │   │   ├── MovieMeta/
-│   │   │   ├── MovieReleaseDate/
-│   │   │   ├── MovieRevenue/
-│   │   │   ├── MovieRuntime/
-│   │   │   └── index.js
-│   │   ├── reviews/
-│   │   └── series/
-│   │       ├── modals/
-│   │       │   ├── SeriesPreviewModal/
-│   │       │   └── index.js
-│   │       ├── SeriesInfo/
-│   │       ├── SeriesMeta/
-│   │       └── index.js
-│   ├── actor-details/
-│   │   ├── ActorInfo/
-│   │   ├── ActorFilmography/
-│   │   └── ...
-│   ├── pages/
-│   │   ├── HomePage.jsx
-│   │   ├── MovieDetailsPage.jsx
-│   │   ├── MoviesPage.jsx
-│   │   ├── MoviesPage.styled.jsx
-│   │   ├── NotFound.jsx
-│   │   ├── SeriesDetailsPage.jsx
-│   │   ├── SeriesPage.jsx
-│   │   ├── ActorDetailsPage.jsx
-│   │   └── index.js
-│   └── shared/
-│       ├── helpers/
-│       ├── hooks/
-│       ├── layout/
-│       │   ├── Container/
-│       │   ├── ErrorMessage/
-│       │   ├── Footer/
-│       │   ├── Header/
-│       │   ├── Loader/
-│       │   ├── SharedLayout/
-│       │   └── index.js
-│       └── ui/
-│           ├── Avatar/
-│           ├── BaseModal/
-│           ├── Buttons/
-│           │   ├── BackButton/
-│           │   │   ├── BackButton.jsx
-│           │   │   └── BackButton.styles.jsx
-│           │   ├── ModalCloseButton/
-│           │   └── index.js
-│           ├── EndMessage/
-│           ├── PageTitle/
-│           ├── Pagination/
-│           ├── RatingStars/
-│           ├── ScrollToTop/
-│           ├── Skeleton/
-│           │   ├── CastItemSkeleton/
-│           │   ├── MediaCardsSkeleton/
-│           │   ├── ReviewItemSkeleton/
-│           │   └── index.js
-│           └── index.js
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── jsconfig.json
-├── package-lock.json
-├── package.json
-├── REACT_ROUTING_guide.md
-├── README.md
-└── vite.config.js
-```
-
----
-````
